@@ -1,7 +1,7 @@
 #pragma once
 #include "Base.h"
 
-class Line : public Base
+class Line : public BaseShape
 {
 private:
 

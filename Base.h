@@ -1,14 +1,14 @@
 #pragma once
 #include <iostream>
 #include <string>
-enum figure
+enum shape
 {
 	RectangleT,
 	CircleT,
 	LineT,
 	PolygonT,
 	Default
-};
+}; 
 struct point
 {
 	double x, y;
@@ -17,25 +17,25 @@ struct point
 };
 std::ostream& operator<<(std::ostream& os, point p);
 
-class Base
+class BaseShape
 {
 private:
 	point * points; //Triangle has 1 point, Rectangle 1, Circle has 0, Line has 2
 	int pointsCount; //Points count
 	std::string color;
-	figure type; //Types are triangle, rectangle, circle, line
+	shape shapeType; //Types are triangle, rectangle, circle, line
 public:
 	
-	Base();
-	Base(const point*, const int,const std::string, const figure);
-	Base(const Base&);
-	Base& operator=(const Base&);
+	BaseShape();
+	BaseShape(const point*, const int,const std::string, const shape);
+	BaseShape(const BaseShape&);
+	BaseShape& operator=(const BaseShape&);
 
-	void setType(const figure);
+	void setTypeOfShape(const shape);
 	void setPointCount(const int);
 	void setColor(const std::string);
 
-	figure getType() const;
+	shape getType() const;
 	std::string getColor() const;
 	point* getPoints() const;
 	int getPointsCount() const;
@@ -48,6 +48,6 @@ public:
 	virtual point getAdditionalPoints() const;
 	virtual void setSize(const point);
 
-	virtual ~Base();
+	virtual ~BaseShape();
 };
 

@@ -294,7 +294,7 @@ int SVGFile::openFile(const std::string userInput)
 
 int SVGFile::saveFile(const SVGContainer& rhs)
 {
-	Base* curObj = new Base();
+	BaseShape* curObj = new BaseShape();
 	int s = rhs.getCount();
 	fileWrite.open(filePath, std::ofstream::trunc);
 	std::string lineToAdd;

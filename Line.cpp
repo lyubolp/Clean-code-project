@@ -1,9 +1,9 @@
 #include "Line.h"
 #include <iostream>
 
-Line::Line() : Base() {}
+Line::Line() : BaseShape() {}
 
-Line::Line(const point* rhs, const std::string c) : Base(rhs, 2, c, LineT) {}
+Line::Line(const point* rhs, const std::string c) : BaseShape(rhs, 2, c, LineT) {}
 
 
 point Line::getAdditionalPoints() const { return point(0, 0); };

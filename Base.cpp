@@ -1,24 +1,24 @@
 #include "Base.h"
 #include <cstring>
-Base::Base()
+BaseShape::BaseShape()
 {
 	points = new point[0];
 	pointsCount = 0;
 
 	color = new char[1];
 	color = '\0';
-	type = Default;
+	shapeType = Default;
 }
-Base::Base(const point* p, const int pc, const std::string c, const figure t):color(c), type(t), pointsCount(pc)
+BaseShape::BaseShape(const point* arrayOfPoints, const int amountOfPoints, const std::string shapeColor, const shape typeOfShape):color(shapeColor), shapeType(typeOfShape), pointsCount(amountOfPoints)
 {
-	points = new point[pc];
+	points = new point[amountOfPoints];
 
-	for (int i = 0; i < pc; i++)
+	for (int i = 0; i < amountOfPoints; i++)
 	{
-		points[i] = p[i];
+		points[i] = arrayOfPoints[i];
 	}
 }
-Base::Base(const Base& rhs) :color(rhs.color), type(rhs.type), pointsCount(rhs.pointsCount)
+BaseShape::BaseShape(const BaseShape& rhs) :color(rhs.color), shapeType(rhs.shapeType), pointsCount(rhs.pointsCount)
 {
 	
 	points = new point[rhs.pointsCount];
@@ -27,7 +27,9 @@ Base::Base(const Base& rhs) :color(rhs.color), type(rhs.type), pointsCount(rhs.p
 		points[i] = rhs.points[i];
 	}
 }
-Base& Base::operator=(const Base& rhs)
+
+
+BaseShape& BaseShape::operator=(const BaseShape& rhs)
 {
 	if (this != &rhs)
 	{
@@ -39,54 +41,54 @@ Base& Base::operator=(const Base& rhs)
 		{
 			points[i] = rhs.points[i];
 		}
-		type = rhs.type;
+		shapeType = rhs.shapeType;
 		pointsCount = rhs.pointsCount;
 
 	}
 	return *this;
 }
 
-void Base::setType(const figure t)
+void BaseShape::setTypeOfShape(const shape type)
 {
-	type = t;
+	shapeType = type;
 }
-void Base::setPointCount(const int pc)
+void BaseShape::setPointCount(const int amountOfPoints)
 {
-	pointsCount = pc;
+	pointsCount = amountOfPoints;
 }
-void Base::setColor(const std::string c)
+void BaseShape::setColor(const std::string shapeColor)
 {
-	color = c;
+	color = shapeColor;
 }
-figure Base::getType() const
+shape BaseShape::getType() const
 {
-	return type;
+	return shapeType;
 }
-point* Base::getPoints() const
+point* BaseShape::getPoints() const
 {
 	return points;
 }
-int Base::getPointsCount() const
+int BaseShape::getPointsCount() const
 {
 	return pointsCount;
 }
-std::string Base::getColor() const
+std::string BaseShape::getColor() const
 {
 	return color;
 }
 
-void Base::setPoints(const point rhs, int n) //Sets a point based on point number (1-n), where n is the number of points;
+void BaseShape::setPoints(const point pointsToSet, int amountOfPoints) //Sets a point based on point number (1-n), where n is the number of points;
 {
 	//This needs to be optimized
 	//This is an abstract function
 	point* newPoints = new point[pointsCount];
 
-	for (int i = 0; i < n-1; i++)
+	for (int i = 0; i < amountOfPoints-1; i++)
 	{
 	newPoints[i] = points[i];
 	}
-	newPoints[n-1] = rhs;
-	for (int i = n; i < pointsCount; i++)
+	newPoints[amountOfPoints-1] = pointsToSet;
+	for (int i = amountOfPoints; i < pointsCount; i++)
 	{
 	newPoints[i] = points[i];
 	}
@@ -94,20 +96,20 @@ void Base::setPoints(const point rhs, int n) //Sets a point based on point numbe
 	delete[] points;
 	points = newPoints;
 }
-void Base::setPoints(const double xn, const double yn, int n)
+void BaseShape::setPoints(const double xCoordinate, const double yCoordinate, int indexOfThePointToChange)
 {
 	//This needs to be optimized
 	//This is an abstract function
 	
 	point* newPoints = new point[pointsCount];
 
-	for (int i = 0; i < n - 1; i++)
+	for (int i = 0; i < indexOfThePointToChange - 1; i++)
 	{
 	newPoints[i] = points[i];
 	}
-	newPoints[n - 1].x = xn;
-	newPoints[n - 1].y = yn;
-	for (int i = n; i < pointsCount; i++)
+	newPoints[indexOfThePointToChange - 1].x = xCoordinate;
+	newPoints[indexOfThePointToChange - 1].y = yCoordinate;
+	for (int i = indexOfThePointToChange; i < pointsCount; i++)
 	{
 	newPoints[i] = points[i];
 	}
@@ -115,46 +117,46 @@ void Base::setPoints(const double xn, const double yn, int n)
 	delete[] points;
 	points = newPoints;
 }
-void Base::setPoints(const point* p, const int pc) //All points
+void BaseShape::setPoints(const point* pointsToSetAs, const int amountOfPoints) //All points
 {
 	//This needs to be optimized
 
 
 	delete[] points;
-	points = new point[pc];
+	points = new point[amountOfPoints];
 
-	for (int i = 0; i < pc; i++)
+	for (int i = 0; i < amountOfPoints; i++)
 	{
-		points[i] = p[i];
+		points[i] = pointsToSetAs[i];
 	}
 
-	pointsCount = pc;
+	pointsCount = amountOfPoints;
 }
 
-void Base::translate(const int v, const int h)
+void BaseShape::translate(const int horizontal, const int vertical)
 {
 	for (int i = 0; i < pointsCount; i++)
 	{
-		points[i].x += h;
-		points[i].y += v;
+		points[i].x += horizontal;
+		points[i].y += vertical;
 	}
 }
 
-point Base::getAdditionalPoints() const
+point BaseShape::getAdditionalPoints() const
 {
 	return point(0, 0);
 }
 
-void Base::setSize(const point)
+void BaseShape::setSize(const point)
 {
 }
 
-Base::~Base()
+BaseShape::~BaseShape()
 {
 	delete[] points;
 }
-std::ostream& operator<<(std::ostream& os, point p)
+std::ostream& operator<<(std::ostream& outputStream, point pointToPrint)
 {
-	os << p.x << " " << p.y;
-	return os;
+	outputStream << pointToPrint.x << " " << pointToPrint.y;
+	return outputStream;
 }

@@ -1,6 +1,6 @@
 #pragma once
 #include "Base.h"
-class Polygon : public Base
+class Polygon : public BaseShape
 {
 private:
 

@@ -1,7 +1,7 @@
 #pragma once
 #include "Base.h"
 
-class Rectangle: public Base
+class Rectangle: public BaseShape
 {
 private:
 	double width;

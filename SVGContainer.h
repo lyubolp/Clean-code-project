@@ -9,12 +9,12 @@
 class SVGContainer
 {
 private:
-	std::vector<Base*> items;
+	std::vector<BaseShape*> items;
 	int itemCount;
 public:
 	
 	SVGContainer();
-	SVGContainer(const std::vector<Base*>); //Makes an SVGContainer with a 
+	SVGContainer(const std::vector<BaseShape*>); //Makes an SVGContainer with a 
 	SVGContainer(const SVGContainer&);
 	SVGContainer& operator=(const SVGContainer&);
 
@@ -26,13 +26,13 @@ public:
 	
 	void translate(const std::string);
 	
-	bool within_s(const Rectangle&, const Base&) const;
-	bool within_s(const Circle&, const Base&) const;
+	bool within_s(const Rectangle&, const BaseShape&) const;
+	bool within_s(const Circle&, const BaseShape&) const;
 
 	void within(const std::string);
 
 	void openFromContainer(const std::vector <std::string>);
-	Base* getItem(const int) const;
+	BaseShape* getItem(const int) const;
 	int getCount() const;
 
 	

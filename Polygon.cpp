@@ -4,8 +4,8 @@
 
 
 
-Polygon::Polygon(): Base(){ }
-Polygon::Polygon(const point* rhs, int pc, const std::string c) : Base(rhs, pc,c, PolygonT) {}
+Polygon::Polygon(): BaseShape(){ }
+Polygon::Polygon(const point* rhs, int pc, const std::string c) : BaseShape(rhs, pc,c, PolygonT) {}
 
 point Polygon::getAdditionalPoints() const { return point(0, 0); }
 

@@ -1,7 +1,7 @@
 #include "Circle.h"
 #include <iostream>
-Circle::Circle() : Base() {}
-Circle::Circle(const point* rhs, const std::string c, double r) : Base(rhs, 1, c, CircleT), radius(r) {}
+Circle::Circle() : BaseShape() {}
+Circle::Circle(const point* rhs, const std::string c, double r) : BaseShape(rhs, 1, c, CircleT), radius(r) {}
 
 point Circle::getAdditionalPoints() const
 {

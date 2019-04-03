@@ -1,8 +1,8 @@
 #include "Rectangle.h"
 #include <iostream>
 
-Rectangle::Rectangle(): Base() {}
-Rectangle::Rectangle(const point* rhs, const std::string  c , const double w, const double h) : Base(rhs, 1,c, RectangleT ), width(w), height(h) {}
+Rectangle::Rectangle(): BaseShape() {}
+Rectangle::Rectangle(const point* rhs, const std::string  c , const double w, const double h) : BaseShape(rhs, 1,c, RectangleT ), width(w), height(h) {}
 
 point Rectangle::getAdditionalPoints() const
 {

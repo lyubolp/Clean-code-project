@@ -7,7 +7,7 @@ SVGContainer::SVGContainer() :itemCount(0)
 {
 	//items = new Base[0];
 }
-SVGContainer::SVGContainer(const std::vector<Base*> rhs) : itemCount(1)
+SVGContainer::SVGContainer(const std::vector<BaseShape*> rhs) : itemCount(1)
 {
 	items = rhs;
 }
@@ -296,7 +296,7 @@ void SVGContainer::erase(const int id)
 {
 	if (id <= itemCount) //If the figure exists
 	{
-		std::vector<Base*>::iterator it = items.begin(); 
+		std::vector<BaseShape*>::iterator it = items.begin(); 
 		items.erase(it + (id - 1)); //We find the one we need to delete
 		std::cout << "Deleted successfully  figure " << id << "\n";
 		itemCount--;
@@ -360,7 +360,7 @@ void SVGContainer::translate(const std::string coordinates)
 	}
 	
 }
-bool SVGContainer::within_s(const Rectangle& bound, const Base & obj) const
+bool SVGContainer::within_s(const Rectangle& bound, const BaseShape & obj) const
 {
 	point* boundPoint = bound.getPoints();
 	int pc = obj.getPointsCount();
@@ -431,7 +431,7 @@ bool SVGContainer::within_s(const Rectangle& bound, const Base & obj) const
 	}
 	return true;
 }
-bool SVGContainer::within_s(const Circle & bound, const Base & obj) const
+bool SVGContainer::within_s(const Circle & bound, const BaseShape & obj) const
 {
 	point* boundPoint = bound.getPoints();
 	int pc = obj.getPointsCount();
@@ -588,7 +588,7 @@ void SVGContainer::openFromContainer(const std::vector<std::string> rhs)
 	}
 }
 
-Base* SVGContainer::getItem(const int id) const
+BaseShape* SVGContainer::getItem(const int id) const
 {
 	return items[id];
 }

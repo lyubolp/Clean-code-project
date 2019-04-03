@@ -1,7 +1,7 @@
 #pragma once
 #include "Base.h"
 
-class Circle: public Base
+class Circle: public BaseShape
 {
 private:
 	double radius;
