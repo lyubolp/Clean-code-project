@@ -2,14 +2,6 @@
 
 ## Names
 
-Rectangle
-
-Circle
-
-Line
-
-Polygon
-
 StringManip
 
 SVGContainer

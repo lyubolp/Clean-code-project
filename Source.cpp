@@ -115,7 +115,7 @@ void menu()
 	{
 		if (openedFile)
 		{
-			svgc.print(); //Print the figures
+			svgc.printShapes(); //Print the figures
 		}
 		else
 		{
@@ -126,9 +126,9 @@ void menu()
 	{
 		if (openedFile)
 		{
-			svgc.create(command); //We create a figure
+			svgc.createShape(command); //We create a figure
 			std::cout << "Successfully created ";
-			svgc.print(svgc.getCount() - 1);
+			svgc.printShapes(svgc.getCount() - 1);
 			std::cout << "\n";
 		}
 		else
@@ -140,7 +140,7 @@ void menu()
 	{
 		if (openedFile)
 		{
-			svgc.erase(command); //Erasing the figure
+			svgc.eraseShape(command); //Erasing the figure
 			std::cout << "Successfully erased " << command[6];
 			std::cout << "\n";
 		}
@@ -153,7 +153,7 @@ void menu()
 	{
 		if (openedFile)
 		{
-			svgc.translate(command); //Transleting the figures
+			svgc.translateShape(command); //Transleting the figures
 			if (command[10] == 'v')
 			{
 				std::cout << "Successfully translated all figures ";
@@ -175,7 +175,7 @@ void menu()
 		if (openedFile)
 		{
 			std::cout << "Figures within: \n";
-			svgc.within(command); //Checking within
+			svgc.figureWithingARectangleOrCircle(command); //Checking within
 
 			std::cout << "\n";
 		}

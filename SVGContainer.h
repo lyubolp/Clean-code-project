@@ -18,18 +18,18 @@ public:
 	SVGContainer(const SVGContainer&);
 	SVGContainer& operator=(const SVGContainer&);
 
-	void print();
-	void print(int);
-	void create(const std::string);
-	void erase(const int);
-	void erase(const std::string);
+	void printShapes();
+	void printShapes(int);
+	void createShape(const std::string); //TO BE REFACTORED
+	void eraseShape(const int);
+	void eraseShape(const std::string);
+	 
+	void translateShape(const std::string); //TO BE REFACTORED
 	
-	void translate(const std::string);
-	
-	bool within_s(const Rectangle&, const BaseShape&) const;
-	bool within_s(const Circle&, const BaseShape&) const;
+	bool figureWithingARectangleOrCirclePassedAsAnObject(const Rectangle&, const BaseShape&) const; //TO BE REFACTORED
+	bool figureWithingARectangleOrCirclePassedAsAnObject(const Circle&, const BaseShape&) const; //TO BE REFACTORED
 
-	void within(const std::string);
+	void figureWithingARectangleOrCircle(const std::string); //TO BE REFACTORED
 
 	void openFromContainer(const std::vector <std::string>);
 	BaseShape* getItem(const int) const;

@@ -8,7 +8,7 @@ SVGFile::SVGFile()
 {
 }
 
-int SVGFile::openFile(const std::string userInput)
+int SVGFile::openFile(const std::string userInput) //TO BE REFACTORED
 {
 	//open C:\Temp\file.xml
 	//open <path>
@@ -400,15 +400,15 @@ std::string SVGFile::getFileName() const
 	return filePath;
 }
 
-int SVGFile::saveAsFile(const std::string userInput, const SVGContainer& rhs)
+int SVGFile::saveAsFile(const std::string userInput, const SVGContainer& containerWhichWillBeSaved)
 {
-	int f = userInput.find("saveas");
+	int startPositionOfTheCommand = userInput.find("saveas");
 	std::string tempPath = filePath;
-	filePath = userInput.substr(f + 7);
+	filePath = userInput.substr(startPositionOfTheCommand + 7);
 	filePath = removeChar(filePath, '"');
 	std::cout << filePath << " ";
 
-	saveFile(rhs);
+	saveFile(containerWhichWillBeSaved);
 
 	filePath = tempPath;
 	return 1;
@@ -421,8 +421,6 @@ int SVGFile::closeFile()
 	filePath = "";
 	return 0;
 }
-
-
 
 std::vector<std::string> SVGFile::loadIntoContainer() const
 {

@@ -1,17 +1,17 @@
 #include "StringManip.h"
 
-std::string removeChar(const std::string userInput, const char rc)
+std::string removeChar(const std::string userInput, const char charToRemove)
 {
 	std::string result = userInput;
 
-	int s = result.length();
+	int lengthOfResult = result.length();
 
-	for (int i = 0; i < s; i++)
+	for (int i = 0; i < lengthOfResult; i++)
 	{
-		if (result[i] == rc)
+		if (result[i] == charToRemove)
 		{
 			result.erase(i, 1);
-			s--;
+			lengthOfResult--;
 		}
 	}
 	return result;
@@ -21,22 +21,22 @@ std::string removeBrackets(const std::string userInput)
 {
 	std::string result = userInput;
 
-	int s = result.length();
+	int lengthOfResult = result.length();
 
-	for (int i = 0; i < s; i++)
+	for (int i = 0; i < lengthOfResult; i++)
 	{
 		if (result[i] == '>' || result[i] == '<' || result[i] == '/')
 		{
 			result.erase(i, 1);
-			s = result.length();
+			lengthOfResult = result.length();
 		}
 	}
 	return result;
 }
 
-std::string removeBlankSpaces(const std::string rhs)
+std::string removeBlankSpaces(const std::string userInput)
 {
-	std::string result = rhs;
+	std::string result = userInput;
 
 	result = removeChar(result, ' ');
 	result = removeChar(result, 32);
@@ -48,28 +48,28 @@ std::string removeBlankSpaces(const std::string rhs)
 std::string replaceAll(const std::string input, const char replaced, const char with)
 {
 	std::string result = input;
-	int s = result.size();
-	for (int i = 0; i < s; i++)
+	int lengthOfResult = result.size();
+	for (int i = 0; i < lengthOfResult; i++)
 	{
 		if (result[i] == replaced)
 		{
 			result[i] = with;
-			s--;
+			lengthOfResult--;
 		}
 	}
 	return result;
 }
 
 
-int countChar(const std::string rhs, const char searched)
+int countChar(const std::string userInput, const char searched)
 {
-	int r = 0, s = rhs.length();
+	int amountOfChars = 0, s = userInput.length();
 	for (int i = 0; i < s; i++)
 	{
-		if (rhs[i] == searched)
+		if (userInput[i] == searched)
 		{
-			r++;
+			amountOfChars++;
 		}
 	}
-	return r;
+	return amountOfChars;
 }

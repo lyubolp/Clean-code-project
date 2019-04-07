@@ -17,8 +17,8 @@ private:
 	std::vector<std::string> parsedLines;
 public:
 	SVGFile();
-	int openFile(const std::string);
-	int saveFile(const SVGContainer&);
+	int openFile(const std::string); //TO BE REFACTORED
+	int saveFile(const SVGContainer&); //TO BE REFACTORED
 	int saveAsFile(const std::string, const SVGContainer&);
 	int closeFile();
 

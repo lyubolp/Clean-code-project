@@ -7,25 +7,25 @@ SVGContainer::SVGContainer() :itemCount(0)
 {
 	//items = new Base[0];
 }
-SVGContainer::SVGContainer(const std::vector<BaseShape*> rhs) : itemCount(1)
+SVGContainer::SVGContainer(const std::vector<BaseShape*> containerOfShapes) : itemCount(1)
 {
-	items = rhs;
+	items = containerOfShapes;
 }
-SVGContainer::SVGContainer(const SVGContainer& rhs)
+SVGContainer::SVGContainer(const SVGContainer& objectToCopyFrom)
 {
-	items = rhs.items;
-	itemCount = rhs.itemCount;
+	items = objectToCopyFrom.items;
+	itemCount = objectToCopyFrom.itemCount;
 }
-SVGContainer& SVGContainer::operator=(const SVGContainer& rhs)
+SVGContainer& SVGContainer::operator=(const SVGContainer& objectToCopyFrom)
 {
-	if (this != &rhs)
+	if (this != &objectToCopyFrom)
 	{
-		items = rhs.items;
-		itemCount = rhs.itemCount;
+		items = objectToCopyFrom.items;
+		itemCount = objectToCopyFrom.itemCount;
 	}
 	return *this;
 }
-void SVGContainer::print(int id)
+void SVGContainer::printShapes(int idOfTheShapeToPrint)
 {
 	//This function prints only one object
 	//<id>. <type> <array_of_points> <additional> <color>
@@ -41,43 +41,43 @@ void SVGContainer::print(int id)
 	//4. polygon 12 12 12
 	//5. line 1 1 2 2
 
-	point* p; //We get the points of the current object
-	std::cout << id + 1 << ". "; //Prints the id-s
-	p = items[id]->getPoints(); //Get the points
-	if (items[id]->getType() == RectangleT) //We check the type of the figure & we print the data
+	point* pointsOfTheShapeToPrint; //We get the points of the current object
+	std::cout << idOfTheShapeToPrint + 1 << ". "; //Prints the id-s
+	pointsOfTheShapeToPrint = items[idOfTheShapeToPrint]->getPoints(); //Get the points
+	if (items[idOfTheShapeToPrint]->getType() == RectangleT) //We check the type of the figure & we print the data
 	{
-		std::cout << "rectangle " << *items[id]->getPoints() << " " << items[id]->getAdditionalPoints() << " " << items[id]->getColor() << "\n"; //THIS MAY NOT WORK
+		std::cout << "rectangle " << *items[idOfTheShapeToPrint]->getPoints() << " " << items[idOfTheShapeToPrint]->getAdditionalPoints() << " " << items[idOfTheShapeToPrint]->getColor() << "\n"; //THIS MAY NOT WORK
 	}
-	if (items[id]->getType() == CircleT)
+	if (items[idOfTheShapeToPrint]->getType() == CircleT)
 	{
-		std::cout << "circle " << *items[id]->getPoints() << " " << items[id]->getAdditionalPoints().x << " " << items[id]->getColor() << "\n";
+		std::cout << "circle " << *items[idOfTheShapeToPrint]->getPoints() << " " << items[idOfTheShapeToPrint]->getAdditionalPoints().x << " " << items[idOfTheShapeToPrint]->getColor() << "\n";
 	}
-	if (items[id]->getType() == LineT)
+	if (items[idOfTheShapeToPrint]->getType() == LineT)
 	{
-		std::cout << "line " << p[0] << " " << p[1] << " " << items[id]->getColor() << "\n";
+		std::cout << "line " << pointsOfTheShapeToPrint[0] << " " << pointsOfTheShapeToPrint[1] << " " << items[idOfTheShapeToPrint]->getColor() << "\n";
 	}
-	if (items[id]->getType() == PolygonT)
+	if (items[idOfTheShapeToPrint]->getType() == PolygonT)
 	{
 		std::cout << "polygon ";
-		int pc = items[id]->getPointsCount();
+		int pointsCountOfTheShapeToPrint = items[idOfTheShapeToPrint]->getPointsCount();
 		
-		for (int i = 0; i < pc; i++) //The polygon has an unknown amount of points
+		for (int i = 0; i < pointsCountOfTheShapeToPrint; i++) //The polygon has an unknown amount of points
 		{
-			std::cout << p[i] << " ";
+			std::cout << pointsOfTheShapeToPrint[i] << " ";
 		}
-		std::cout<< items[id]->getColor() << "\n";
+		std::cout<< items[idOfTheShapeToPrint]->getColor() << "\n";
 	}
 }
-void SVGContainer::print()
+void SVGContainer::printShapes()
 {
 	//If we want to print all objects, we just make a loop
 	for (int i = 0; i < itemCount; i++)
 	{
-		print(i);
+		printShapes(i);
 	}
 }
 
-void SVGContainer::create(const std::string userInput)
+void SVGContainer::createShape(const std::string userInput) //TO BE REFACTORED
 {
 	//If the command is in this function, it contains create
 	//User input format:
@@ -292,28 +292,28 @@ void SVGContainer::create(const std::string userInput)
 			}
 	}
 }
-void SVGContainer::erase(const int id)
+void SVGContainer::eraseShape(const int idOfTheShapeToErase)
 {
-	if (id <= itemCount) //If the figure exists
+	if (idOfTheShapeToErase <= itemCount) //If the figure exists
 	{
 		std::vector<BaseShape*>::iterator it = items.begin(); 
-		items.erase(it + (id - 1)); //We find the one we need to delete
-		std::cout << "Deleted successfully  figure " << id << "\n";
+		items.erase(it + (idOfTheShapeToErase - 1)); //We find the one we need to delete
+		std::cout << "Deleted successfully  figure " << idOfTheShapeToErase << "\n";
 		itemCount--;
 	}
 	else 
 	{
-		std::cout << "There is no figure " << id << "\n";
+		std::cout << "There is no figure " << idOfTheShapeToErase << "\n";
 	}
 }
 
-void SVGContainer::erase(const std::string userInput)
+void SVGContainer::eraseShape(const std::string userInput)
 {
 	int f = userInput.find("erase");
-	erase(std::stoi(userInput.substr(f + 6)));
+	eraseShape(std::stoi(userInput.substr(f + 6)));
 }
 
-void SVGContainer::translate(const std::string coordinates)
+void SVGContainer::translateShape(const std::string coordinates) //TO BE REFACTORED
 {
 	//translate vertical=10 horizontal=100
 	//translate 1 vertical=20 horizontal=200
@@ -360,7 +360,7 @@ void SVGContainer::translate(const std::string coordinates)
 	}
 	
 }
-bool SVGContainer::within_s(const Rectangle& bound, const BaseShape & obj) const
+bool SVGContainer::figureWithingARectangleOrCirclePassedAsAnObject(const Rectangle& bound, const BaseShape & obj) const //TO BE REFACTORED
 {
 	point* boundPoint = bound.getPoints();
 	int pc = obj.getPointsCount();
@@ -431,7 +431,7 @@ bool SVGContainer::within_s(const Rectangle& bound, const BaseShape & obj) const
 	}
 	return true;
 }
-bool SVGContainer::within_s(const Circle & bound, const BaseShape & obj) const
+bool SVGContainer::figureWithingARectangleOrCirclePassedAsAnObject(const Circle & bound, const BaseShape & obj) const //TO BE REFACTORED
 {
 	point* boundPoint = bound.getPoints();
 	int pc = obj.getPointsCount();
@@ -479,7 +479,7 @@ bool SVGContainer::within_s(const Circle & bound, const BaseShape & obj) const
 	}
 	return true;
 }
-void SVGContainer::within(const std::string userInput)
+void SVGContainer::figureWithingARectangleOrCircle(const std::string userInput) //TO BE REFACTORED
 {
 	//within circle 0 0 5
 
@@ -523,9 +523,9 @@ void SVGContainer::within(const std::string userInput)
 		int results = 0;
 		for (int i = 0; i < itemCount; i++)
 		{
-			if (within_s(t, *items[i]))
+			if (figureWithingARectangleOrCirclePassedAsAnObject(t, *items[i]))
 			{
-				print(i);
+				printShapes(i);
 				results++;
 			}
 		}
@@ -563,9 +563,9 @@ void SVGContainer::within(const std::string userInput)
 		int results = 0;
 		for (int i = 0; i < itemCount; i++)
 		{
-			if (within_s(t, *items[i]))
+			if (figureWithingARectangleOrCirclePassedAsAnObject(t, *items[i]))
 			{
-				print(i);
+				printShapes(i);
 				results++;
 			}
 		}
@@ -580,17 +580,17 @@ void SVGContainer::within(const std::string userInput)
 	}
 }
 
-void SVGContainer::openFromContainer(const std::vector<std::string> rhs)
+void SVGContainer::openFromContainer(const std::vector<std::string> containerWithCommandsAsString)
 {
-	for (std::string input : rhs)
+	for (std::string input : containerWithCommandsAsString)
 	{
-		create(input);
+		createShape(input);
 	}
 }
 
-BaseShape* SVGContainer::getItem(const int id) const
+BaseShape* SVGContainer::getItem(const int idOfTheItem) const
 {
-	return items[id];
+	return items[idOfTheItem];
 }
 
 int SVGContainer::getCount() const

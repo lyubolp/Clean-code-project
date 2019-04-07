@@ -2,15 +2,15 @@
 #include <iostream>
 
 Rectangle::Rectangle(): BaseShape() {}
-Rectangle::Rectangle(const point* rhs, const std::string  c , const double w, const double h) : BaseShape(rhs, 1,c, RectangleT ), width(w), height(h) {}
+Rectangle::Rectangle(const point* arrayOfPoints, const std::string  shapeColor , const double rectangleWidth, const double rectangleHeight) : BaseShape(arrayOfPoints, 1,shapeColor, RectangleT ), width(rectangleWidth), height(rectangleHeight) {}
 
 point Rectangle::getAdditionalPoints() const
 {
 	return point(width, height);
 }
 
-void Rectangle::setSize(const point p)
+void Rectangle::setSize(const point size)
 {
-	width = p.x;
-	height = p.y;
+	width = size.x;
+	height = size.y;
 }

@@ -5,8 +5,8 @@
 
 
 Polygon::Polygon(): BaseShape(){ }
-Polygon::Polygon(const point* rhs, int pc, const std::string c) : BaseShape(rhs, pc,c, PolygonT) {}
+Polygon::Polygon(const point* arrayOfPoints, int amountOfPoints, const std::string lineColor) : BaseShape(arrayOfPoints, amountOfPoints,lineColor, PolygonT) {}
 
 point Polygon::getAdditionalPoints() const { return point(0, 0); }
 
-void Polygon::setSize(const point p) {}
+void Polygon::setSize(const point size) {}
