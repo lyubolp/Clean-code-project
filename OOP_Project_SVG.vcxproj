@@ -155,7 +155,6 @@
     <ClInclude Include="Line.h" />
     <ClInclude Include="Polygon.h" />
     <ClInclude Include="Rectangle.h" />
-    <ClInclude Include="StringManip.h" />
     <ClInclude Include="SVGContainer.h" />
     <ClInclude Include="SVGFile.h" />
   </ItemGroup>

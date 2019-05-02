@@ -65,8 +65,5 @@
     <ClInclude Include="SVGFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="StringManip.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

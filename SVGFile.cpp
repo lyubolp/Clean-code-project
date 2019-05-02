@@ -1,283 +1,371 @@
 #include "SVGFile.h"
-#include "StringManip.h"
+#include "StringManip.cpp"
 #include <iostream>
 #include <fstream>
 
+
+bool SVGFile::isValidLineRectangle(std::string line)
+{
+	int xf, yf, wf, hf, cf; //We make sure the line has all attributes
+
+	xf = line.find("x=");
+	yf = line.find("y=");
+	wf = line.find("width=");
+	hf = line.find("height=");
+	cf = line.find("fill=");
+
+	return (xf == -1 || yf == -1 || wf == -1 || hf == -1 || cf == -1);
+}
+
+bool SVGFile::isValidLineCircle(std::string line)
+{
+	int xf, yf, rf, cf;
+
+	xf = line.find("cx=");
+	yf = line.find("cy=");
+	rf = line.find("r=");
+	cf = line.find("fill=");
+
+	return (xf == -1 || yf == -1 || rf == -1 || cf == -1);
+}
+
+bool SVGFile::isValidLineLine(std::string line)
+{
+	int x1f, y1f, x2f, y2f, cf;
+
+	x1f = line.find("x1=");
+	y1f = line.find("y1=");
+	x2f = line.find("x2=");
+	y2f = line.find("y2=");
+
+	cf = line.find("fill=");
+
+	return  (x1f == -1 || y1f == -1 || x2f == -1 || y2f == -1 || cf == -1);
+}
+
+std::string SVGFile::convertLineFromFileToCommandRectangle(std::string line)
+{
+	double x, y, width, heigth;
+	std::string color, parsedString, lineCut;
+	
+	if (isValidLineRectangle(line))
+	{
+		lineCut = removeWordFromString("<rect", line);
+		lineCut = removeBrackets(lineCut);
+		lineCut = removeBlankSpaces(lineCut);
+
+		while (lineCut.compare(">") != 0) //We get those attributes and save them, then we remove them from the line
+		{
+			int locationOfEquals = lineCut.find("=");
+
+			if (lineCut[locationOfEquals - 1] == 'x')
+			{
+				lineCut = removeWordFromString("x=", lineCut);
+				x = cutFirstNumberFromStringAsDouble(lineCut, "\"");
+			}
+			else if (lineCut[locationOfEquals - 1] == 'y')
+			{
+				lineCut = removeWordFromString("y=", lineCut);
+				y = cutFirstNumberFromStringAsDouble(lineCut, "\"");
+			}
+			else if (lineCut[locationOfEquals - 1] == 'h')
+			{
+				lineCut = removeWordFromString("width=", lineCut);
+				width = cutFirstNumberFromStringAsDouble(lineCut, "\"");
+			}
+			else if (lineCut[locationOfEquals - 1] == 't')
+			{
+				lineCut = removeWordFromString("height=", lineCut);
+				heigth = cutFirstNumberFromStringAsDouble(lineCut, "\"");
+			}
+			else if (lineCut[locationOfEquals - 1] == 'l')
+			{
+				lineCut = removeWordFromString("fill=", lineCut);
+				color = cutFirstSubstringFromString(lineCut, "\"");
+			}
+			else
+			{
+				std::cout << "Error";
+				return "Error";
+			}
+		}
+		parsedString = "create rectangle " + std::to_string(x) + ' ' + std::to_string(y) + ' ' + std::to_string(width)
+			+ ' ' + std::to_string(heigth) + ' ' + color; //Then we make the command to make the object
+
+		return parsedString;
+	}
+	else
+	
+	{
+		std::cout << "Not a valid line...\n";
+		return "Not a valid line...\n";
+	}
+}
+
+std::string SVGFile::convertLineFromFileToCommandCircle(std::string line)
+{
+	if (isValidLineCircle(line))
+	{
+		double x, y, radius;
+
+		std::string color, parsedString, lineCut;
+
+		lineCut = removeWordFromString("<circle", line);
+		lineCut = removeBrackets(lineCut);
+		lineCut = removeBlankSpaces(lineCut);
+
+		while (lineCut.compare(">") != 0)
+		{
+			int locationOfEquals = lineCut.find("=");
+
+			if (lineCut[locationOfEquals - 1] == 'x')
+			{
+				lineCut = removeWordFromString("cx=", lineCut);	
+				x = cutFirstNumberFromStringAsDouble(lineCut, "\"");
+			}
+			else if (lineCut[locationOfEquals - 1] == 'y')
+			{
+				lineCut = removeWordFromString("cy=", lineCut);
+				y = cutFirstNumberFromStringAsDouble(lineCut, "\"");
+			}
+			else if (lineCut[locationOfEquals - 1] == 'r')
+			{
+				lineCut = lineCut = removeWordFromString("r=", lineCut);
+				radius = cutFirstNumberFromStringAsDouble(lineCut, "\"");
+
+			}
+			else if (lineCut[locationOfEquals - 1] == 'l')
+			{
+				lineCut = removeWordFromString("fill=", lineCut);
+				color = cutFirstSubstringFromString(lineCut, "\"");
+			}
+			else
+			{
+				std::cout << "Error";
+				return "Error";
+			}
+		}
+
+		parsedString = "create circle " + std::to_string(x) + ' ' + std::to_string(y) + ' ' + std::to_string(radius)
+			+ ' ' + color;
+
+		return parsedString;
+	}
+	else
+	{
+		std::cout << "Not a valid line...\n";
+		return "Not a valid line...\n";
+	}
+}
+
+std::string SVGFile::convertLineFromFileToCommandLine(std::string line)
+{
+	if (isValidLineLine(line))
+	{
+		double x, y, x2, y2;
+
+		std::string color, parsedString, lineCut;
+
+		lineCut = removeWordFromString("<line", line);
+		lineCut = removeBrackets(lineCut);
+		lineCut = removeBlankSpaces(lineCut);
+
+		while (lineCut.compare(">") != 0)
+		{
+			int locationOfEquals = lineCut.find("=");
+
+			if (lineCut[locationOfEquals - 2] == 'x' && lineCut[locationOfEquals - 1] == '1')
+			{
+				lineCut = removeWordFromString("x1=", lineCut);
+				x = cutFirstNumberFromStringAsDouble(lineCut, "\"");
+			}
+			else if (lineCut[locationOfEquals - 2] == 'y' && lineCut[locationOfEquals - 1] == '1')
+			{
+				lineCut = removeWordFromString("y1=", lineCut);
+				y = cutFirstNumberFromStringAsDouble(lineCut, "\"");
+			}
+			else if (lineCut[locationOfEquals - 2] == 'x' && lineCut[locationOfEquals - 1] == '2')
+			{
+				lineCut = removeWordFromString("x2=", lineCut);
+				x2 = cutFirstNumberFromStringAsDouble(lineCut, "\"");
+			}
+			else if (lineCut[locationOfEquals - 2] == 'y' && lineCut[locationOfEquals - 1] == '2')
+			{
+				lineCut = removeWordFromString("y2=", lineCut);
+				y2 = cutFirstNumberFromStringAsDouble(lineCut, "\"");
+			}
+			else if (lineCut[locationOfEquals - 1] == 'l')
+			{
+				lineCut = removeWordFromString("fill=", lineCut);
+				color = cutFirstSubstringFromString(lineCut, "\"");
+			}
+		}
+
+		parsedString = "create line " + std::to_string(x) + ' ' + std::to_string(y) + ' ' + std::to_string(x2)
+			+ ' ' + std::to_string(y2) + ' ' + color;
+
+		return parsedString;
+		
+	}
+	else
+	{
+		std::cout << "Not a valid line...\n";
+		return "Not a valid line... \n";
+	}
+}
+
+std::string SVGFile::convertLineFromFileToCommandPolygon(std::string line)
+{
+	std::string pointsString;
+	//We don't know how many points are there, but we now that there in this format
+	//x1,y1 x2,y2 x3,y3 etc...
+	//but we can remove the commas and send it to the vector
+	std::string color, parsedString, lineCut = line.substr(line.find("<polygon"));
+
+	while (lineCut.compare(">") != 0)
+	{
+		if (removeBlankSpaces(lineCut).compare(">") == 0) break;
+		int indexOfEquals = lineCut.find("=");
+
+		if (lineCut[indexOfEquals - 1] == 'l')
+		{
+			lineCut = removeWordFromString("fill=", lineCut);
+			color = cutFirstSubstringFromString(lineCut, "\"");
+		}
+		else if (lineCut[indexOfEquals - 1] == 's')
+		{
+			lineCut = removeBrackets(lineCut);
+			lineCut = removeWordFromString("points=", lineCut);
+			lineCut = replaceAll(lineCut, ',', ' ');
+			pointsString = cutFirstSubstringFromString(lineCut, "\"");
+		}
+	}
+	parsedString = "create polygon " + replaceAll(pointsString, ',', ' ') + ' ' + color;
+
+	return parsedString;
+
+}
+
+std::string SVGFile::convertRectangleObjectToLine(const BaseShape * objectToConvert)
+{
+	std::string lineForFile(tags[1]);
+	point pointOfShape = *objectToConvert->getPoints();
+	
+	lineForFile += concatenateTwoStrings(" x=\"", std::to_string(pointOfShape.x));
+	lineForFile += concatenateTwoStrings("\" y=\"", std::to_string(pointOfShape.y));
+	lineForFile += concatenateTwoStrings("\" width=\"", std::to_string(objectToConvert->getAdditionalPoints().x));
+	lineForFile += concatenateTwoStrings("\" height=\"", std::to_string(objectToConvert->getAdditionalPoints().y));
+	lineForFile += concatenateTwoStrings("\" fill=\"", objectToConvert->getColor());
+	lineForFile += "\" />";
+
+	return lineForFile;
+}
+
+std::string SVGFile::convertCircleObjectToLine(const BaseShape * objectToConvert)
+{
+	std::string lineForFile(tags[2]);
+	point pointOfShape = *objectToConvert->getPoints();
+
+	lineForFile += concatenateTwoStrings(" cx=\"", std::to_string(pointOfShape.x));
+	lineForFile += concatenateTwoStrings("\" cy=\"", std::to_string(pointOfShape.y));
+	lineForFile += concatenateTwoStrings("\" r=\"", std::to_string(objectToConvert->getAdditionalPoints().x));
+	lineForFile += concatenateTwoStrings("\" fill=\"", objectToConvert->getColor());
+	lineForFile += "\" />";
+
+	return lineForFile;
+
+}
+
+std::string SVGFile::convertLineObjectToLine(const BaseShape * objectToConvert)
+{
+	std::string lineForFile(tags[3]);
+
+	lineForFile += concatenateTwoStrings(" x1=\"", std::to_string(objectToConvert->getPoints()[0].x));
+	lineForFile += concatenateTwoStrings("\" y1=\"", std::to_string(objectToConvert->getPoints()[0].y));
+	lineForFile += concatenateTwoStrings("\" x2=\"", std::to_string(objectToConvert->getPoints()[1].x));
+	lineForFile += concatenateTwoStrings("\" y2=\"", std::to_string(objectToConvert->getPoints()[1].y));
+
+	lineForFile += concatenateTwoStrings("\" fill=\"", objectToConvert->getColor());
+	lineForFile += "\" />";
+
+	return lineForFile;
+	
+}
+
+std::string SVGFile::convertPolygonObjectToLine(const BaseShape * currentObject)
+{
+	std::string lineForFile(tags[4]);
+
+	lineForFile.append(" points=\"");
+
+	int amountOfPoints = currentObject->getPointsCount();
+	for (int i = 0; i < amountOfPoints - 1; i++)
+	{
+		lineForFile += concatenateTwoStrings(std::to_string(currentObject->getPoints()[i].x), ",");
+		lineForFile += concatenateTwoStrings(std::to_string(currentObject->getPoints()[i].y)," ");
+	}
+	lineForFile += std::to_string(currentObject->getPoints()[amountOfPoints - 1].x);
+	lineForFile += concatenateTwoStrings(",", std::to_string(currentObject->getPoints()[amountOfPoints - 1].y));
+	lineForFile += concatenateTwoStrings("\" fill=\"", currentObject->getColor());
+	lineForFile += "\"/>";
+
+	return lineForFile;
+}
+
+void SVGFile::addFirstTagsToFile()
+{
+	fileWrite << firstLine << "\n";
+	fileWrite << secondLine << "\n";
+	fileWrite << tags[0] << "\n";
+}
+
+void SVGFile::addLineToFile(std::string lineToAdd)
+{
+	fileWrite << lineToAdd << "\n";
+}
 
 SVGFile::SVGFile()
 {
 }
 
-int SVGFile::openFile(const std::string userInput) //TO BE REFACTORED
+
+int SVGFile::openFile(const std::string userInput)
 {
 	//open C:\Temp\file.xml
 	//open <path>
 
-	int f = userInput.find(" ");
-	double x, y, x2, y2, w, h, radius;
-	std::string r = userInput.substr(f + 1), line, color, parsedString;
-	fileStream.open(r);
+	std::string filePathNotValidated, line, color, parsedString;
+
+	filePathNotValidated = removeFirstSubstringFromString(userInput, " ");
+	fileStream.open(filePathNotValidated);
 
 	if (fileStream.is_open())
 	{
-		filePath = r;
+		filePath = filePathNotValidated;
+
+		std::string lineCut;
 		while (getline(fileStream, line)) //We get each line and check the tag name
 		{
 			if (line.find("<rect") != -1)
 			{
-				int xf, yf, wf, hf, cf; //We make sure the line has all attributes
-
-				xf = line.find("x=");
-				yf = line.find("y=");
-				wf = line.find("width=");
-				hf = line.find("height=");
-				cf = line.find("fill=");
-				
-
-				if (xf == -1 || yf == -1 || wf == -1 || hf == -1 || cf == -1)
-				{
-					std::cout << "Not a valid line...\n";
-				}
-				else
-				{
-					f = line.find("<rect");
-					r = line.substr(f + 6);
-					r = removeBrackets(r);
-					r = removeBlankSpaces(r);
-
-					while (r.compare(">") != 0) //We get those attributes and save them, then we remove them from the line
-					{
-						f = r.find("=");
-						//depending on the type of the attribute
-						if (r[f - 1] == 'x')
-						{
-							f = r.find("x=");
-							r = r.substr(f + 3);
-							f = r.find('"');
-							x = std::stod(r.substr(0, f));
-							r = r.substr(f + 1);
-						}
-						else if (r[f - 1] == 'y')
-						{
-							f = r.find("y=");
-							r = r.substr(f + 3);
-							f = r.find('"');
-							y = std::stod(r.substr(0, f));
-							r = r.substr(f + 1);
-						}
-						else if (r[f - 1] == 'h')
-						{
-							f = r.find("width=");
-							r = r.substr(f + 7);
-							f = r.find('"');
-							w = std::stod(r.substr(0, f));
-							r = r.substr(f + 1);
-						}
-						else if (r[f - 1] == 't')
-						{
-							f = r.find("height=");
-							r = r.substr(f + 8);
-							f = r.find('"');
-							h = std::stod(r.substr(0, f));
-							r = r.substr(f + 1);
-						}
-						else if (r[f - 1] == 'l')
-						{
-							f = r.find("fill=");
-							r = r.substr(f + 6);
-							f = r.find('"');
-							color = r.substr(0, f);
-							r = r.substr(f + 1);
-						}
-					}
-					parsedString = "create rectangle " + std::to_string(x) + ' ' + std::to_string(y) + ' ' + std::to_string(w)
-						+ ' ' + std::to_string(h) + ' ' + color; //Then we make the command to make the object
-
-					parsedLines.push_back(parsedString);
-				}
-				
+				parsedLines.push_back(convertLineFromFileToCommandRectangle(line));
 			}
 			else if (line.find("<circle") != -1) //The same is done for the circle
 			{
-				int xf, yf, rf, cf;
-
-				xf = line.find("cx=");
-				yf = line.find("cy=");
-				rf = line.find("r=");
-				cf = line.find("fill=");
-
-
-				if (xf == -1 || yf == -1 || rf == -1 || cf == -1)
-				{
-					std::cout << "Not a valid line...\n";
-					
-				}
-				else
-				{
-					f = line.find("<circle");
-					r = line.substr(f + 8);
-					r = removeBrackets(r);
-					r = removeBlankSpaces(r);
-
-					while (r.compare(">") != 0)
-					{
-						f = r.find("=");
-
-						if (r[f - 1] == 'x')
-						{
-							f = r.find("cx=");
-							r = r.substr(f + 4);
-							f = r.find('"');
-							x = std::stod(r.substr(0, f));
-							r = r.substr(f + 1);
-						}
-						else if (r[f - 1] == 'y')
-						{
-							f = r.find("cy=");
-							r = r.substr(f + 4);
-							f = r.find('"');
-							y = std::stod(r.substr(0, f));
-							r = r.substr(f + 1);
-						}
-						else if (r[f - 1] == 'r')
-						{
-							f = r.find("r=");
-							r = r.substr(f + 3);
-							f = r.find('"');
-							radius = std::stod(r.substr(0, f));
-							r = r.substr(f + 1);
-						}
-						else if (r[f - 1] == 'l')
-						{
-							f = r.find("fill=");
-							r = r.substr(f + 6);
-							f = r.find('"');
-							color = r.substr(0, f);
-							r = r.substr(f + 1);
-						}
-					}
-
-					parsedString = "create circle " + std::to_string(x) + ' ' + std::to_string(y) + ' ' + std::to_string(radius)
-						+ ' ' + color;
-
-					parsedLines.push_back(parsedString);
-				}
-				
+				parsedLines.push_back(convertLineFromFileToCommandCircle(line));
 			} 
 			else if (line.find("<line") != -1) //And the line
 			{
-				int x1f, y1f, x2f, y2f, cf;
-
-				x1f = line.find("x1=");
-				y1f = line.find("y1=");
-				x2f = line.find("x2=");
-				y2f = line.find("y2=");
-
-				cf = line.find("fill=");
-
-
-				if (x1f == -1 || y1f == -1 || x2f == -1 || y2f == -1 || cf == -1)
-				{
-					std::cout << "Not a valid line...\n";
-				}
-				else
-				{
-					f = line.find("<line");
-					r = line.substr(f + 6);
-					r = removeBrackets(r);
-					r = removeBlankSpaces(r);
-
-					while (r.compare(">") != 0)
-					{
-						f = r.find("=");
-
-						if (r[f - 2] == 'x' && r[f - 1] == '1')
-						{
-							f = r.find("x1=");
-							r = r.substr(f + 4);
-							f = r.find('"');
-							x = std::stod(r.substr(0, f));
-							r = r.substr(f + 1);
-						}
-						else if (r[f - 2] == 'y' && r[f - 1] == '1')
-						{
-							f = r.find("y1=");
-							r = r.substr(f + 4);
-							f = r.find('"');
-							y = std::stod(r.substr(0, f));
-							r = r.substr(f + 1);
-						}
-						else if (r[f - 2] == 'x' && r[f - 1] == '2')
-						{
-							f = r.find("x2=");
-							r = r.substr(f + 4);
-							f = r.find('"');
-							x2 = std::stod(r.substr(0, f));
-							r = r.substr(f + 1);
-						}
-						else if (r[f - 2] == 'y' && r[f - 1] == '2')
-						{
-							f = r.find("y2=");
-							r = r.substr(f + 4);
-							f = r.find('"');
-							y2 = std::stod(r.substr(0, f));
-							r = r.substr(f + 1);
-						}
-						else if (r[f - 1] == 'l')
-						{
-							f = r.find("fill=");
-							r = r.substr(f + 6);
-							f = r.find('"');
-							color = r.substr(0, f);
-							r = r.substr(f + 1);
-						}
-					}
-
-					parsedString = "create line " + std::to_string(x) + ' ' + std::to_string(y) + ' ' + std::to_string(x2)
-						+ ' ' + std::to_string(y2) + ' ' + color;
-
-					parsedLines.push_back(parsedString);
-				}
-
-				
+				parsedLines.push_back(convertLineFromFileToCommandLine(line));	
 			}
 			else if (line.find("<polygon") != -1)
+			{	
+				parsedLines.push_back(convertLineFromFileToCommandPolygon(line));
+			}
+			else
 			{
-				std::string pointsString;
-				//We don't know how many points are there, but we now that there in this format
-				//x1,y1 x2,y2 x3,y3 etc...
-				//but we can remove the commas and send it to the vector
-				r = line.substr(line.find("<polygon"));
-
-				while (r.compare(">") != 0)
-				{
-					if (removeBlankSpaces(r).compare(">") == 0) break;
-					f = r.find("=");
-
-					if (r[f - 1] == 'l')
-					{
-						f = r.find("fill=");
-						r = r.substr(f + 6);
-						f = r.find('"');
-						color = r.substr(0, f);
-						r = r.substr(f + 1);
-					}
-					else if (r[f - 1] == 's')
-					{
-						r = removeBrackets(r);
-						f = r.find("points=");
-						r = r.substr(f + 8);
-						r = replaceAll(r, ',', ' ');
-						f = r.find('"');
-						pointsString = r.substr(0, f);
-						r = r.substr(f+1);
-					}
-				}
-				parsedString = "create polygon " + replaceAll(pointsString, ',', ' ') + ' ' + color;
-
-				parsedLines.push_back(parsedString);
-
-
+				std::cout << "Invalid line";
+				return 0;
 			}
 		}
 		
@@ -292,101 +380,50 @@ int SVGFile::openFile(const std::string userInput) //TO BE REFACTORED
 }
 
 
-int SVGFile::saveFile(const SVGContainer& rhs)
+int SVGFile::saveFile(const SVGContainer& shapesContainer)
 {
-	BaseShape* curObj = new BaseShape();
-	int s = rhs.getCount();
 	fileWrite.open(filePath, std::ofstream::trunc);
-	std::string lineToAdd;
-	point p;
+		
 	if (fileWrite.is_open()) //We start writting to the file
 	{
-		//We add the first lines
-		fileWrite << firstLine << "\n";
-		fileWrite << secondLine << "\n";
-		fileWrite << tags[0] << "\n";
-		for (int i = 0; i < s; i++) //We loop all objects in the container
+		addFirstTagsToFile();
+
+		BaseShape* currentObject = new BaseShape();
+		int amountOfShape = shapesContainer.getCount();
+
+		for (int i = 0; i < amountOfShape; i++) //We loop all objects in the container
 		{
-			curObj = rhs.getItem(i);
-			p = *(curObj->getPoints());
-			switch (curObj->getType()) //We check the type
-			{
-			case RectangleT: //We write the SVG
-				lineToAdd = "";
-				lineToAdd += tags[1];
-				lineToAdd.append(" x=\"");
-				lineToAdd += std::to_string(p.x);
-				lineToAdd.append("\" y=\""); 
-				lineToAdd += std::to_string(p.y);
-				lineToAdd.append("\" width=\"");
-				lineToAdd += std::to_string(curObj->getAdditionalPoints().x);
-				lineToAdd.append("\" height=\"");
-				lineToAdd += std::to_string(curObj->getAdditionalPoints().y);
-				lineToAdd.append("\" fill=\"");
-				lineToAdd += curObj->getColor();
-				lineToAdd.append("\" />");
-				fileWrite << lineToAdd << "\n";
-				break;
-			case CircleT:
-				lineToAdd = "";
-				lineToAdd += tags[2];
-				lineToAdd.append(" cx=\"");
-				lineToAdd += std::to_string(p.x);
-				lineToAdd.append("\" cy=\"");
-				lineToAdd += std::to_string(p.y);
-				lineToAdd.append("\" r=\"");
-				lineToAdd += std::to_string(curObj->getAdditionalPoints().x);
-				lineToAdd.append("\" fill=\"");
-				lineToAdd += curObj->getColor();
-				lineToAdd.append("\" />");
-				fileWrite << lineToAdd << "\n";
-				break;
-			case LineT:
-				lineToAdd = "";
-				lineToAdd += tags[3];
-				lineToAdd.append(" x1=\"");
-				lineToAdd += std::to_string(curObj->getPoints()[0].x);
-				lineToAdd.append("\" y1=\"");
-				lineToAdd += std::to_string(curObj->getPoints()[0].y);
-				lineToAdd.append("\" x2=\"");
-				lineToAdd += std::to_string(curObj->getPoints()[1].x);
-				lineToAdd.append("\" y2=\"");
-				lineToAdd += std::to_string(curObj->getPoints()[1].y);
+			currentObject = shapesContainer.getItem(i);
+			
+			shape typeOfShape = currentObject->getType();
 
-				lineToAdd.append("\" fill=\"");
-				lineToAdd += curObj->getColor();
-				lineToAdd.append("\" />");
-				fileWrite << lineToAdd << "\n";
-				break;
-			case PolygonT:
+			if(typeOfShape == RectangleT)
 			{
-				lineToAdd = "";
-				lineToAdd += tags[4];
-				lineToAdd.append(" points=\"");
-				int s = curObj->getPointsCount();
-				for (int i = 0; i < s-1; i++)
-				{
-					lineToAdd += std::to_string(curObj->getPoints()[i].x);
-					lineToAdd.append(",");
-					lineToAdd += std::to_string(curObj->getPoints()[i].y);
-					lineToAdd.append(" ");
-				}
-				lineToAdd += std::to_string(curObj->getPoints()[s-1].x);
-				lineToAdd.append(",");
-				lineToAdd += std::to_string(curObj->getPoints()[s-1].y);
-
-				lineToAdd.append("\" fill=\"");
-				lineToAdd += curObj->getColor();
-				lineToAdd.append("\"/>");
-				fileWrite << lineToAdd << "\n";
-				break;
+				std::string lineForFile = convertRectangleObjectToLine(currentObject);
+				addLineToFile(lineForFile);
 			}
-			default:
-				std::cout << "Error \n";
-				break;
+			else if(typeOfShape == CircleT)
+			{
+				std::string lineForFile = convertCircleObjectToLine(currentObject);
+				addLineToFile(lineForFile);
+			}
+			else if (typeOfShape == LineT)
+			{
+				std::string lineForFile = convertLineObjectToLine(currentObject);
+				addLineToFile(lineForFile);
+			}
+			else if (typeOfShape == PolygonT)
+			{
+				std::string lineForFile = convertPolygonObjectToLine(currentObject);
+				addLineToFile(lineForFile);
+			}
+			else
+			{
+				std::cout << "Error";
+				return -1;
 			}
 		}
-		fileWrite << tags[6] << "\n";
+		addLineToFile(tags[6]);
 		fileWrite.close();
 	}
 	else

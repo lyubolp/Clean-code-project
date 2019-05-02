@@ -6,30 +6,89 @@
 #include "Circle.h"
 #include <vector>
 
+const int OFFSET_RECTANGLE_WORD = 10;
+const int OFFSET_CIRCLE_WORD = 7;
+const int OFFSET_LINE_WORD = 5;
+const int OFFSET_POLYGON_WORD = 8;
+const int OFFSET_ERASE_WORD = 6;
+const int OFFSET_TRANSLATE_WORD = 10;
+
+const int INSERT_COMMAND_FIRST_LETTER_OF_SHAPE_LOCATION = 7;
+const int SPACE_ASCII = 32;
+const int AMOUNT_WHITESPACE_COMMAND_RECTANGLE = 6;
+const int AMOUNT_WHITESPACE_COMMAND_CIRCLE = 5;
+const int AMOUNT_WHITESPACE_COMMAND_LINE = 6;
+
+const char FIRST_LETTER_RECTANGLE = 'r';
+const char FIRST_LETTER_CIRCLE = 'c';
+const char FIRST_LETTER_LINE = 'l';
+const char FIRST_LETTER_POLYGON = 'p';
+const char FIRST_LETTER_VERTICAL = 'v';
+const char FIRST_LETTER_HORIZONTAL = 'h';
+
 class SVGContainer
 {
 private:
-	std::vector<BaseShape*> items;
+	
 	int itemCount;
+	
+	std::vector<BaseShape*> shapes;
+
+	void printRectangle(const BaseShape*) const;
+	void printCircle(const BaseShape*) const;
+	void printLine(const BaseShape*) const;
+	void printPolygon(const BaseShape*) const;
+	
+	bool checkIfIntIsInInterval(const int, const std::pair<int, int>);
+
+	bool checkIfPointIsWithinRectangle(const Rectangle&, const point&);
+
+	bool checkIfRectangleIsWithinRectangle(const Rectangle&, const BaseShape&);
+
+	bool checkIfCircleIsWithinRectangle(const Rectangle&, const BaseShape&);
+
+	bool checkIfLineIsWithinRectangle(const Rectangle&, const BaseShape&);
+
+	bool checkIfPolygonIsWithinRectangle(const Rectangle&, const BaseShape&);
+
+	bool checkIfPointIsWithinCircle(const Circle&, const point&);
+
+	bool checkIfRectangleIsWithinCircle(const Circle&, const BaseShape&);
+
+	bool checkIfCircleIsWithinCircle(const Circle&, const BaseShape&);
+
+	bool checkIfLineIsWithinCircle(const Circle&, const BaseShape&);
+
+	bool checkIfPolygonIsWithinCircle(const Circle&, const BaseShape&);
+
+	double getDistanceBetweenTwoPoints(const point&, const point&);
+	
+	shape checkTypeOfShape(BaseShape*);
+
+	Rectangle* createRectangleFromUserInput(const std::string);
+	Circle* createCircleFromUserInput(const std::string);
+	Line* createLineFromUserInput(const std::string);
+	Polygon* createPolygonFromUserInput(const std::string);
+	
 public:
 	
 	SVGContainer();
-	SVGContainer(const std::vector<BaseShape*>); //Makes an SVGContainer with a 
+	SVGContainer(const std::vector<BaseShape*>); 
 	SVGContainer(const SVGContainer&);
 	SVGContainer& operator=(const SVGContainer&);
 
 	void printShapes();
-	void printShapes(int);
-	void createShape(const std::string); //TO BE REFACTORED
+	void printShapes(int); 
+	void createShape(const std::string);
 	void eraseShape(const int);
 	void eraseShape(const std::string);
 	 
-	void translateShape(const std::string); //TO BE REFACTORED
+	void translateShape(const std::string); 
 	
-	bool figureWithingARectangleOrCirclePassedAsAnObject(const Rectangle&, const BaseShape&) const; //TO BE REFACTORED
-	bool figureWithingARectangleOrCirclePassedAsAnObject(const Circle&, const BaseShape&) const; //TO BE REFACTORED
+	bool figureWithingARectanglePassedAsAnObject(const Rectangle&, const BaseShape&);
+	bool figureWithingACirclePassedAsAnObject(const Circle&, const BaseShape&); 
 
-	void figureWithingARectangleOrCircle(const std::string); //TO BE REFACTORED
+	void figureWithingCommand(const std::string); //TO BE REFACTORED
 
 	void openFromContainer(const std::vector <std::string>);
 	BaseShape* getItem(const int) const;

@@ -1,5 +1,5 @@
 #include "SVGContainer.h"
-#include "StringManip.h"
+#include "StringManip.cpp"
 #include <iostream>
 #include <cmath>
 
@@ -7,24 +7,298 @@ SVGContainer::SVGContainer() :itemCount(0)
 {
 	//items = new Base[0];
 }
+
 SVGContainer::SVGContainer(const std::vector<BaseShape*> containerOfShapes) : itemCount(1)
 {
-	items = containerOfShapes;
+	shapes = containerOfShapes;
 }
+
 SVGContainer::SVGContainer(const SVGContainer& objectToCopyFrom)
 {
-	items = objectToCopyFrom.items;
+	shapes = objectToCopyFrom.shapes;
 	itemCount = objectToCopyFrom.itemCount;
 }
+
 SVGContainer& SVGContainer::operator=(const SVGContainer& objectToCopyFrom)
 {
 	if (this != &objectToCopyFrom)
 	{
-		items = objectToCopyFrom.items;
+		shapes = objectToCopyFrom.shapes;
 		itemCount = objectToCopyFrom.itemCount;
 	}
 	return *this;
 }
+
+void SVGContainer::printRectangle(const BaseShape* shapeToPrint) const
+{
+	std::cout << "rectangle " << shapeToPrint->getPoints() << " " << shapeToPrint->getAdditionalPoints() << " " << shapeToPrint->getColor() << "\n";
+}
+
+void SVGContainer::printCircle(const BaseShape* shapeToPrint) const
+{
+	std::cout << "circle " << shapeToPrint->getPoints() << " " << shapeToPrint->getAdditionalPoints().x << " " << shapeToPrint->getColor() << "\n";
+
+}
+
+void SVGContainer::printLine(const BaseShape* shapeToPrint) const
+{
+	point* pointsOfTheShapeToPrint; //We get the points of the current object
+	pointsOfTheShapeToPrint = shapeToPrint->getPoints(); //Get the points
+
+	std::cout << "line " << pointsOfTheShapeToPrint[0] << " " << pointsOfTheShapeToPrint[1] << " " << shapeToPrint->getColor() << "\n";
+}
+
+void SVGContainer::printPolygon(const BaseShape* shapeToPrint) const
+{
+	point* pointsOfTheShapeToPrint; //We get the points of the current object
+	pointsOfTheShapeToPrint = shapeToPrint->getPoints(); //Get the points
+
+	std::cout << "polygon ";
+	int pointsCountOfTheShapeToPrint = shapeToPrint->getPointsCount();
+
+	for (int i = 0; i < pointsCountOfTheShapeToPrint; i++) //The polygon has an unknown amount of points
+	{
+		std::cout << pointsOfTheShapeToPrint[i] << " ";
+	}
+	std::cout << shapeToPrint->getColor() << "\n";
+}
+
+
+bool SVGContainer::checkIfIntIsInInterval(const int toCheck, const std::pair<int, int> interval)
+{
+	return (interval.first <= toCheck) && (toCheck <= interval.second);
+}
+
+bool SVGContainer::checkIfPointIsWithinRectangle(const Rectangle & bound, const point & pointToCheck)
+{
+	int rectangleAX = bound.getPoints()->x;
+	int rectangleAY = bound.getPoints()->y;
+
+	int rectangleBX = rectangleAX + bound.getAdditionalPoints().x;
+	int rectangleCY = rectangleAY + bound.getAdditionalPoints().y;
+
+	return checkIfIntIsInInterval(pointToCheck.x, { rectangleAX,rectangleBX }) && checkIfIntIsInInterval(pointToCheck.y, { rectangleAY, rectangleCY });
+}
+
+bool SVGContainer::checkIfRectangleIsWithinRectangle(const Rectangle &bound, const BaseShape& objectToCheck)
+{
+	point rectangleDiagonalPointA = point(objectToCheck.getPoints()->x, objectToCheck.getPoints()->y);
+	point rectangleDiagonalPointB = point(rectangleDiagonalPointA.x + objectToCheck.getAdditionalPoints().x, rectangleDiagonalPointA.y + objectToCheck.getAdditionalPoints().y);
+
+	return checkIfPointIsWithinRectangle(bound, rectangleDiagonalPointA) && checkIfPointIsWithinRectangle(bound, rectangleDiagonalPointB);
+}
+
+bool SVGContainer::checkIfCircleIsWithinRectangle(const Rectangle & bound, const BaseShape & objectToCheck)
+{
+	point centerOfNewRectangle(objectToCheck.getPoints()->x, objectToCheck.getPoints()->y - objectToCheck.getAdditionalPoints().x);
+	point widthPointOfNewRectangle(objectToCheck.getPoints()->x + objectToCheck.getAdditionalPoints().x, objectToCheck.getPoints()->y);
+	point heightPointOfNewRectangle(objectToCheck.getPoints()->x - objectToCheck.getAdditionalPoints().x, objectToCheck.getPoints()->y);
+	Rectangle circleMaxBounds(&centerOfNewRectangle, "#000000", getDistanceBetweenTwoPoints(centerOfNewRectangle, widthPointOfNewRectangle), getDistanceBetweenTwoPoints(centerOfNewRectangle, heightPointOfNewRectangle));
+
+	return checkIfRectangleIsWithinRectangle(bound, circleMaxBounds);
+}
+
+bool SVGContainer::checkIfLineIsWithinRectangle(const Rectangle & bound, const BaseShape & objectToCheck)
+{
+
+	return checkIfPointIsWithinRectangle(bound, objectToCheck.getPoints()[0]) && checkIfPointIsWithinRectangle(bound, objectToCheck.getPoints()[1]);
+}
+
+bool SVGContainer::checkIfPolygonIsWithinRectangle(const Rectangle & bound, const BaseShape & objectToCheck)
+{
+	int amountOfPointsInShape = objectToCheck.getPointsCount();
+
+	bool result = true;
+	for (int i = 0; i < amountOfPointsInShape; i++)
+	{
+		if (!checkIfPointIsWithinRectangle(bound, objectToCheck.getPoints()[i]))
+		{
+			result = false;
+			return result;
+		}
+	}
+
+	return result;
+}
+
+bool SVGContainer::checkIfPointIsWithinCircle(const Circle & bound, const point & pointToCheck)
+{
+	int radius = bound.getAdditionalPoints().x;
+	return ((pow((pointToCheck.x - bound.getPoints()->x), 2) + pow((pointToCheck.y - bound.getPoints()->y), 2)) <= pow(radius, 2));
+}
+
+bool SVGContainer::checkIfRectangleIsWithinCircle(const Circle & bound, const BaseShape & objectToCheck)
+{
+	point rectanglePointA = *(objectToCheck.getPoints());
+	point rectanglePointB(rectanglePointA.x + objectToCheck.getAdditionalPoints().x, rectanglePointA.y);
+	point rectanglePointC(rectanglePointA.x, rectanglePointA.y + objectToCheck.getAdditionalPoints().y);
+	point rectanglePointD(rectanglePointA.x + objectToCheck.getAdditionalPoints().x, rectanglePointA.y + objectToCheck.getAdditionalPoints().y);
+
+
+	return checkIfPointIsWithinCircle(bound, rectanglePointA) && checkIfPointIsWithinCircle(bound, rectanglePointB) && checkIfPointIsWithinCircle(bound, rectanglePointC) && checkIfPointIsWithinCircle(bound, rectanglePointD);
+}
+
+bool SVGContainer::checkIfCircleIsWithinCircle(const Circle & bound, const BaseShape & objectToCheck)
+{
+	double distanceBetweenCenterOfBothCircles = getDistanceBetweenTwoPoints(*bound.getPoints(), *objectToCheck.getPoints());
+
+	return ((objectToCheck.getAdditionalPoints().x + distanceBetweenCenterOfBothCircles) < bound.getAdditionalPoints().x);
+}
+
+bool SVGContainer::checkIfLineIsWithinCircle(const Circle & bound, const BaseShape & objectToCheck)
+{
+	return checkIfPointIsWithinCircle(bound, objectToCheck.getPoints()[0]) && checkIfPointIsWithinCircle(bound, objectToCheck.getPoints()[1]);
+}
+
+bool SVGContainer::checkIfPolygonIsWithinCircle(const Circle &bound, const BaseShape &objectToCheck)
+{
+
+	int amountOfPointsInShape = objectToCheck.getPointsCount();
+
+	bool result = true;
+	for (int i = 0; i < amountOfPointsInShape; i++)
+	{
+		if (!checkIfPointIsWithinCircle(bound, objectToCheck.getPoints()[i]))
+		{
+			result = false;
+			return result;
+		}
+	}
+
+	return result;
+}
+
+double SVGContainer::getDistanceBetweenTwoPoints(const point &a, const point &b)
+{
+	return sqrt(pow((b.x - a.x),2) + pow((b.y - a.y),2));
+}
+
+shape SVGContainer::checkTypeOfShape(BaseShape* toCheck)
+{
+	return toCheck->getType();
+}
+
+Rectangle* SVGContainer::createRectangleFromUserInput(const std::string userInput)
+{
+	int indexOfWordRectangle = userInput.find("rectangle");
+	if (indexOfWordRectangle != -1)
+	{
+		double xCoordinate, yCoordinate, width, height;
+		std::string color;
+
+		std::string inputWithoutRectangle = userInput.substr(indexOfWordRectangle + OFFSET_RECTANGLE_WORD); //We erase everything behind the <x> coordinate => r:=<x> <y> <width> <height> <color>
+
+		xCoordinate = cutFirstNumberFromStringAsDouble(inputWithoutRectangle, " ");
+		yCoordinate = cutFirstNumberFromStringAsDouble(inputWithoutRectangle, " ");
+		width = cutFirstNumberFromStringAsDouble(inputWithoutRectangle, " ");
+		height = cutFirstNumberFromStringAsDouble(inputWithoutRectangle, " ");
+		color = cutFirstSubstringFromString(inputWithoutRectangle, " ");
+
+		//Pushes the item to the vector
+		point p(xCoordinate, yCoordinate);
+		Rectangle* result = new Rectangle(&p, color, width, height);
+
+		return result;
+	}
+	else
+	{
+		std::cout << "Error !";
+		return nullptr;
+	}
+
+}
+
+Circle* SVGContainer::createCircleFromUserInput(const std::string userInput)
+{
+	int indexOfWordCircle = userInput.find("circle");
+	if (indexOfWordCircle != -1)
+	{
+		double xCoordinate, yCoordinate, radius;
+		std::string color;
+		
+		std::string inputWithoutCircle = userInput.substr(indexOfWordCircle + OFFSET_CIRCLE_WORD); //We erase everything behind the <x> coordinate => r:=<x> <y> <width> <height> <color>
+
+		xCoordinate = cutFirstNumberFromStringAsDouble(inputWithoutCircle, " ");
+		yCoordinate = cutFirstNumberFromStringAsDouble(inputWithoutCircle, " ");
+		radius = cutFirstNumberFromStringAsDouble(inputWithoutCircle, " "); 
+		color = cutFirstSubstringFromString(inputWithoutCircle, " ");
+
+		point p(xCoordinate, yCoordinate);
+		Circle* result = new Circle(&p, color, radius);
+		
+		return result;
+
+	}
+	else
+	{
+		std::cout << "Error !";
+		return nullptr;
+	}
+}
+
+Line* SVGContainer::createLineFromUserInput(const std::string userInput)
+{
+	int indexOfWordLine = userInput.find("line");
+	if (indexOfWordLine != 1)
+	{
+		double x1, y1, x2, y2;
+		std::string color;
+
+		std::string inputWithoutLine = userInput.substr(indexOfWordLine + OFFSET_LINE_WORD); //We erase everything behind the <x> coordinate => r:=<x> <y> <width> <height> <color>
+
+		x1 = cutFirstNumberFromStringAsDouble(inputWithoutLine, " ");
+		y1 = cutFirstNumberFromStringAsDouble(inputWithoutLine, " ");
+
+		x2 = cutFirstNumberFromStringAsDouble(inputWithoutLine, " ");
+		y2 = cutFirstNumberFromStringAsDouble(inputWithoutLine, " ");
+		color = cutFirstSubstringFromString(inputWithoutLine, " ");
+
+		//Pushes the item to the vector
+		point* p = new point[2];
+		point p1(x1, y1);
+		point p2(x2, y2);
+		p[0] = p1;
+		p[1] = p2;
+
+		Line* result = new Line(p, color);
+		return result;
+	}
+}
+
+Polygon* SVGContainer::createPolygonFromUserInput(const std::string userInput)
+{
+	int indexOfWordPolygon = userInput.find("polygon");
+	if (indexOfWordPolygon != 1)
+	{
+		std::string inputWithoutPolygon = userInput.substr(indexOfWordPolygon + OFFSET_POLYGON_WORD), color;
+		int amountOfPoints = countChar(inputWithoutPolygon, SPACE_ASCII) - 1; //We also have one ' ' for the color
+
+		double  x, y;
+		
+		if (amountOfPoints % 2 == 0) 
+		{
+			point* p = new point[amountOfPoints / 2];
+			for (int i = 0; i < amountOfPoints / 2; i++)
+			{
+				x = cutFirstNumberFromStringAsDouble(inputWithoutPolygon, " ");
+				y = cutFirstNumberFromStringAsDouble(inputWithoutPolygon, " ");
+				p[i] = point(x, y);
+			}
+			color = cutFirstSubstringFromString(inputWithoutPolygon, " ");
+
+			Polygon* result = new Polygon(p, amountOfPoints / 2, color);
+
+			return result;
+		}
+		else
+		{
+			std::cout << "Invalid command\n";
+		}
+
+		return nullptr;
+	}
+}
+
 void SVGContainer::printShapes(int idOfTheShapeToPrint)
 {
 	//This function prints only one object
@@ -41,33 +315,34 @@ void SVGContainer::printShapes(int idOfTheShapeToPrint)
 	//4. polygon 12 12 12
 	//5. line 1 1 2 2
 
-	point* pointsOfTheShapeToPrint; //We get the points of the current object
 	std::cout << idOfTheShapeToPrint + 1 << ". "; //Prints the id-s
-	pointsOfTheShapeToPrint = items[idOfTheShapeToPrint]->getPoints(); //Get the points
-	if (items[idOfTheShapeToPrint]->getType() == RectangleT) //We check the type of the figure & we print the data
+
+	BaseShape* shapeToPrint = shapes[idOfTheShapeToPrint];
+	shape typeOfShapeToPrint = checkTypeOfShape(shapeToPrint);
+
+	if (typeOfShapeToPrint == RectangleT) //We check the type of the figure & we print the data
 	{
-		std::cout << "rectangle " << *items[idOfTheShapeToPrint]->getPoints() << " " << items[idOfTheShapeToPrint]->getAdditionalPoints() << " " << items[idOfTheShapeToPrint]->getColor() << "\n"; //THIS MAY NOT WORK
+		printRectangle(shapeToPrint);
 	}
-	if (items[idOfTheShapeToPrint]->getType() == CircleT)
+	else if (typeOfShapeToPrint == CircleT)
 	{
-		std::cout << "circle " << *items[idOfTheShapeToPrint]->getPoints() << " " << items[idOfTheShapeToPrint]->getAdditionalPoints().x << " " << items[idOfTheShapeToPrint]->getColor() << "\n";
+		printCircle(shapeToPrint);
 	}
-	if (items[idOfTheShapeToPrint]->getType() == LineT)
+	else if (typeOfShapeToPrint == LineT)
 	{
-		std::cout << "line " << pointsOfTheShapeToPrint[0] << " " << pointsOfTheShapeToPrint[1] << " " << items[idOfTheShapeToPrint]->getColor() << "\n";
+		printLine(shapeToPrint);
 	}
-	if (items[idOfTheShapeToPrint]->getType() == PolygonT)
+	else if (typeOfShapeToPrint == PolygonT)
 	{
-		std::cout << "polygon ";
-		int pointsCountOfTheShapeToPrint = items[idOfTheShapeToPrint]->getPointsCount();
-		
-		for (int i = 0; i < pointsCountOfTheShapeToPrint; i++) //The polygon has an unknown amount of points
-		{
-			std::cout << pointsOfTheShapeToPrint[i] << " ";
-		}
-		std::cout<< items[idOfTheShapeToPrint]->getColor() << "\n";
+		printPolygon(shapeToPrint);
+	}
+	else
+	{
+		std::cout << "Invalid shape!";
+		return;
 	}
 }
+
 void SVGContainer::printShapes()
 {
 	//If we want to print all objects, we just make a loop
@@ -77,7 +352,7 @@ void SVGContainer::printShapes()
 	}
 }
 
-void SVGContainer::createShape(const std::string userInput) //TO BE REFACTORED
+void SVGContainer::createShape(const std::string userInput)
 {
 	//If the command is in this function, it contains create
 	//User input format:
@@ -90,214 +365,63 @@ void SVGContainer::createShape(const std::string userInput) //TO BE REFACTORED
 
 	//create rectangle 1000 1000 10 20 yellow
 	
-	int f;
 	itemCount++;
 	
-	if (userInput[7] == 'r')
+	if (userInput[INSERT_COMMAND_FIRST_LETTER_OF_SHAPE_LOCATION] == FIRST_LETTER_RECTANGLE)
 	{
-		if (countChar(userInput, ' ') < 6 || countChar(userInput, 32) < 6)
+		if (countChar(userInput, SPACE_ASCII) < AMOUNT_WHITESPACE_COMMAND_RECTANGLE)
 		{
 			std::cout << "Invalid command\n";
 		}
 		else
 		{
-			f = userInput.find("rectangle");
-			if (f != -1)
-			{
-				double x, y, w, h;
-				std::string color;
-
-				//x start position is f+9
-
-				std::string r = userInput.substr(f + 10); //We erase everything behind the <x> coordinate => r:=<x> <y> <width> <height> <color>
-
-				//Gets <x>
-				f = r.find(" ");
-				x = std::stod(r.substr(0, f));
-				r = r.substr(f + 1);
-
-				//Gets <y>
-				f = r.find(" ");
-				y = std::stod(r.substr(0, f));
-				r = r.substr(f + 1);
-
-				//Gets <width>
-				f = r.find(" ");
-				w = std::stod(r.substr(0, f));
-				r = r.substr(f + 1);
-
-				//Gets <height>
-				f = r.find(" ");
-				h = std::stod(r.substr(0, f));
-				r = r.substr(f + 1);
-
-				//Gets color
-				f = r.find(" ");
-				color = r.substr(0, f);
-
-				//Pushes the item to the vector
-				point p(x, y);
-				Rectangle* temp = new Rectangle(&p, color, w, h);
-
-				items.push_back(temp);
-			}
+			Rectangle* temp = createRectangleFromUserInput(userInput);
+			shapes.push_back(temp);
 		}
 		
 	}
-	else if (userInput[7] == 'c')
+	else if (userInput[INSERT_COMMAND_FIRST_LETTER_OF_SHAPE_LOCATION] == FIRST_LETTER_CIRCLE)
 	{
-		if (countChar(userInput, ' ') < 5 || countChar(userInput, 32) < 5)
+		if (countChar(userInput, SPACE_ASCII) < AMOUNT_WHITESPACE_COMMAND_CIRCLE)
 		{
 			std::cout << "Invalid command\n";
 		}
 		else
 		{
-			f = userInput.find("circle");
-			if (f != -1)
-			{
-				double x, y;
-				double radius;
-				std::string color;
-
-				//x start position is f+8
-
-				std::string r = userInput.substr(f + 7); //We erase everything behind the <x> coordinate => r:=<x> <y> <width> <height> <color>
-
-				//Gets <x>
-				f = r.find(" ");
-				x = std::stod(r.substr(0, f));
-				r = r.substr(f + 1);
-
-				//Gets <y>
-				f = r.find(" ");
-				y = std::stod(r.substr(0, f));
-				r = r.substr(f + 1);
-
-				//Gets <r>
-				f = r.find(" ");
-				radius = std::stod(r.substr(0, f));
-				r = r.substr(f + 1);
-
-				//Gets color
-				f = r.find(" ");
-				color = r.substr(0, f);
-
-				//Pushes the item to the vector
-				point p(x, y);
-				Circle* temp = new Circle(&p, color, radius);
-				items.push_back(temp);
-
-			}
+			Circle* temp = createCircleFromUserInput(userInput);
+			shapes.push_back(temp);
 		}
 	}
-	else if (userInput[7] == 'l')
+	else if (userInput[INSERT_COMMAND_FIRST_LETTER_OF_SHAPE_LOCATION] == FIRST_LETTER_LINE)
 	{
-		if (countChar(userInput, ' ') < 6 || countChar(userInput, 32) < 6)
+		if (countChar(userInput, SPACE_ASCII) < AMOUNT_WHITESPACE_COMMAND_LINE)
 		{
 			std::cout << "Invalid command\n";
 		}
 		else
 		{
-			f = userInput.find("line");
-			if (f != 1)
-			{
-				double x1, y1, x2, y2;
-				std::string color;
-
-				//x start position is f+8
-
-				std::string r = userInput.substr(f + 5); //We erase everything behind the <x> coordinate => r:=<x> <y> <width> <height> <color>
-
-				//Gets <x1>
-				f = r.find(" ");
-				x1 = std::stod(r.substr(0, f));
-				r = r.substr(f + 1);
-
-				//Gets <y1>
-				f = r.find(" ");
-				y1 = std::stod(r.substr(0, f));
-				r = r.substr(f + 1);
-
-				//Gets <x2>
-				f = r.find(" ");
-				x2 = std::stod(r.substr(0, f));
-				r = r.substr(f + 1);
-
-				//Gets <y2>
-				f = r.find(" ");
-				y2 = std::stod(r.substr(0, f));
-				r = r.substr(f + 1);
-
-				//Gets color
-				f = r.find(" ");
-				color = r.substr(0, f);
-
-				//Pushes the item to the vector
-				point* p = new point[2];
-				point p1(x1, y1);
-				point p2(x2, y2);
-				p[0] = p1;
-				p[1] = p2;
-
-				Line* temp = new Line(p, color);
-				items.push_back(temp);
-			}
+			Line* temp = createLineFromUserInput(userInput);
+			shapes.push_back(temp);
 		}
 	}
-	else if (userInput[7] == 'p')
+	else if (userInput[INSERT_COMMAND_FIRST_LETTER_OF_SHAPE_LOCATION] == FIRST_LETTER_POLYGON)
 	{	
-			f = userInput.find("polygon");
-			if (f != 1)
-			{
-				std::string r = userInput.substr(f + 8), temp = r, color;
-				int n = -1, s = temp.size(); //amount of coordinates
-				double  x, y;
-				for (int i = 0; i < s; i++)
-				{
-					f = temp.find(" ");
-					temp = temp.substr(f + 1);
-					n++;
-					if (f == -1) break;
-					s -= f;
-				}
-				if (n % 2 == 0) //We also have one ' ' for the color
-				{
-					point* p = new point[n / 2];
-					for (int i = 0; i < n / 2; i++)
-					{
-						//Gets <x>
-						f = r.find(" ");
-						x = std::stod(r.substr(0, f));
-						r = r.substr(f + 1);
-
-						//Gets <y>
-						f = r.find(" ");
-						y = std::stod(r.substr(0, f));
-						r = r.substr(f + 1);
-
-						p[i] = point(x, y);
-					}
-					//Gets color
-					f = r.find(" ");
-					color = r.substr(0, f);
-
-					Polygon* temp = new Polygon(p, n / 2, color);
-
-					items.push_back(temp);
-				}
-				else
-				{
-					std::cout << "Invalid command\n";
-				}
-			}
+		Polygon* temp = createPolygonFromUserInput(userInput);
+		shapes.push_back(temp);
+	}
+	else
+	{
+		std::cout << "Error with command!";
+		return;
 	}
 }
+
 void SVGContainer::eraseShape(const int idOfTheShapeToErase)
 {
 	if (idOfTheShapeToErase <= itemCount) //If the figure exists
 	{
-		std::vector<BaseShape*>::iterator it = items.begin(); 
-		items.erase(it + (idOfTheShapeToErase - 1)); //We find the one we need to delete
+		std::vector<BaseShape*>::iterator it = shapes.begin(); 
+		shapes.erase(it + (idOfTheShapeToErase - 1)); //We find the one we need to delete
 		std::cout << "Deleted successfully  figure " << idOfTheShapeToErase << "\n";
 		itemCount--;
 	}
@@ -309,221 +433,112 @@ void SVGContainer::eraseShape(const int idOfTheShapeToErase)
 
 void SVGContainer::eraseShape(const std::string userInput)
 {
-	int f = userInput.find("erase");
-	eraseShape(std::stoi(userInput.substr(f + 6)));
+	int indexOfWordErase = userInput.find("erase");
+	eraseShape(std::stoi(userInput.substr(indexOfWordErase + OFFSET_ERASE_WORD)));
 }
 
-void SVGContainer::translateShape(const std::string coordinates) //TO BE REFACTORED
+void SVGContainer::translateShape(const std::string coordinates)
 {
 	//translate vertical=10 horizontal=100
 	//translate 1 vertical=20 horizontal=200
 
-	int f = coordinates.find("translate");
-	int id = -1;
+	int indexOfWordTranslate = coordinates.find("translate");
+	int idOfFigureToTranslate = -1;
 	double vertical, horizontal;
-	std::string r = coordinates.substr(f + 10); //removes translate 
-	//leaves only:<id> vertical=<x> horizontal=<y>
-
-
-	if (r[0] != 'v')
+	std::string inputWithoutTranslate = coordinates.substr(indexOfWordTranslate + OFFSET_TRANSLATE_WORD); //removes translate 
+	
+	if (inputWithoutTranslate[0] != FIRST_LETTER_VERTICAL)
 	{
 		//Input has id
-		f = r.find(" "); 
-		id = std::stod(r.substr(0, f));
-		r = r.substr(f + 1);
+		idOfFigureToTranslate = cutFirstNumberFromStringAsInt(inputWithoutTranslate, " ");
 	}
 
-	f = r.find("vertical=");
-	r = r.substr(f + 9);
-	f = r.find(" ");
+	inputWithoutTranslate = removeWordFromString("vertical=", inputWithoutTranslate);
+	vertical = cutFirstNumberFromStringAsDouble(inputWithoutTranslate, " ");
 
-	vertical = std::stod(r.substr(0, f));
+	inputWithoutTranslate = removeWordFromString("horizontal=", inputWithoutTranslate);
+	horizontal = cutFirstNumberFromStringAsDouble(inputWithoutTranslate, " ");
 
-	r = r.substr(f + 1); //next is horizontal=<y>
-	f = r.find("horizontal=");
-	r = r.substr(f + 11);
-	f = r.find(" ");
-
-	horizontal = std::stod(r.substr(0, f));
-	
-	if (id == -1) //If we have to translate all figures, we loop them
+	if (idOfFigureToTranslate == -1) //If we have to translate all figures, we loop them
 	{
-		int s = items.size();
+		int s = shapes.size();
 		for (int i = 0; i < s; i++)
 		{
-			items[i]->translate(vertical, horizontal); 
+			shapes[i]->translate(vertical, horizontal); 
 		}
 	}
 	else
 	{
-		items[id]->translate(vertical, horizontal);//If we have 1 figure, we translate it
+		shapes[idOfFigureToTranslate]->translate(vertical, horizontal);//If we have 1 figure, we translate it
 	}
 	
 }
-bool SVGContainer::figureWithingARectangleOrCirclePassedAsAnObject(const Rectangle& bound, const BaseShape & obj) const //TO BE REFACTORED
-{
-	point* boundPoint = bound.getPoints();
-	int pc = obj.getPointsCount();
 
-	point objPoint = *obj.getPoints();
+
+bool SVGContainer::figureWithingARectanglePassedAsAnObject(const Rectangle& bound, const BaseShape & obj) //TO BE REFACTORED
+{
 	if (obj.getType() == RectangleT)
 	{
-		//If the rectangle has 4 points - A(x,y), B(x+w,y), C(x,y+h), D(x+w, y+h)
-		//We must check all of them
-
-		//A
-		if (objPoint.x < boundPoint->x) return false;
-		if (objPoint.x >(boundPoint->x + bound.getAdditionalPoints().x)) return false;
-		if (objPoint.y < boundPoint->y) return false;
-		if (objPoint.y > (boundPoint->y + bound.getAdditionalPoints().y)) return false;
-
-		//D (x & y are different)
-		if ((objPoint.x + obj.getAdditionalPoints().x) < boundPoint->x) return false;
-		if ((objPoint.x + obj.getAdditionalPoints().x) > (boundPoint->x + bound.getAdditionalPoints().x)) return false;
-		if ((objPoint.y + obj.getAdditionalPoints().y) < boundPoint->y) return false;
-		if ((objPoint.y + obj.getAdditionalPoints().y) > (boundPoint->y + bound.getAdditionalPoints().y)) return false;
+		return checkIfRectangleIsWithinRectangle(bound, obj);
 	}
 	else if (obj.getType() == CircleT)
 	{
-		//The circle has 5 points of collision - O(x,y), A(x+r,y), B(x-r,y), C(x,y+r), D(x,y-r)
-
-		//0
-		if (objPoint.x < boundPoint->x) return false;
-		if (objPoint.x >(boundPoint->x + bound.getAdditionalPoints().x)) return false;
-		if (objPoint.y < boundPoint->y) return false;
-		if (objPoint.y >(boundPoint->y + bound.getAdditionalPoints().y)) return false;
-
-		//A(y is the same)
-		if ((objPoint.x + obj.getAdditionalPoints().x) < boundPoint->x) return false;
-		if ((objPoint.x + obj.getAdditionalPoints().x) > (boundPoint->x + bound.getAdditionalPoints().x)) return false;
-
-		//B(y is the same)
-		if ((objPoint.x - obj.getAdditionalPoints().x) < boundPoint->x) return false;
-		if ((objPoint.x - obj.getAdditionalPoints().x) > (boundPoint->x + bound.getAdditionalPoints().x)) return false;
-
-		//C(x is the same)
-		if ((objPoint.y + obj.getAdditionalPoints().x) < boundPoint->y) return false;
-		if ((objPoint.y + obj.getAdditionalPoints().x) > (boundPoint->y + bound.getAdditionalPoints().y)) return false;
-
-		//D(x is the same)
-		if ((objPoint.y - obj.getAdditionalPoints().x) < boundPoint->y) return false;
-		if ((objPoint.y - obj.getAdditionalPoints().x) > (boundPoint->y + bound.getAdditionalPoints().y)) return false;
+		return checkIfCircleIsWithinRectangle(bound, obj);
 	}
 	else if (obj.getType() == LineT)
 	{
-		for (int i = 0; i < pc; i++)
-		{
-			if (objPoint.x < (boundPoint+i)->x) return false;
-			if (objPoint.x >((boundPoint + i)->x + bound.getAdditionalPoints().x)) return false;
-			if (objPoint.y < boundPoint->y) return false;
-			if (objPoint.y >(boundPoint->y + bound.getAdditionalPoints().y)) return false;
-		}
+		return checkIfLineIsWithinRectangle(bound, obj);
 	}
 	else if (obj.getType() == PolygonT)
 	{
-		for (int i = 0; i < pc; i++)
-		{
-			if (objPoint.x < (boundPoint + i)->x) return false;
-			if (objPoint.x >((boundPoint + i)->x + bound.getAdditionalPoints().x)) return false;
-			if (objPoint.y < boundPoint->y) return false;
-			if (objPoint.y >(boundPoint->y + bound.getAdditionalPoints().y)) return false;
-		}
+		return checkIfPolygonIsWithinRectangle(bound, obj);
 	}
-	return true;
+	else
+	{
+		std::cout << "Error";
+		return false;
+	}
 }
-bool SVGContainer::figureWithingARectangleOrCirclePassedAsAnObject(const Circle & bound, const BaseShape & obj) const //TO BE REFACTORED
-{
-	point* boundPoint = bound.getPoints();
-	int pc = obj.getPointsCount();
-	double radius = bound.getAdditionalPoints().x;
-	point objPoint = *obj.getPoints();
 
+bool SVGContainer::figureWithingACirclePassedAsAnObject(const Circle & bound, const BaseShape & obj)
+{
 
 	if (obj.getType() == RectangleT)
 	{
-		//we check the farthest point of the rectangle if its inside the circle
-		//We do this with the formula: x^2 + y^2 <= r^2
-
-		//left point of rectangle (x,y)
-		if ((pow((boundPoint->x - objPoint.x),2) + pow((boundPoint->y - objPoint.y),2)) > pow(radius,2)) return false;
-
-		//right point of rectangle (x+w, y)
-		if ((pow((boundPoint->x - (objPoint.x + obj.getAdditionalPoints().x)),2) + pow((boundPoint->y - objPoint.y),2)) > pow(radius,2)) return false;
-		
-		//bottom left point (x, y+h)
-		if ((pow((boundPoint->x - objPoint.x), 2) + pow(boundPoint->y - (objPoint.y + obj.getAdditionalPoints().y), 2) ) > pow(radius, 2)) return false;
-
-		//bottom right poit (x+w, y+h)
-		if (pow((boundPoint->x - (objPoint.x + obj.getAdditionalPoints().x)),2) + pow(boundPoint->y - (objPoint.y + obj.getAdditionalPoints().y),2) > pow(radius,2)) return false;
+		return checkIfRectangleIsWithinCircle(bound, obj);
 	}
 	else if (obj.getType() == CircleT)
 	{
-		double distanceFromCenter = -1;
-		distanceFromCenter = sqrt((abs((int)(boundPoint->x - objPoint.x)))^2 + (abs((int)(boundPoint->y - objPoint.y))) ^ 2); //We check if the distance from center is smaller than the radius
-
-		if ((distanceFromCenter + obj.getAdditionalPoints().x) > radius) return false;
+		return checkIfCircleIsWithinCircle(bound, obj);
 	}
 	else if (obj.getType() == LineT)
 	{
-		for (int i = 0; i < pc; i++)
-		{
-			if ((pow(((boundPoint+i)->x - objPoint.x),2 ) + pow(((boundPoint+i)->y - objPoint.y),2)) > pow(radius,2)) return false;
-		}
+		return checkIfLineIsWithinCircle(bound, obj);
 	}
 	else if (obj.getType() == PolygonT)
 	{
-		for (int i = 0; i < pc; i++)
-		{
-			if ((pow(((boundPoint + i)->x - objPoint.x),2) + pow(((boundPoint + i)->y - objPoint.y),2)) > radius ^ 2) return false;
-		}
+		return checkIfPolygonIsWithinCircle(bound, obj);
 	}
 	return true;
 }
-void SVGContainer::figureWithingARectangleOrCircle(const std::string userInput) //TO BE REFACTORED
+
+void SVGContainer::figureWithingCommand(const std::string userInput) //TO BE REFACTORED
 {
 	//within circle 0 0 5
 
 	//within rectangle <x> <y> <w> <h>
 	//within circle <x> <y> <r>
-	int f = userInput.find(" ");
-	std::string r = userInput.substr(f + 1);
 
-	if (r[0] == 'r')
+	std::string inputWithoutWithin = removeFirstSubstringFromString(userInput, " ");
+
+	if (inputWithoutWithin[0] == FIRST_LETTER_RECTANGLE)
 	{
+		int results;
+		Rectangle bound = *createRectangleFromUserInput(inputWithoutWithin);
 
-		double x, y, w, h;
-		std::string color;
-
-		//x start position is f+10
-
-		std::string r = userInput.substr(f + 11); //We erase everything behind the <x> coordinate => r:=<x> <y> <width> <height> <color>
-
-		//Gets <x>
-		f = r.find(" ");
-		x = std::stod(r.substr(0, f));
-		r = r.substr(f + 1);
-
-		//Gets <y>
-		f = r.find(" ");
-		y = std::stod(r.substr(0, f));
-		r = r.substr(f + 1);
-
-		//Gets <width>
-		f = r.find(" ");
-		w = std::stod(r.substr(0, f));
-		r = r.substr(f + 1);
-
-		//Gets <height>
-		f = r.find(" ");
-		h = std::stod(r.substr(0, f));
-		r = r.substr(f + 1);
-
-		point* tempPoint = new point(x,y);
-		Rectangle t(tempPoint, "white", w, h);
-		int results = 0;
 		for (int i = 0; i < itemCount; i++)
 		{
-			if (figureWithingARectangleOrCirclePassedAsAnObject(t, *items[i]))
+			if (figureWithingARectanglePassedAsAnObject(bound, *shapes[i]))
 			{
 				printShapes(i);
 				results++;
@@ -534,36 +549,13 @@ void SVGContainer::figureWithingARectangleOrCircle(const std::string userInput) 
 			std::cout << "No figures are located " << userInput;
 		}
 	}
-	else if(r[0] == 'c')
+	else if(inputWithoutWithin[0] == FIRST_LETTER_CIRCLE)
 	{
-		double x, y, radius;
-		std::string color;
-
-		//x start position is f+10
-
-		std::string r = userInput.substr(f + 8); //We erase everything behind the <x> coordinate => r:=<x> <y> <width> <height> <color>
-
-		//Gets <x>
-		f = r.find(" ");
-		x = std::stod(r.substr(0, f));
-		r = r.substr(f + 1);
-
-		//Gets <y>
-		f = r.find(" ");
-		y = std::stod(r.substr(0, f));
-		r = r.substr(f + 1);
-
-		//Gets <radius>
-		f = r.find(" ");
-		radius = std::stod(r.substr(0, f));
-		r = r.substr(f + 1);
-
-		point* tempPoint = new point(x,y);
-		Circle t(tempPoint, "white", radius);
+		Circle bound = *createCircleFromUserInput(inputWithoutWithin);
 		int results = 0;
 		for (int i = 0; i < itemCount; i++)
 		{
-			if (figureWithingARectangleOrCirclePassedAsAnObject(t, *items[i]))
+			if (figureWithingACirclePassedAsAnObject(bound, *shapes[i]))
 			{
 				printShapes(i);
 				results++;
@@ -577,6 +569,8 @@ void SVGContainer::figureWithingARectangleOrCircle(const std::string userInput) 
 	else
 	{
 		//Error
+
+		return;
 	}
 }
 
@@ -590,7 +584,7 @@ void SVGContainer::openFromContainer(const std::vector<std::string> containerWit
 
 BaseShape* SVGContainer::getItem(const int idOfTheItem) const
 {
-	return items[idOfTheItem];
+	return shapes[idOfTheItem];
 }
 
 int SVGContainer::getCount() const
@@ -598,14 +592,12 @@ int SVGContainer::getCount() const
 	return itemCount;
 }
 
-
-
 SVGContainer::~SVGContainer()
 {
-	int s = items.size();
+	int s = shapes.size();
 	for (int i = 0; i < s; i++)
 	{
-		delete items[i];
+		delete shapes[i];
 	}
 }
  

@@ -15,10 +15,28 @@ private:
 	std::ifstream fileStream;
 	std::ofstream fileWrite;
 	std::vector<std::string> parsedLines;
+
+	void addFirstTagsToFile();
+	void addLineToFile(std::string);
+
+	bool isValidLineRectangle(std::string);
+	bool isValidLineCircle(std::string);
+	bool isValidLineLine(std::string);
+
+	std::string convertLineFromFileToCommandRectangle(std::string);
+	std::string convertLineFromFileToCommandCircle(std::string);
+	std::string convertLineFromFileToCommandLine(std::string);
+	std::string convertLineFromFileToCommandPolygon(std::string);
+
+	std::string convertRectangleObjectToLine(const BaseShape*);
+	std::string convertCircleObjectToLine(const BaseShape*);
+	std::string convertLineObjectToLine(const BaseShape*);
+	std::string convertPolygonObjectToLine(const BaseShape*);
+	
 public:
 	SVGFile();
-	int openFile(const std::string); //TO BE REFACTORED
-	int saveFile(const SVGContainer&); //TO BE REFACTORED
+	int openFile(const std::string);
+	int saveFile(const SVGContainer&);
 	int saveAsFile(const std::string, const SVGContainer&);
 	int closeFile();
 

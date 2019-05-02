@@ -14,7 +14,7 @@ struct point
 	double x, y;
 	point() {};
 	point(double a, double b) :x(a), y(b) {};
-};
+}; 
 std::ostream& operator<<(std::ostream& os, point p);
 
 class BaseShape
@@ -24,6 +24,13 @@ private:
 	int pointsCount; //Points count
 	std::string color;
 	shape shapeType; //Types are triangle, rectangle, circle, line
+
+	//These two will definetly be moved to another class
+	void deleteDynamicArray(point*);
+	void replaceDynamicArray(point*,const point*, const int);
+	void copyDynamicArray(point*, const point*, const int);
+	point* insertObjectIntoArray(std::pair<point, const int>, std::pair<point*, const int>);
+	
 public:
 	
 	BaseShape();

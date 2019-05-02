@@ -1,6 +1,16 @@
 # Plan for the project
 
-## Names
+## Object-oriented design
+
+Base
+
+Circle
+
+Line
+
+Polygon
+
+Rectangle
 
 StringManip
 
@@ -8,6 +18,39 @@ SVGContainer
 
 SVGFile
 
-## Functions
+## Variables
 
-## Object-oriented design
+Base
+
+Circle
+
+Line
+
+Polygon
+
+Rectangle
+
+StringManip
+
+SVGContainer
+
+SVGFile
+
+## Control flow
+
+Base
+
+Circle
+
+Line
+
+Polygon
+
+Rectangle
+
+StringManip
+
+SVGContainer
+
+SVGFile
+

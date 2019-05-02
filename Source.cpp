@@ -175,7 +175,7 @@ void menu()
 		if (openedFile)
 		{
 			std::cout << "Figures within: \n";
-			svgc.figureWithingARectangleOrCircle(command); //Checking within
+			svgc.figureWithingCommand(command); //Checking within
 
 			std::cout << "\n";
 		}

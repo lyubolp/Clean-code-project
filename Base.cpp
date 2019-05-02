@@ -48,6 +48,43 @@ BaseShape& BaseShape::operator=(const BaseShape& rhs)
 	return *this;
 }
 
+void BaseShape::deleteDynamicArray(point* objectToDelete)
+{
+	delete[] objectToDelete;
+}
+
+void BaseShape::replaceDynamicArray(point* destination,const point* source, const int sizeOfBothArrays)
+{
+	deleteDynamicArray(destination);
+
+	copyDynamicArray(destination, source, sizeOfBothArrays);
+}
+
+void BaseShape::copyDynamicArray(point* destination, const point* source, const int sizeOfBothArrays)
+{
+	destination = new point[sizeOfBothArrays];
+
+	for (int i = 0; i < sizeOfBothArrays; i++)
+	{
+		destination[i] = source[i];
+	}
+}
+point* BaseShape::insertObjectIntoArray(std::pair<point, const int> objectToInsertAtPosition, std::pair<point*, const int> arrayToBeInsertedInWithItsSize)
+{
+	point* resultArray = new point[arrayToBeInsertedInWithItsSize.second + 1];
+	for (int i = 0; i < objectToInsertAtPosition.second - 1; i++)
+	{
+		resultArray[i] = arrayToBeInsertedInWithItsSize.first[i];
+	}
+
+	resultArray[objectToInsertAtPosition.second - 1] = objectToInsertAtPosition.first;
+
+	for (int i = objectToInsertAtPosition.second; i < arrayToBeInsertedInWithItsSize.second; i++)
+	{
+		resultArray[i] = arrayToBeInsertedInWithItsSize.first[i];
+	}
+	return resultArray;
+}
 void BaseShape::setTypeOfShape(const shape type)
 {
 	shapeType = type;
@@ -77,58 +114,24 @@ std::string BaseShape::getColor() const
 	return color;
 }
 
-void BaseShape::setPoints(const point pointsToSet, int amountOfPoints) //Sets a point based on point number (1-n), where n is the number of points;
+void BaseShape::setPoints(const point pointToBeReplacedWith, int indexOfPointsToSet) //Sets a point based on point number (1-n), where n is the number of points;
 {
-	//This needs to be optimized
-	//This is an abstract function
-	point* newPoints = new point[pointsCount];
+	point* newPoints = insertObjectIntoArray({ pointToBeReplacedWith, indexOfPointsToSet }, { points, pointsCount });
 
-	for (int i = 0; i < amountOfPoints-1; i++)
-	{
-	newPoints[i] = points[i];
-	}
-	newPoints[amountOfPoints-1] = pointsToSet;
-	for (int i = amountOfPoints; i < pointsCount; i++)
-	{
-	newPoints[i] = points[i];
-	}
-
-	delete[] points;
-	points = newPoints;
+	deleteDynamicArray(points);
+	replaceDynamicArray(points, newPoints, pointsCount);
 }
 void BaseShape::setPoints(const double xCoordinate, const double yCoordinate, int indexOfThePointToChange)
 {
-	//This needs to be optimized
-	//This is an abstract function
-	
-	point* newPoints = new point[pointsCount];
+	point* newPoints = insertObjectIntoArray({point(xCoordinate, yCoordinate), indexOfThePointToChange }, { points, pointsCount });
 
-	for (int i = 0; i < indexOfThePointToChange - 1; i++)
-	{
-	newPoints[i] = points[i];
-	}
-	newPoints[indexOfThePointToChange - 1].x = xCoordinate;
-	newPoints[indexOfThePointToChange - 1].y = yCoordinate;
-	for (int i = indexOfThePointToChange; i < pointsCount; i++)
-	{
-	newPoints[i] = points[i];
-	}
-
-	delete[] points;
-	points = newPoints;
+	deleteDynamicArray(points);
+	replaceDynamicArray(points, newPoints, pointsCount);
 }
 void BaseShape::setPoints(const point* pointsToSetAs, const int amountOfPoints) //All points
 {
-	//This needs to be optimized
-
-
-	delete[] points;
-	points = new point[amountOfPoints];
-
-	for (int i = 0; i < amountOfPoints; i++)
-	{
-		points[i] = pointsToSetAs[i];
-	}
+	deleteDynamicArray(points);
+	replaceDynamicArray(points, pointsToSetAs, amountOfPoints);
 
 	pointsCount = amountOfPoints;
 }
@@ -153,7 +156,7 @@ void BaseShape::setSize(const point)
 
 BaseShape::~BaseShape()
 {
-	delete[] points;
+	deleteDynamicArray(points);
 }
 std::ostream& operator<<(std::ostream& outputStream, point pointToPrint)
 {
