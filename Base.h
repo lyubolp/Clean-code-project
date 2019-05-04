@@ -13,7 +13,19 @@ struct point
 {
 	double x, y;
 	point() {};
-	point(double a, double b) :x(a), y(b) {};
+	point(double a, double b) :x(a), y(b)
+	{
+		if (x < 0)
+		{
+			std::cout << "X is less than 0, setting it to 0. \n";
+			x = 0;
+		}
+		if (y < 0)
+		{
+			std::cout << "Y is less than 0, setting it to 0. \n";
+			y = 0;
+		}
+	}
 }; 
 std::ostream& operator<<(std::ostream& os, point p);
 
@@ -24,13 +36,8 @@ private:
 	int pointsCount; //Points count
 	std::string color;
 	shape shapeType; //Types are triangle, rectangle, circle, line
-
-	//These two will definetly be moved to another class
-	void deleteDynamicArray(point*);
-	void replaceDynamicArray(point*,const point*, const int);
-	void copyDynamicArray(point*, const point*, const int);
-	point* insertObjectIntoArray(std::pair<point, const int>, std::pair<point*, const int>);
 	
+
 public:
 	
 	BaseShape();

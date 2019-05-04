@@ -63,7 +63,6 @@ void SVGContainer::printPolygon(const BaseShape* shapeToPrint) const
 	std::cout << shapeToPrint->getColor() << "\n";
 }
 
-
 bool SVGContainer::checkIfIntIsInInterval(const int toCheck, const std::pair<int, int> interval)
 {
 	return (interval.first <= toCheck) && (toCheck <= interval.second);
@@ -473,7 +472,6 @@ void SVGContainer::translateShape(const std::string coordinates)
 	}
 	
 }
-
 
 bool SVGContainer::figureWithingARectanglePassedAsAnObject(const Rectangle& bound, const BaseShape & obj) //TO BE REFACTORED
 {

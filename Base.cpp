@@ -1,5 +1,7 @@
 #include "Base.h"
 #include <cstring>
+#include "DynamicMemoryManagment.cpp"
+#include "InputValidation.cpp"
 BaseShape::BaseShape()
 {
 	points = new point[0];
@@ -11,16 +13,53 @@ BaseShape::BaseShape()
 }
 BaseShape::BaseShape(const point* arrayOfPoints, const int amountOfPoints, const std::string shapeColor, const shape typeOfShape):color(shapeColor), shapeType(typeOfShape), pointsCount(amountOfPoints)
 {
-	points = new point[amountOfPoints];
-
-	for (int i = 0; i < amountOfPoints; i++)
+	if (!isNumberBiggerThanZero(amountOfPoints))
 	{
-		points[i] = arrayOfPoints[i];
+		std::cout << "Amount of points is invalid. Setting default for the type of shape...\n";
+		if (typeOfShape == RectangleT || typeOfShape == CircleT)
+		{
+			pointsCount = 1;
+		}
+		else if (typeOfShape == LineT)
+		{
+			pointsCount = 2;
+		}
+		else if (typeOfShape == PolygonT)
+		{
+			std::cout << "Shape is polygon, creating default triangle...\n";
+			pointsCount = 3;
+		}
 	}
+
+	if (!isColorStringValid(color))
+	{
+		std::cout << "The color is not valid. The default color (black) is set.";
+		color = "#000000";
+	}
+
+	if (isNullptr(arrayOfPoints))
+	{
+		std::cout << "Points are nullptr...\n Setting default point (0,0)";
+		
+		points = new point[1];
+		points[0].x = 0;
+		points[0].y = 0;
+	}
+	else
+	{
+		points = new point[pointsCount];
+
+		for (int i = 0; i < pointsCount; i++)
+		{
+			points[i] = arrayOfPoints[i];
+		}
+	}
+
+
+	
 }
 BaseShape::BaseShape(const BaseShape& rhs) :color(rhs.color), shapeType(rhs.shapeType), pointsCount(rhs.pointsCount)
 {
-	
 	points = new point[rhs.pointsCount];
 	for (int i = 0; i < rhs.pointsCount; i++)
 	{
@@ -48,54 +87,36 @@ BaseShape& BaseShape::operator=(const BaseShape& rhs)
 	return *this;
 }
 
-void BaseShape::deleteDynamicArray(point* objectToDelete)
-{
-	delete[] objectToDelete;
-}
 
-void BaseShape::replaceDynamicArray(point* destination,const point* source, const int sizeOfBothArrays)
-{
-	deleteDynamicArray(destination);
-
-	copyDynamicArray(destination, source, sizeOfBothArrays);
-}
-
-void BaseShape::copyDynamicArray(point* destination, const point* source, const int sizeOfBothArrays)
-{
-	destination = new point[sizeOfBothArrays];
-
-	for (int i = 0; i < sizeOfBothArrays; i++)
-	{
-		destination[i] = source[i];
-	}
-}
-point* BaseShape::insertObjectIntoArray(std::pair<point, const int> objectToInsertAtPosition, std::pair<point*, const int> arrayToBeInsertedInWithItsSize)
-{
-	point* resultArray = new point[arrayToBeInsertedInWithItsSize.second + 1];
-	for (int i = 0; i < objectToInsertAtPosition.second - 1; i++)
-	{
-		resultArray[i] = arrayToBeInsertedInWithItsSize.first[i];
-	}
-
-	resultArray[objectToInsertAtPosition.second - 1] = objectToInsertAtPosition.first;
-
-	for (int i = objectToInsertAtPosition.second; i < arrayToBeInsertedInWithItsSize.second; i++)
-	{
-		resultArray[i] = arrayToBeInsertedInWithItsSize.first[i];
-	}
-	return resultArray;
-}
 void BaseShape::setTypeOfShape(const shape type)
 {
 	shapeType = type;
 }
 void BaseShape::setPointCount(const int amountOfPoints)
 {
-	pointsCount = amountOfPoints;
+	if (isNumberBiggerThanZero(amountOfPoints))
+	{
+		pointsCount = amountOfPoints;
+	}
+	else
+	{
+		std::cout << "Invalid amount of points";
+		return;
+	}
+	
 }
 void BaseShape::setColor(const std::string shapeColor)
 {
-	color = shapeColor;
+	if (isColorStringValid(shapeColor))
+	{
+		color = shapeColor;
+	}
+	else
+	{
+		std::cout << "Invalid color\n";
+		return;
+	}
+	
 }
 shape BaseShape::getType() const
 {
@@ -116,33 +137,67 @@ std::string BaseShape::getColor() const
 
 void BaseShape::setPoints(const point pointToBeReplacedWith, int indexOfPointsToSet) //Sets a point based on point number (1-n), where n is the number of points;
 {
-	point* newPoints = insertObjectIntoArray({ pointToBeReplacedWith, indexOfPointsToSet }, { points, pointsCount });
+	if (isNumberBiggerThanZero(indexOfPointsToSet))
+	{
+		point* newPoints = insertObjectIntoArray({ pointToBeReplacedWith, indexOfPointsToSet }, { points, pointsCount });
 
-	deleteDynamicArray(points);
-	replaceDynamicArray(points, newPoints, pointsCount);
+		deleteDynamicArray(points);
+		replaceDynamicArray(points, newPoints, pointsCount);
+	}
+	else
+	{
+		std::cout << "Invalid index \n";
+		return;
+	}
 }
 void BaseShape::setPoints(const double xCoordinate, const double yCoordinate, int indexOfThePointToChange)
 {
-	point* newPoints = insertObjectIntoArray({point(xCoordinate, yCoordinate), indexOfThePointToChange }, { points, pointsCount });
+	if (isNumberBiggerThanZero(indexOfThePointToChange) && indexOfThePointToChange < pointsCount)
+	{
+		point* newPoints = insertObjectIntoArray({ point(xCoordinate, yCoordinate), indexOfThePointToChange }, { points, pointsCount });
 
-	deleteDynamicArray(points);
-	replaceDynamicArray(points, newPoints, pointsCount);
+		deleteDynamicArray(points);
+		replaceDynamicArray(points, newPoints, pointsCount);
+	}
+	else
+	{
+		std::cout << "Invalid index \n";
+		return;
+	}
 }
 void BaseShape::setPoints(const point* pointsToSetAs, const int amountOfPoints) //All points
 {
-	deleteDynamicArray(points);
-	replaceDynamicArray(points, pointsToSetAs, amountOfPoints);
+	if (isNumberBiggerThanZero(amountOfPoints) && !isNullptr(pointsToSetAs))
+	{
+		deleteDynamicArray(points);
+		replaceDynamicArray(points, pointsToSetAs, amountOfPoints);
 
-	pointsCount = amountOfPoints;
+		pointsCount = amountOfPoints;
+	}
+	else
+	{
+		std::cout << "Index or pointer error";
+		return;
+	}
+	
 }
 
 void BaseShape::translate(const int horizontal, const int vertical)
 {
-	for (int i = 0; i < pointsCount; i++)
+	if (isNumberBiggerThanZero(horizontal) && isNumberBiggerThanZero(vertical))
 	{
-		points[i].x += horizontal;
-		points[i].y += vertical;
+		for (int i = 0; i < pointsCount; i++)
+		{
+			points[i].x += horizontal;
+			points[i].y += vertical;
+		}
 	}
+	else
+	{
+		std::cout << "Invalid coordinates";
+		return;
+	}
+	
 }
 
 point BaseShape::getAdditionalPoints() const

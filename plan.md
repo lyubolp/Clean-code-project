@@ -1,18 +1,6 @@
 # Plan for the project
 
-## Object-oriented design
-
-Base
-
-Circle
-
-Line
-
-Polygon
-
-Rectangle
-
-StringManip
+## Object-oriented design (Cohesion, Coupling, Polymorphism, Abstraction, Encapsulation, Inheritance)
 
 SVGContainer
 
@@ -30,8 +18,6 @@ Polygon
 
 Rectangle
 
-StringManip
-
 SVGContainer
 
 SVGFile
@@ -48,9 +34,9 @@ Polygon
 
 Rectangle
 
-StringManip
-
 SVGContainer
 
 SVGFile
+
+## Support for non-hex colors
 

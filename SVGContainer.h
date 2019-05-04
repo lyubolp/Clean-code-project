@@ -34,37 +34,37 @@ private:
 	
 	std::vector<BaseShape*> shapes;
 
+	//Print functions - should they move to the respective shape classes ?
 	void printRectangle(const BaseShape*) const;
 	void printCircle(const BaseShape*) const;
 	void printLine(const BaseShape*) const;
 	void printPolygon(const BaseShape*) const;
 	
+	
+	//Mathematical functions
 	bool checkIfIntIsInInterval(const int, const std::pair<int, int>);
+	double getDistanceBetweenTwoPoints(const point&, const point&);
 
+
+	//Check is X is within Rectangle
 	bool checkIfPointIsWithinRectangle(const Rectangle&, const point&);
-
 	bool checkIfRectangleIsWithinRectangle(const Rectangle&, const BaseShape&);
-
 	bool checkIfCircleIsWithinRectangle(const Rectangle&, const BaseShape&);
-
 	bool checkIfLineIsWithinRectangle(const Rectangle&, const BaseShape&);
-
 	bool checkIfPolygonIsWithinRectangle(const Rectangle&, const BaseShape&);
+	
 
+	//Check if X is within Circle
 	bool checkIfPointIsWithinCircle(const Circle&, const point&);
-
 	bool checkIfRectangleIsWithinCircle(const Circle&, const BaseShape&);
-
 	bool checkIfCircleIsWithinCircle(const Circle&, const BaseShape&);
-
 	bool checkIfLineIsWithinCircle(const Circle&, const BaseShape&);
-
 	bool checkIfPolygonIsWithinCircle(const Circle&, const BaseShape&);
 
-	double getDistanceBetweenTwoPoints(const point&, const point&);
-	
+	//Wrapper for getType()
 	shape checkTypeOfShape(BaseShape*);
 
+	//User input parser
 	Rectangle* createRectangleFromUserInput(const std::string);
 	Circle* createCircleFromUserInput(const std::string);
 	Line* createLineFromUserInput(const std::string);
@@ -72,6 +72,14 @@ private:
 	
 public:
 	
+	/*
+	The container should generally be able to do the following things:
+		- keep the shapes
+		- add a shape
+		- access a shape
+		- print them
+		- remove a shape
+	*/
 	SVGContainer();
 	SVGContainer(const std::vector<BaseShape*>); 
 	SVGContainer(const SVGContainer&);
@@ -88,7 +96,7 @@ public:
 	bool figureWithingARectanglePassedAsAnObject(const Rectangle&, const BaseShape&);
 	bool figureWithingACirclePassedAsAnObject(const Circle&, const BaseShape&); 
 
-	void figureWithingCommand(const std::string); //TO BE REFACTORED
+	void figureWithingCommand(const std::string); 
 
 	void openFromContainer(const std::vector <std::string>);
 	BaseShape* getItem(const int) const;

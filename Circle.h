@@ -11,8 +11,4 @@ public:
 
 	point getAdditionalPoints() const override;
 	void setSize(const point) override;
-
-	/*
-	point getRadius() const;
-	void setRadius(const int) ;*/
 };

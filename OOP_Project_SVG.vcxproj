@@ -141,6 +141,8 @@
   <ItemGroup>
     <ClCompile Include="Base.cpp" />
     <ClCompile Include="Circle.cpp" />
+    <ClCompile Include="DynamicMemoryManagment.cpp" />
+    <ClCompile Include="InputValidation.cpp" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="Polygon.cpp" />
     <ClCompile Include="Rectangle.cpp" />
