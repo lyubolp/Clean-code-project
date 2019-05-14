@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Clean_code_project"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Clean_code_project">
+				<Option output="/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/Clean_code_project" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/lyubo/Uni/КПК/Clean-code-project/."/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/Makefile&quot;  VERBOSE=1 Clean_code_project"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Clean_code_project/fast">
+				<Option output="/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/Clean_code_project" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/lyubo/Uni/КПК/Clean-code-project/."/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/Makefile&quot;  VERBOSE=1 Clean_code_project/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Base.cpp">
+			<Option target="Clean_code_project"/>
+		</Unit>
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Circle.cpp">
+			<Option target="Clean_code_project"/>
+		</Unit>
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/CommandLineInterface.cpp">
+			<Option target="Clean_code_project"/>
+		</Unit>
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/Base.h">
+			<Option target="Clean_code_project"/>
+		</Unit>
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/Circle.h">
+			<Option target="Clean_code_project"/>
+		</Unit>
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/CommandLineInterface.h">
+			<Option target="Clean_code_project"/>
+		</Unit>
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/DynamicMemoryManagment.h">
+			<Option target="Clean_code_project"/>
+		</Unit>
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/InputParser.h">
+			<Option target="Clean_code_project"/>
+		</Unit>
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/InputValidation.h">
+			<Option target="Clean_code_project"/>
+		</Unit>
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/Line.h">
+			<Option target="Clean_code_project"/>
+		</Unit>
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/MathFunctions.h">
+			<Option target="Clean_code_project"/>
+		</Unit>
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/Polygon.h">
+			<Option target="Clean_code_project"/>
+		</Unit>
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/Rectangle.h">
+			<Option target="Clean_code_project"/>
+		</Unit>
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/SVGContainer.h">
+			<Option target="Clean_code_project"/>
+		</Unit>
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/SVGFile.h">
+			<Option target="Clean_code_project"/>
+		</Unit>
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/StringManip.h">
+			<Option target="Clean_code_project"/>
+		</Unit>
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Line.cpp">
+			<Option target="Clean_code_project"/>
+		</Unit>
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Polygon.cpp">
+			<Option target="Clean_code_project"/>
+		</Unit>
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Rectangle.cpp">
+			<Option target="Clean_code_project"/>
+		</Unit>
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/SVGContainer.cpp">
+			<Option target="Clean_code_project"/>
+		</Unit>
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/SVGFile.cpp">
+			<Option target="Clean_code_project"/>
+		</Unit>
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/main.cpp">
+			<Option target="Clean_code_project"/>
+		</Unit>
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

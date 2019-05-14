@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/SVGContainer.cpp" line="6" />
+  </component>
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="Clean_code_project" targetName="Clean_code_project" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8af62897-b4c8-43f6-b0d6-f98695808dec" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/Clean-code-project.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CommandLineInterface.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Headers/Circle.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Headers/CommandLineInterface.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Headers/InputParser.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Headers/MathFunctions.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Headers/Rectangle.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Headers/SVGContainer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/OOP_Project_SVG/v15/.suo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/OOP_Project_SVG/v15/Browse.VC.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/OOP_Project_SVG/v15/ipch/AutoPCH/22c25be2ed6a8e49/DYNAMICMEMORYMANAGMENT.ipch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/OOP_Project_SVG/v15/ipch/AutoPCH/4463dc447e606ef6/SOURCE.ipch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/OOP_Project_SVG/v15/ipch/AutoPCH/5259422d999add9e/INPUTVALIDATION.ipch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/OOP_Project_SVG/v15/ipch/AutoPCH/5c3a4585a08a34f5/STRINGMANIP.ipch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/OOP_Project_SVG/v15/ipch/AutoPCH/71fd269086ff66df/SVGFILE.ipch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/OOP_Project_SVG/v15/ipch/AutoPCH/bb78dd728b75ca45/LINE.ipch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/OOP_Project_SVG/v15/ipch/AutoPCH/d886e31f8ab0f85a/RECTANGLE.ipch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/OOP_Project_SVG/v15/ipch/AutoPCH/f585595818a033ae/SVGCONTAINER.ipch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/OOP_Project_SVG/v15/ipch/AutoPCH/f94ffe3a0988566f/POLYGON.ipch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/OOP_Project_SVG/v15/ipch/AutoPCH/fce67dde952dbeee/BASE.ipch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/OOP_Project_SVG/v15/ipch/AutoPCH/fd22929b1757ed71/CIRCLE.ipch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/tasks.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Base.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Base.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Base.h" beforeDir="false" afterPath="$PROJECT_DIR$/Headers/Base.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Circle.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Circle.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Circle.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/Base.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/Circle.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/Line.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/OOP_Project_SVG.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/OOP_Project_SVG.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/OOP_Project_SVG.tlog/CL.command.1.tlog" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/OOP_Project_SVG.tlog/CL.read.1.tlog" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/OOP_Project_SVG.tlog/CL.write.1.tlog" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/OOP_Project_SVG.tlog/OOP_Project_SVG.lastbuildstate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/OOP_Project_SVG.tlog/link-cvtres.read.1.tlog" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/OOP_Project_SVG.tlog/link-cvtres.write.1.tlog" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/OOP_Project_SVG.tlog/link-rc.read.1.tlog" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/OOP_Project_SVG.tlog/link-rc.write.1.tlog" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/OOP_Project_SVG.tlog/link.command.1.tlog" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/OOP_Project_SVG.tlog/link.read.1.tlog" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/OOP_Project_SVG.tlog/link.write.1.tlog" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/OOP_Project_SVG.tlog/unsuccessfulbuild" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/Polygon.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/Rectangle.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/SVGContainer.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/SVGFile.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/Source.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/StringManip.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/vc141.idb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/vc141.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DynamicMemoryManagment.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Headers/DynamicMemoryManagment.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InputValidation.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Headers/InputValidation.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Line.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Line.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Line.h" beforeDir="false" afterPath="$PROJECT_DIR$/Headers/Line.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Polygon.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Polygon.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Polygon.h" beforeDir="false" afterPath="$PROJECT_DIR$/Headers/Polygon.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rectangle.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Rectangle.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rectangle.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SVGContainer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/SVGContainer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SVGContainer.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SVGFile.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/SVGFile.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SVGFile.h" beforeDir="false" afterPath="$PROJECT_DIR$/Headers/SVGFile.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/StringManip.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Headers/StringManip.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample.svg" beforeDir="false" afterPath="$PROJECT_DIR$/sample.svg" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Headers/SVGFile.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
+              <folding>
+                <element signature="e#14#47#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Headers/InputValidation.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="493">
+              <caret line="29" column="28" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/SVGFile.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="544">
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Headers/InputParser.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4709">
+              <caret line="277" column="26" lean-forward="true" selection-start-line="277" selection-start-column="26" selection-end-line="277" selection-end-column="26" />
+              <folding>
+                <element signature="e#123#142#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>printCircle</find>
+      <find>this.</find>
+      <find>SVGContainer</find>
+      <find>Rectagnle</find>
+      <find>bound.</find>
+      <find>replaceAll</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>CommandLineInterface</replace>
+      <replace>this</replace>
+      <replace>Rectagnle</replace>
+      <replace>Rectangle</replace>
+      <replace>this-&gt;</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Base.cpp" />
+        <option value="$PROJECT_DIR$/Line.h" />
+        <option value="$PROJECT_DIR$/Line.cpp" />
+        <option value="$PROJECT_DIR$/Polygon.h" />
+        <option value="$PROJECT_DIR$/Polygon.cpp" />
+        <option value="$PROJECT_DIR$/MathFunctions.cpp" />
+        <option value="$PROJECT_DIR$/Source.cpp" />
+        <option value="$PROJECT_DIR$/InputValidation.cpp" />
+        <option value="$PROJECT_DIR$/DynamicMemoryManagment.cpp" />
+        <option value="$PROJECT_DIR$/InputValidation.h" />
+        <option value="$PROJECT_DIR$/Base.h" />
+        <option value="$PROJECT_DIR$/CommandLineInterface.h" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/Rectangle.h" />
+        <option value="$PROJECT_DIR$/Circle.h" />
+        <option value="$PROJECT_DIR$/SVGContainer.cpp" />
+        <option value="$PROJECT_DIR$/SVGContainer.h" />
+        <option value="$PROJECT_DIR$/MathFunctions.h" />
+        <option value="$PROJECT_DIR$/Circle.cpp" />
+        <option value="$PROJECT_DIR$/StringManip.h" />
+        <option value="$PROJECT_DIR$/SVGFile.h" />
+        <option value="$PROJECT_DIR$/Headers/StringManip.h" />
+        <option value="$PROJECT_DIR$/Headers/Base.h" />
+        <option value="$PROJECT_DIR$/main.cpp" />
+        <option value="$PROJECT_DIR$/Rectangle.cpp" />
+        <option value="$PROJECT_DIR$/Headers/MathFunctions.h" />
+        <option value="$PROJECT_DIR$/Headers/Circle.h" />
+        <option value="$PROJECT_DIR$/Headers/DynamicMemoryManagment.h" />
+        <option value="$PROJECT_DIR$/Headers/Line.h" />
+        <option value="$PROJECT_DIR$/Headers/Rectangle.h" />
+        <option value="$PROJECT_DIR$/Headers/Polygon.h" />
+        <option value="$PROJECT_DIR$/Headers/SVGContainer.h" />
+        <option value="$PROJECT_DIR$/Headers/CommandLineInterface.h" />
+        <option value="$PROJECT_DIR$/CommandLineInterface.cpp" />
+        <option value="$PROJECT_DIR$/Headers/InputValidation.h" />
+        <option value="$PROJECT_DIR$/Headers/InputParser.h" />
+        <option value="$PROJECT_DIR$/Headers/SVGFile.h" />
+        <option value="$PROJECT_DIR$/SVGFile.cpp" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+    <option name="x" value="1366" />
+    <option name="y" value="201" />
+    <option name="width" value="1024" />
+    <option name="height" value="576" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Clean_code_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Clean-code-project" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Clean_code_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Clean-code-project" type="462c0819:PsiDirectoryNode" />
+              <item name="Headers" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/CMakeLists.txt" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Headers" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Clean_code_project" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Clean_code_project" TARGET_NAME="Clean_code_project" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Clean_code_project" RUN_TARGET_NAME="Clean_code_project">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8af62897-b4c8-43f6-b0d6-f98695808dec" name="Default Changelist" comment="" />
+      <created>1556953997402</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1556953997402</updated>
+      <workItem from="1556953998524" duration="241000" />
+      <workItem from="1556954240497" duration="62000" />
+      <workItem from="1556954303389" duration="6465000" />
+      <workItem from="1557472884505" duration="380000" />
+      <workItem from="1557738477047" duration="82000" />
+      <workItem from="1557759471710" duration="6957000" />
+      <workItem from="1557817495199" duration="2347000" />
+      <workItem from="1557820736380" duration="2262000" />
+      <workItem from="1557823067513" duration="1350000" />
+      <workItem from="1557831948208" duration="392000" />
+      <workItem from="1557833186902" duration="1699000" />
+      <workItem from="1557836656891" duration="4254000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="26491000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="-37" width="1920" height="1117" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19275825" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32903865" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Database Changes" order="7" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.32903865" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="11" />
+      <window_info anchor="bottom" id="CMake" order="12" weight="0.32903865" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18423855" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Database Changes" order="7" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.32916668" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="11" />
+      <window_info anchor="bottom" id="CMake" order="12" weight="0.32916668" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5185">
+          <caret line="305" column="24" lean-forward="true" selection-start-line="305" selection-start-column="24" selection-end-line="305" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MathFunctions.cpp" />
+    <entry file="file://$PROJECT_DIR$/Source.cpp" />
+    <entry file="file://$PROJECT_DIR$/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Polygon.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="1" lean-forward="true" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Line.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="130" selection-start-line="20" selection-start-column="130" selection-end-line="20" selection-end-column="130" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="27" lean-forward="true" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Circle.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Base.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="43" column="30" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rectangle.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="30" selection-start-column="30" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="191" column="4" selection-start-line="191" selection-start-column="4" selection-end-line="191" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SVGContainer.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1725">
+          <caret line="33" column="1" lean-forward="true" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Headers/Circle.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Headers/Base.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="15" lean-forward="true" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
+          <folding>
+            <element signature="e#13#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Headers/Line.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Headers/Rectangle.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Headers/StringManip.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2431">
+          <caret line="143" column="6" lean-forward="true" selection-start-line="143" selection-start-column="6" selection-end-line="143" selection-end-column="6" />
+          <folding>
+            <element signature="e#82#101#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Headers/MathFunctions.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Headers/Polygon.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Headers/DynamicMemoryManagment.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Headers/SVGContainer.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1088">
+          <caret line="64" column="31" lean-forward="true" selection-start-line="64" selection-start-column="31" selection-end-line="64" selection-end-column="31" />
+          <folding>
+            <element signature="e#13#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CommandLineInterface.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="241" column="5" lean-forward="true" selection-start-line="241" selection-start-column="5" selection-end-line="241" selection-end-column="5" />
+          <folding>
+            <element signature="e#40#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Headers/CommandLineInterface.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="54" lean-forward="true" selection-start-line="26" selection-start-column="54" selection-end-line="26" selection-end-column="54" />
+          <folding>
+            <element signature="e#153#170#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Headers/InputValidation.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="28" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Headers/SVGFile.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+          <folding>
+            <element signature="e#14#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Headers/InputParser.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4709">
+          <caret line="277" column="26" lean-forward="true" selection-start-line="277" selection-start-column="26" selection-end-line="277" selection-end-column="26" />
+          <folding>
+            <element signature="e#123#142#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SVGFile.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

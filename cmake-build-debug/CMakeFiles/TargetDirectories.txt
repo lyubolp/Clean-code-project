@@ -1,0 +1,3 @@
+/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/CMakeFiles/Clean_code_project.dir
+/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/CMakeFiles/edit_cache.dir

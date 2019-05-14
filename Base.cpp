@@ -1,7 +1,7 @@
-#include "Base.h"
+#include "Headers/Base.h"
 #include <cstring>
-#include "DynamicMemoryManagment.cpp"
-#include "InputValidation.cpp"
+#include "Headers/DynamicMemoryManagment.h"
+#include "Headers/InputValidation.h"
 BaseShape::BaseShape()
 {
 	points = new point[0];
@@ -198,15 +198,6 @@ void BaseShape::translate(const int horizontal, const int vertical)
 		return;
 	}
 	
-}
-
-point BaseShape::getAdditionalPoints() const
-{
-	return point(0, 0);
-}
-
-void BaseShape::setSize(const point)
-{
 }
 
 BaseShape::~BaseShape()

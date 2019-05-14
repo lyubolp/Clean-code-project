@@ -1,15 +1,10 @@
 #include <iostream>
-#include "Polygon.h"
-#include "Line.h"
-#include "Rectangle.h"
-#include "Circle.h"
-#include "SVGContainer.h"
-#include "SVGFile.h"
+#include "Headers/Rectangle.h"
 
-SVGContainer svgc; //Main container
-SVGFile svgf; //Main file reader
+//SVGContainer svgc; //Main container
+//SVGFile svgf; //Main file reader
 bool openedFile = false; //flag that shows if a file is already open
-
+/*
 void man() //Shows user manual
 {
 	std::cout << "SVG project \n";
@@ -188,10 +183,11 @@ void menu()
 
 
 
-}
+}*/
 
 int main()
 {
-	menu();
+	//menu();
+
 	return 0;
 }

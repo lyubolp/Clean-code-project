@@ -1,11 +1,5 @@
 # Plan for the project
 
-## Object-oriented design (Cohesion, Coupling, Polymorphism, Abstraction, Encapsulation, Inheritance)
-
-SVGContainer
-
-SVGFile
-
 ## Variables
 
 Base
@@ -38,5 +32,15 @@ SVGContainer
 
 SVGFile
 
+CommandLineInterface
+
+DynamicMemoryManagment
+
+InputValidation
+
+MathFunctions
+
 ## Support for non-hex colors
+
+## Fix the bug with Circle/Rectangle
 
