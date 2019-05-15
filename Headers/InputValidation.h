@@ -4,39 +4,33 @@
 
 inline bool isValidLineRectangle(std::string line)
 {
-    int xf, yf, wf, hf, cf; //We make sure the line has all attributes
-
-    xf = line.find("x=");
-    yf = line.find("y=");
-    wf = line.find("width=");
-    hf = line.find("height=");
-    cf = line.find("fill=");
+    int xf = line.find("x=");
+    int yf = line.find("y=");
+    int wf = line.find("width=");
+    int hf = line.find("height=");
+    int cf = line.find("fill=");
 
     return (xf == -1 || yf == -1 || wf == -1 || hf == -1 || cf == -1);
 }
 
 inline bool isValidLineCircle(std::string line)
 {
-    int xf, yf, rf, cf;
-
-    xf = line.find("cx=");
-    yf = line.find("cy=");
-    rf = line.find("r=");
-    cf = line.find("fill=");
+    int xf = line.find("cx=");
+    int yf = line.find("cy=");
+    int rf = line.find("r=");
+    int cf = line.find("fill=");
 
     return (xf == -1 || yf == -1 || rf == -1 || cf == -1);
 }
 
 inline bool isValidLineLine(std::string line)
 {
-    int x1f, y1f, x2f, y2f, cf;
+    int x1f = line.find("x1=");
+    int y1f = line.find("y1=");
+    int x2f = line.find("x2=");
+    int y2f = line.find("y2=");
 
-    x1f = line.find("x1=");
-    y1f = line.find("y1=");
-    x2f = line.find("x2=");
-    y2f = line.find("y2=");
-
-    cf = line.find("fill=");
+    int cf = line.find("fill=");
 
     return  (x1f == -1 || y1f == -1 || x2f == -1 || y2f == -1 || cf == -1);
 }

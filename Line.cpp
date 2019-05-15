@@ -3,10 +3,10 @@
 
 Line::Line() : BaseShape() {}
 
-Line::Line(const point* arrayOfPoints, const std::string lineColor) : BaseShape(arrayOfPoints, 2, lineColor, LineT) {}
+Line::Line(const point* arrayOfPoints, const std::string lineColor) : BaseShape(arrayOfPoints, 2, lineColor, LINE) {}
 
 
-point Line::getAdditionalPoints() const 
+const point Line::getAdditionalPoints() const
 {
 	return point(0, 0); 
 };

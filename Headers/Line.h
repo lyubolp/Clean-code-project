@@ -5,7 +5,7 @@ class Line : public BaseShape
 {
 private:
 
-	point getAdditionalPoints() const override;
+	const point getAdditionalPoints() const override;
 	void setSize(const point) override;
 public:
 	Line();

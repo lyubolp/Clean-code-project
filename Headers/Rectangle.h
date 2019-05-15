@@ -19,7 +19,7 @@ public:
 	Rectangle(const BaseShape&);
 	Rectangle(const point*, const std::string, const double, const double);
 	
-	point getAdditionalPoints() const override;
+	const point getAdditionalPoints() const override;
 	void setSize(const point) override;
 
     void print() const override;

@@ -3,11 +3,11 @@
 #include <string>
 enum shape
 {
-	RectangleT,
-	CircleT,
-	LineT,
-	PolygonT,
-	Default
+	RECTANGLE,
+	CIRCLE,
+	LINE,
+	POLYGON,
+	DEFAULT
 }; 
 struct point
 {
@@ -49,17 +49,17 @@ public:
 	void setPointCount(const int);
 	void setColor(const std::string);
 
-	shape getType() const;
-	std::string getColor() const;
-	point* getPoints() const;
-	int getPointsCount() const;
+	const shape getType() const;
+	const std::string getColor() const;
+	const point * getPoints() const;
+	const int getPointsCount() const;
 
 	void setPoints(const point, int); //Sets a point based on point number (1-n), where n is the number of points;
 	void setPoints(const double, const double, int);
 	void setPoints(const point*, const int); //All points
 	void translate(const int, const int);
 
-	virtual point getAdditionalPoints() const{return point(-1,-1);};
+	virtual const point getAdditionalPoints() const{return point(-1, -1);};
 	virtual void setSize(const point) {};
     virtual void print() const {};
 

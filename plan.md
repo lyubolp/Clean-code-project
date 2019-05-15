@@ -1,21 +1,5 @@
 # Plan for the project
 
-## Variables
-
-Base
-
-Circle
-
-Line
-
-Polygon
-
-Rectangle
-
-SVGContainer
-
-SVGFile
-
 ## Control flow
 
 Base

@@ -9,22 +9,22 @@ BaseShape::BaseShape()
 
 	color = new char[1];
 	color = '\0';
-	shapeType = Default;
+	shapeType = DEFAULT;
 }
 BaseShape::BaseShape(const point* arrayOfPoints, const int amountOfPoints, const std::string shapeColor, const shape typeOfShape):color(shapeColor), shapeType(typeOfShape), pointsCount(amountOfPoints)
 {
 	if (!isNumberBiggerThanZero(amountOfPoints))
 	{
 		std::cout << "Amount of points is invalid. Setting default for the type of shape...\n";
-		if (typeOfShape == RectangleT || typeOfShape == CircleT)
+		if (typeOfShape == RECTANGLE || typeOfShape == CIRCLE)
 		{
 			pointsCount = 1;
 		}
-		else if (typeOfShape == LineT)
+		else if (typeOfShape == LINE)
 		{
 			pointsCount = 2;
 		}
-		else if (typeOfShape == PolygonT)
+		else if (typeOfShape == POLYGON)
 		{
 			std::cout << "Shape is polygon, creating default triangle...\n";
 			pointsCount = 3;
@@ -118,19 +118,19 @@ void BaseShape::setColor(const std::string shapeColor)
 	}
 	
 }
-shape BaseShape::getType() const
+const shape BaseShape::getType() const
 {
 	return shapeType;
 }
-point* BaseShape::getPoints() const
+const point * BaseShape::getPoints() const
 {
 	return points;
 }
-int BaseShape::getPointsCount() const
+const int BaseShape::getPointsCount() const
 {
 	return pointsCount;
 }
-std::string BaseShape::getColor() const
+const std::string BaseShape::getColor() const
 {
 	return color;
 }
@@ -140,7 +140,6 @@ void BaseShape::setPoints(const point pointToBeReplacedWith, int indexOfPointsTo
 	if (isNumberBiggerThanZero(indexOfPointsToSet))
 	{
 		point* newPoints = insertObjectIntoArray({ pointToBeReplacedWith, indexOfPointsToSet }, { points, pointsCount });
-
 		deleteDynamicArray(points);
 		replaceDynamicArray(points, newPoints, pointsCount);
 	}

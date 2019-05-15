@@ -19,21 +19,18 @@ SVGFile::SVGFile()
 }
 
 
-int SVGFile::openFile(const std::string userInput)
+const int SVGFile::openFile(const std::string & userInput)
 {
 	//open C:\Temp\file.xml
 	//open <path>
 
-	std::string filePathNotValidated, line, color, parsedString;
-
-	filePathNotValidated = removeFirstSubstringFromString(userInput, " ");
+    std::string filePathNotValidated = removeFirstSubstringFromString(userInput, " ");
 	fileStream.open(filePathNotValidated);
 
 	if (fileStream.is_open())
 	{
 		filePath = filePathNotValidated;
-
-		std::string lineCut;
+        std::string line = "";
 		while (getline(fileStream, line)) //We get each line and check the tag name
 		{
 			if (line.find("<rect") != -1)
@@ -78,7 +75,7 @@ int SVGFile::saveFile(const SVGContainer& shapesContainer)
 	{
 		addFirstTagsToFile();
 
-		BaseShape* currentObject = new BaseShape();
+		const BaseShape* currentObject = new BaseShape();
 		int amountOfShape = shapesContainer.getCount();
 
 		for (int i = 0; i < amountOfShape; i++) //We loop all objects in the container
@@ -87,22 +84,22 @@ int SVGFile::saveFile(const SVGContainer& shapesContainer)
 			
 			shape typeOfShape = currentObject->getType();
 
-			if(typeOfShape == RectangleT)
+			if(typeOfShape == RECTANGLE)
 			{
 				std::string lineForFile = convertRectangleObjectToLine(currentObject);
 				addLineToFile(lineForFile);
 			}
-			else if(typeOfShape == CircleT)
+			else if(typeOfShape == CIRCLE)
 			{
 				std::string lineForFile = convertCircleObjectToLine(currentObject);
 				addLineToFile(lineForFile);
 			}
-			else if (typeOfShape == LineT)
+			else if (typeOfShape == LINE)
 			{
 				std::string lineForFile = convertLineObjectToLine(currentObject);
 				addLineToFile(lineForFile);
 			}
-			else if (typeOfShape == PolygonT)
+			else if (typeOfShape == POLYGON)
 			{
 				std::string lineForFile = convertPolygonObjectToLine(currentObject);
 				addLineToFile(lineForFile);
@@ -129,9 +126,9 @@ std::string SVGFile::getFileName() const
 
 int SVGFile::saveAsFile(const std::string userInput, const SVGContainer& containerWhichWillBeSaved)
 {
-	int startPositionOfTheCommand = userInput.find("saveas");
-	std::string tempPath = filePath;
-	filePath = userInput.substr(startPositionOfTheCommand + 7);
+    std::string tempPath = filePath;
+
+	filePath = removeWordFromString(filePath, "saveas");
 	filePath = removeChar(filePath, '"');
 	std::cout << filePath << " ";
 

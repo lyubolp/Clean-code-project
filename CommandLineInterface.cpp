@@ -11,18 +11,14 @@ Rectangle* CommandLineInterface::createRectangleFromUserInput(const std::string&
     int indexOfWordRectangle = userInput.find("rectangle");
     if (indexOfWordRectangle != -1)
     {
-        double xCoordinate, yCoordinate, width, height;
-        std::string color;
-
         std::string inputWithoutRectangle = userInput.substr(indexOfWordRectangle + OFFSET_RECTANGLE_WORD); //We erase everything behind the <x> coordinate => r:=<x> <y> <width> <height> <color>
 
-        xCoordinate = cutFirstNumberFromStringAsDouble(inputWithoutRectangle, " ");
-        yCoordinate = cutFirstNumberFromStringAsDouble(inputWithoutRectangle, " ");
-        width = cutFirstNumberFromStringAsDouble(inputWithoutRectangle, " ");
-        height = cutFirstNumberFromStringAsDouble(inputWithoutRectangle, " ");
-        color = cutFirstSubstringFromString(inputWithoutRectangle, " ");
+        double xCoordinate = cutFirstNumberFromStringAsDouble(inputWithoutRectangle, " ");
+        double yCoordinate = cutFirstNumberFromStringAsDouble(inputWithoutRectangle, " ");
+        double width = cutFirstNumberFromStringAsDouble(inputWithoutRectangle, " ");
+        double height = cutFirstNumberFromStringAsDouble(inputWithoutRectangle, " ");
+        std::string color = cutFirstSubstringFromString(inputWithoutRectangle, " ");
 
-        //Pushes the item to the vector
         point p(xCoordinate, yCoordinate);
         Rectangle* result = new Rectangle(&p, color, width, height);
 
@@ -41,15 +37,12 @@ Circle* CommandLineInterface::createCircleFromUserInput(const std::string& userI
     int indexOfWordCircle = userInput.find("circle");
     if (indexOfWordCircle != -1)
     {
-        double xCoordinate, yCoordinate, radius;
-        std::string color;
-
         std::string inputWithoutCircle = userInput.substr(indexOfWordCircle + OFFSET_CIRCLE_WORD); //We erase everything behind the <x> coordinate => r:=<x> <y> <width> <height> <color>
 
-        xCoordinate = cutFirstNumberFromStringAsDouble(inputWithoutCircle, " ");
-        yCoordinate = cutFirstNumberFromStringAsDouble(inputWithoutCircle, " ");
-        radius = cutFirstNumberFromStringAsDouble(inputWithoutCircle, " ");
-        color = cutFirstSubstringFromString(inputWithoutCircle, " ");
+        double xCoordinate = cutFirstNumberFromStringAsDouble(inputWithoutCircle, " ");
+        double yCoordinate = cutFirstNumberFromStringAsDouble(inputWithoutCircle, " ");
+        double radius = cutFirstNumberFromStringAsDouble(inputWithoutCircle, " ");
+        std::string color = cutFirstSubstringFromString(inputWithoutCircle, " ");
 
         point p(xCoordinate, yCoordinate);
         Circle* result = new Circle(&p, color, radius);
@@ -69,17 +62,14 @@ Line* CommandLineInterface::createLineFromUserInput(const std::string& userInput
     int indexOfWordLine = userInput.find("line");
     if (indexOfWordLine != 1)
     {
-        double x1, y1, x2, y2;
-        std::string color;
-
         std::string inputWithoutLine = userInput.substr(indexOfWordLine + OFFSET_LINE_WORD); //We erase everything behind the <x> coordinate => r:=<x> <y> <width> <height> <color>
 
-        x1 = cutFirstNumberFromStringAsDouble(inputWithoutLine, " ");
-        y1 = cutFirstNumberFromStringAsDouble(inputWithoutLine, " ");
+        double x1 = cutFirstNumberFromStringAsDouble(inputWithoutLine, " ");
+        double y1 = cutFirstNumberFromStringAsDouble(inputWithoutLine, " ");
 
-        x2 = cutFirstNumberFromStringAsDouble(inputWithoutLine, " ");
-        y2 = cutFirstNumberFromStringAsDouble(inputWithoutLine, " ");
-        color = cutFirstSubstringFromString(inputWithoutLine, " ");
+        double x2 = cutFirstNumberFromStringAsDouble(inputWithoutLine, " ");
+        double y2 = cutFirstNumberFromStringAsDouble(inputWithoutLine, " ");
+        std::string color = cutFirstSubstringFromString(inputWithoutLine, " ");
 
         //Pushes the item to the vector
         point* p = new point[2];
@@ -199,10 +189,9 @@ void CommandLineInterface::translateShape(const std::string& coordinates)
     //translate 1 vertical=20 horizontal=200
 
     int indexOfWordTranslate = coordinates.find("translate");
-    int idOfFigureToTranslate = -1;
-    double vertical, horizontal;
     std::string inputWithoutTranslate = coordinates.substr(indexOfWordTranslate + OFFSET_TRANSLATE_WORD); //removes translate
 
+    int idOfFigureToTranslate = -1;
     if (inputWithoutTranslate[0] != FIRST_LETTER_VERTICAL)
     {
         //Input has id
@@ -210,10 +199,10 @@ void CommandLineInterface::translateShape(const std::string& coordinates)
     }
 
     inputWithoutTranslate = removeWordFromString("vertical=", inputWithoutTranslate);
-    vertical = cutFirstNumberFromStringAsDouble(inputWithoutTranslate, " ");
+    double vertical = cutFirstNumberFromStringAsDouble(inputWithoutTranslate, " ");
 
     inputWithoutTranslate = removeWordFromString("horizontal=", inputWithoutTranslate);
-    horizontal = cutFirstNumberFromStringAsDouble(inputWithoutTranslate, " ");
+    double horizontal = cutFirstNumberFromStringAsDouble(inputWithoutTranslate, " ");
 
     if (idOfFigureToTranslate == -1) //If we have to translate all figures, we loop them
     {

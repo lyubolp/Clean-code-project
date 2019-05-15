@@ -25,7 +25,7 @@ private:
 
 public:
 	SVGFile();
-	int openFile(const std::string);
+	const int openFile(const std::string &);
 	int saveFile(const SVGContainer&);
 	int saveAsFile(const std::string, const SVGContainer&);
 	int closeFile();

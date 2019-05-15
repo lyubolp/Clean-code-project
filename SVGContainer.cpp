@@ -28,7 +28,7 @@ SVGContainer& SVGContainer::operator=(const SVGContainer& objectToCopyFrom)
 	return *this;
 }
 
-shape SVGContainer::checkTypeOfShape(BaseShape* toCheck)
+const shape SVGContainer::checkTypeOfShape(BaseShape *)
 {
 	return toCheck->getType();
 }
@@ -60,19 +60,19 @@ void SVGContainer::printShapes(int idOfTheShapeToPrint)
 	BaseShape* shapeToPrint = shapes[idOfTheShapeToPrint];
 	shape typeOfShapeToPrint = checkTypeOfShape(shapeToPrint);
 
-	if (typeOfShapeToPrint == RectangleT) //We check the type of the figure & we print the data
+	if (typeOfShapeToPrint == RECTANGLE) //We check the type of the figure & we print the data
 	{
         shapeToPrint->print();
 	}
-	else if (typeOfShapeToPrint == CircleT)
+	else if (typeOfShapeToPrint == CIRCLE)
 	{
 		shapeToPrint->print();
 	}
-	else if (typeOfShapeToPrint == LineT)
+	else if (typeOfShapeToPrint == LINE)
 	{
         shapeToPrint->print();
 	}
-	else if (typeOfShapeToPrint == PolygonT)
+	else if (typeOfShapeToPrint == POLYGON)
 	{
         shapeToPrint->print();
 	}
@@ -116,22 +116,22 @@ void SVGContainer::translateShape(const int & idOfFigureToTranslate , const doub
 }
 
 
-bool SVGContainer::figureWithingARectanglePassedAsAnObject(const Rectangle& bound, const BaseShape & obj) //TO BE REFACTORED
+const bool SVGContainer::figureWithingARectanglePassedAsAnObject(const Rectangle &, const BaseShape &) //TO BE REFACTORED
 {
-	if (obj.getType() == RectangleT)
+	if (obj.getType() == RECTANGLE)
 	{
 	    Rectangle temp = obj;
 		//return bound.checkIfRectangleIsWithinRectangle(temp);
 	}
-	else if (obj.getType() == CircleT)
+	else if (obj.getType() == CIRCLE)
 	{
         //return bound.checkIfCircleIsWithinRectangle(obj);
 	}
-	else if (obj.getType() == LineT)
+	else if (obj.getType() == LINE)
 	{
         //return bound.checkIfLineIsWithinRectangle(obj);
 	}
-	else if (obj.getType() == PolygonT)
+	else if (obj.getType() == POLYGON)
 	{
         //return bound.checkIfPolygonIsWithinRectangle(obj);
 	}
@@ -143,34 +143,34 @@ bool SVGContainer::figureWithingARectanglePassedAsAnObject(const Rectangle& boun
 	return false;
 }
 
-bool SVGContainer::figureWithingACirclePassedAsAnObject(const Circle & bound, const BaseShape & obj)
+const bool SVGContainer::figureWithingACirclePassedAsAnObject(const Circle &, const BaseShape &)
 {
 
-	if (obj.getType() == RectangleT)
+	if (obj.getType() == RECTANGLE)
 	{
 		//return checkIfRectangleIsWithinCircle(bound, obj);
 	}
-	else if (obj.getType() == CircleT)
+	else if (obj.getType() == CIRCLE)
 	{
 		//return checkIfCircleIsWithinCircle(bound, obj);
 	}
-	else if (obj.getType() == LineT)
+	else if (obj.getType() == LINE)
 	{
 		//return checkIfLineIsWithinCircle(bound, obj);
 	}
-	else if (obj.getType() == PolygonT)
+	else if (obj.getType() == POLYGON)
 	{
 		//return checkIfPolygonIsWithinCircle(bound, obj);
 	}
 	return true;
 }
 
-BaseShape* SVGContainer::getItem(const int idOfTheItem) const
+const BaseShape * SVGContainer::getItem(const int idOfTheItem) const
 {
 	return shapes[idOfTheItem];
 }
 
-int SVGContainer::getCount() const
+const int SVGContainer::getCount() const
 {
 	return itemCount;
 }

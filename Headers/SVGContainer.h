@@ -38,7 +38,7 @@ private:
 	std::vector<BaseShape*> shapes;
 
 	//Wrapper for getType()
-	shape checkTypeOfShape(BaseShape*);
+    const shape checkTypeOfShape(BaseShape *);
 
 public:
 	
@@ -66,13 +66,13 @@ public:
 
     void translateShape(const int&, const double&, const double&);
 
-	bool figureWithingARectanglePassedAsAnObject(const Rectangle&, const BaseShape&);
-	bool figureWithingACirclePassedAsAnObject(const Circle&, const BaseShape&);
+	const bool figureWithingARectanglePassedAsAnObject(const Rectangle &, const BaseShape &);
+	const bool figureWithingACirclePassedAsAnObject(const Circle &, const BaseShape &);
 
 
 	//Access
-	BaseShape* getItem(const int) const;
-	int getCount() const;
+    const BaseShape * getItem(const int) const;
+	const int getCount() const;
 
 	
 

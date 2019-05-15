@@ -22,13 +22,13 @@ public:
 
 
     //May be cut down
-    /*bool checkIfPointIsWithinCircle(const point&) const;
+    /*const bool checkIfPointIsWithinCircle(const point&) const;
     bool checkIfRectangleIsWithinCircle(const Rectangle &) const;
     bool checkIfCircleIsWithinCircle(const Circle&) const;
     bool checkIfLineIsWithinCircle(const Line&) const;
     bool checkIfPolygonIsWithinCircle(const Polygon&) const;*/
 
-	point getAdditionalPoints() const override;
+    const point getAdditionalPoints() const override;
 
 
 };

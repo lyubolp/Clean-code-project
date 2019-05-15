@@ -5,7 +5,7 @@
 
 
 Polygon::Polygon(): BaseShape(){ }
-Polygon::Polygon(const point* arrayOfPoints, int amountOfPoints, const std::string lineColor) : BaseShape(arrayOfPoints, amountOfPoints,lineColor, PolygonT) {}
+Polygon::Polygon(const point* arrayOfPoints, int amountOfPoints, const std::string lineColor) : BaseShape(arrayOfPoints, amountOfPoints,lineColor, POLYGON) {}
 
 void Polygon::print() const
 {
