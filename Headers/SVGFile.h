@@ -22,6 +22,9 @@ private:
 
 	void addFirstTagsToFile();
 	void addLineToFile(std::string);
+	void convertLineFromFileToCommand(std::string);
+	void convertObjectToLine(const BaseShape*);
+
 
 public:
 	SVGFile();

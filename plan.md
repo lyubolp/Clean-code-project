@@ -2,27 +2,35 @@
 
 ## Control flow
 
-Base
+### Straight-line code - obvious dependencies, method parameters;
 
-Circle
+### When the order doesn't matter - group related statements together, reads like a newspaper
 
-Line
+### Using { } with if's
 
-Polygon
+### Most expected case first, unusual ones later
 
-Rectangle
+### Avoid comparing == true
 
-SVGContainer
+### Else cases
 
-SVGFile
+### Positive if checks
 
-CommandLineInterface
+### Numeric comparisons as operands
+
+### Avoid deep nesting (2-3 levels)
 
 DynamicMemoryManagment
 
 InputValidation
 
 MathFunctions
+
+## Source code – formating and (self-)documentation
+
+## Defensive programming. Exceptions. Optimizations 
+
+## Unit testing, Refactoring and TDD
 
 ## Support for non-hex colors
 

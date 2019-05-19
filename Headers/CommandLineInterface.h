@@ -19,6 +19,9 @@ private:
     Circle* createCircleFromUserInput(const std::string&);
     Line* createLineFromUserInput(const std::string&);
     Polygon* createPolygonFromUserInput(const std::string&);
+
+    void fillPointsFromUserInput(point*, int&, std::string&);
+
 public:
     void createShape(const std::string&);
     void eraseShape(const std::string&);

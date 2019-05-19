@@ -6,6 +6,16 @@
 #include "Headers/CommandLineInterface.h"
 #include "Headers/StringManip.h"
 
+void CommandLineInterface::fillPointsFromUserInput(point * toFill, int & amountOfPoints, std::string& inputWtihoutPolygon)
+{
+    int x = 0, y= 0;
+    for (int i = 0; i < amountOfPoints / 2; i++)
+    {
+        x = cutFirstNumberFromStringAsDouble(inputWtihoutPolygon, " ");
+        y = cutFirstNumberFromStringAsDouble(inputWtihoutPolygon, " ");
+        toFill[i] = point(x, y);
+    }
+}
 Rectangle* CommandLineInterface::createRectangleFromUserInput(const std::string& userInput)
 {
     int indexOfWordRectangle = userInput.find("rectangle");
@@ -17,6 +27,7 @@ Rectangle* CommandLineInterface::createRectangleFromUserInput(const std::string&
         double yCoordinate = cutFirstNumberFromStringAsDouble(inputWithoutRectangle, " ");
         double width = cutFirstNumberFromStringAsDouble(inputWithoutRectangle, " ");
         double height = cutFirstNumberFromStringAsDouble(inputWithoutRectangle, " ");
+
         std::string color = cutFirstSubstringFromString(inputWithoutRectangle, " ");
 
         point p(xCoordinate, yCoordinate);
@@ -95,12 +106,7 @@ Polygon* CommandLineInterface::createPolygonFromUserInput(const std::string& use
         if (amountOfPoints % 2 == 0)
         {
             point* p = new point[amountOfPoints / 2];
-            for (int i = 0; i < amountOfPoints / 2; i++)
-            {
-                x = cutFirstNumberFromStringAsDouble(inputWithoutPolygon, " ");
-                y = cutFirstNumberFromStringAsDouble(inputWithoutPolygon, " ");
-                p[i] = point(x, y);
-            }
+            fillPointsFromUserInput(p, amountOfPoints, inputWithoutPolygon);
             color = cutFirstSubstringFromString(inputWithoutPolygon, " ");
 
             Polygon* result = new Polygon(p, amountOfPoints / 2, color);
@@ -234,7 +240,7 @@ void CommandLineInterface::figureWithingCommand(const std::string& userInput) //
 
         for (int i = 0; i < shapes.getCount(); i++)
         {
-            if (figureWithingARectanglePassedAsAnObject(bound, *shapes[i]))
+            if (shapes.figureWithingARectanglePassedAsAnObject(bound, *shapes.getItem(i)))
             {
                 shapes.printShapes(i);
                 results++;
@@ -251,7 +257,7 @@ void CommandLineInterface::figureWithingCommand(const std::string& userInput) //
         int results = 0;
         for (int i = 0; i < shapes.getCount(); i++)
         {
-            if (figureWithingACirclePassedAsAnObject(bound, *shapes[i]))
+            if (shapes.figureWithingACirclePassedAsAnObject(bound, *shapes.getItem(i)))
             {
                 shapes.printShapes(i);
                 results++;

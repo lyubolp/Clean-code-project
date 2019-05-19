@@ -4,13 +4,15 @@
 Rectangle::Rectangle(): BaseShape() {}
 Rectangle::Rectangle(const point* arrayOfPoints, const std::string  shapeColor , const double rectangleWidth, const double rectangleHeight) : BaseShape(arrayOfPoints, 1,shapeColor, RECTANGLE ), width(rectangleWidth), height(rectangleHeight)
 {
-	if (!isNumberBiggerThanZero(width))
+    bool isWidthLessThanZero = !isNumberBiggerThanZero(width);
+	if (isWidthLessThanZero)
 	{
 		std::cout << "Width is negative. Setting it to 1";
 		width = 1;
 	}
 
-	if (!isNumberBiggerThanZero(height))
+	bool isHeightLessThanZero = !isNumberBiggerThanZero(height);
+	if (isHeightLessThanZero)
 	{
 		std::cout << "Height is negative. Setting it to 1";
 		height = 1;

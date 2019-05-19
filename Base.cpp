@@ -13,7 +13,8 @@ BaseShape::BaseShape()
 }
 BaseShape::BaseShape(const point* arrayOfPoints, const int amountOfPoints, const std::string shapeColor, const shape typeOfShape):color(shapeColor), shapeType(typeOfShape), pointsCount(amountOfPoints)
 {
-	if (!isNumberBiggerThanZero(amountOfPoints))
+    bool isNumberNotBiggerThanZero = !isNumberBiggerThanZero(amountOfPoints);
+	if (isNumberNotBiggerThanZero)
 	{
 		std::cout << "Amount of points is invalid. Setting default for the type of shape...\n";
 		if (typeOfShape == RECTANGLE || typeOfShape == CIRCLE)
@@ -31,7 +32,8 @@ BaseShape::BaseShape(const point* arrayOfPoints, const int amountOfPoints, const
 		}
 	}
 
-	if (!isColorStringValid(color))
+	bool isColorStringNotValid = !isColorStringValid(color);
+	if (isColorStringNotValid)
 	{
 		std::cout << "The color is not valid. The default color (black) is set.";
 		color = "#000000";
@@ -72,17 +74,18 @@ BaseShape& BaseShape::operator=(const BaseShape& rhs)
 {
 	if (this != &rhs)
 	{
-		color = rhs.color;
+        shapeType = rhs.shapeType;
 
-		delete[] points;
-		points = new point[rhs.pointsCount];
-		for (int i = 0; i < rhs.pointsCount; i++)
-		{
-			points[i] = rhs.points[i];
-		}
-		shapeType = rhs.shapeType;
-		pointsCount = rhs.pointsCount;
+        pointsCount = rhs.pointsCount;
 
+        delete[] points;
+        points = new point[rhs.pointsCount];
+        for (int i = 0; i < rhs.pointsCount; i++)
+        {
+            points[i] = rhs.points[i];
+        }
+
+        color = rhs.color;
 	}
 	return *this;
 }
