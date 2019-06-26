@@ -1,38 +1,107 @@
 # Plan for the project
 
-## Control flow
+## Unit testing
 
-### Straight-line code - obvious dependencies, method parameters;
+InputParser.h
+MathFunctions.h
+Base.h
+Polygon.h
+Circle.h
+Rectangle.h
+Line.h
+DynamicMemoryManagment.h
+CommandLineInterface.h
+SVGContainer.h
+SVGFile.h
 
-### When the order doesn't matter - group related statements together, reads like a newspaper
-
-### Using { } with if's
-
-### Most expected case first, unusual ones later
-
-### Avoid comparing == true
-
-### Else cases
-
-### Positive if checks
-
-### Numeric comparisons as operands
-
-### Avoid deep nesting (2-3 levels)
-
-DynamicMemoryManagment
-
-InputValidation
-
-MathFunctions
-
-## Source code – formating and (self-)documentation
+## Putting it all together
 
 ## Defensive programming. Exceptions. Optimizations 
 
-## Unit testing, Refactoring and TDD
+### Expect incorrect input and handle it correctly
+
+### Check the values of all routine input parameters
+
+### Decide how to handle bad inputs 
+
+### Assertion
+
+### Exceptions
+
+### Use descriptive error messages
+
+## Source code – formating and (self-)documentation
+
+### THE FORMATTING of the source code should disclose its logical structure
+
+### Brackets in the method declaration should be formated as follows: private static long fact(int num) (no spaces)
+
+### Use an empty line to separate logically related sequences of lines: 
+
+### Use the following order of definitions: 
+
+### 	Constants, inner types, fields, constructors, get/set, methods 
+
+### 	Static members, public members, protected members, default/internal members, private members 
+
+### External documentation
+
+- At a higher level compared to code
+- Problem definition, requirements, architecture, design, project plans, test plans. etc. 
+
+### Internal documentation
+
+- Lower-level – explains a class, method or  a piece of code
+
+### Classes –Does the class’s interface present a consistent abstraction? 
+
+- Does the class’s interface make obvious how you should use the class? 
+- Is the class well named and does its name describe its purpose? 
+- Can you treat the class as a black box? –Do you reuse instead of repeating code? 
+
+### Methods 
+
+- Does each routine’s name describe exactly what the method does? 
+- Does each method perform one well-defined task with minimal dependencies? 
+
+### Type Names
+
+- Are type names descriptive enough to help document data declarations?  
+- Are variables used only for the purpose for which they’re named? 
+- Do naming conventions distinguish among type names, enumerated types,  named constants, local variables, class variables, and global variables?
+
+### Others
+
+- Are data types simple so that they minimize complexity?  
+- Are related statements grouped together?  
+
+### Effective comments do not repeat the code 
+
+### Comment the code intent, not implementation details 
+
+### Focus paragraph comments on the why rather than the how
+
+### Comment anything that gets around an error or an undocumented feature
+
+### Describe the design approach to the class 
+
+### Describe limitations, usage assumptions, and so on 
+
+### Comment the class interface (public methods / properties / events / constructors) 
+
+### Don’t document implementation details in the class interface 
+
+### Describe the purpose and contents of each file  
+
+### Give the file a name related to its contents 
+
+### SVGContainer & SVGFile should be Singleton
 
 ## Support for non-hex colors
 
 ## Fix the bug with Circle/Rectangle
+
+## Migrate from .h to .hpp
+
+## Putting it all together
 

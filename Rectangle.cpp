@@ -1,8 +1,8 @@
 #include "Headers/Rectangle.h"
 #include <iostream>
 
-Rectangle::Rectangle(): BaseShape() {}
-Rectangle::Rectangle(const point* arrayOfPoints, const std::string  shapeColor , const double rectangleWidth, const double rectangleHeight) : BaseShape(arrayOfPoints, 1,shapeColor, RECTANGLE ), width(rectangleWidth), height(rectangleHeight)
+Rectangle::Rectangle(): BaseShape(), width(0), height(0) {}
+Rectangle::Rectangle(const point* arrayOfPoints, const std::string  shapeColor , const double rectangleWidth, const double rectangleHeight) : BaseShape({arrayOfPoints, 1},shapeColor, RECTANGLE ), width(rectangleWidth), height(rectangleHeight)
 {
     bool isWidthLessThanZero = !isNumberBiggerThanZero(width);
 	if (isWidthLessThanZero)
@@ -19,9 +19,20 @@ Rectangle::Rectangle(const point* arrayOfPoints, const std::string  shapeColor ,
 	}
 
 }
-Rectangle::Rectangle(const BaseShape& objectToCopyFrom):BaseShape(objectToCopyFrom),width(objectToCopyFrom.getAdditionalPoints().x), height(objectToCopyFrom.getAdditionalPoints().y)
+Rectangle::Rectangle(const Rectangle& objectToCopyFrom):BaseShape(objectToCopyFrom),width(objectToCopyFrom.getAdditionalPoints().x), height(objectToCopyFrom.getAdditionalPoints().y)
 {
 
+}
+
+Rectangle& Rectangle::operator=(const Rectangle & rhs)
+{
+    if(this != & rhs)
+    {
+        BaseShape::operator=(rhs);
+        setSize(rhs.getAdditionalPoints());
+
+    }
+    return *this;
 }
 
 const point Rectangle::getAdditionalPoints() const
@@ -31,8 +42,23 @@ const point Rectangle::getAdditionalPoints() const
 
 void Rectangle::setSize(const point size)
 {
-	width = size.x;
-	height = size.y;
+    if (isNumberBiggerThanZero(size.x))
+    {
+        width = size.x;
+    }
+    else
+    {
+        throw std::invalid_argument("Width is negative\n");
+    }
+
+    if (isNumberBiggerThanZero(size.y))
+    {
+        height = size.y;
+    }
+    else
+    {
+        throw std::invalid_argument("Height is negative\n");
+    }
 }
 
 void Rectangle::print() const
@@ -61,9 +87,9 @@ bool Rectangle::checkIfRectangleIsWithinRectangle(const Rectangle& objectToCheck
 
 bool Rectangle::checkIfCircleIsWithinRectangle(const Circle & objectToCheck) const
 {
-    point centerOfNewRectangle(objectToCheck.getPoints()->x, objectToCheck.getPoints()->y - objectToCheck.getAdditionalPoints().x);
-    point widthPointOfNewRectangle(objectToCheck.getPoints()->x + objectToCheck.getAdditionalPoints().x, objectToCheck.getPoints()->y);
-    point heightPointOfNewRectangle(objectToCheck.getPoints()->x - objectToCheck.getAdditionalPoints().x, objectToCheck.getPoints()->y);
+    const point centerOfNewRectangle(objectToCheck.getPoints()->x, objectToCheck.getPoints()->y - objectToCheck.getAdditionalPoints().x);
+    const point widthPointOfNewRectangle(objectToCheck.getPoints()->x + objectToCheck.getAdditionalPoints().x, objectToCheck.getPoints()->y);
+    const point heightPointOfNewRectangle(objectToCheck.getPoints()->x - objectToCheck.getAdditionalPoints().x, objectToCheck.getPoints()->y);
     Rectangle circleMaxBounds(&centerOfNewRectangle, "#000000", getDistanceBetweenTwoPoints(centerOfNewRectangle, widthPointOfNewRectangle), getDistanceBetweenTwoPoints(centerOfNewRectangle, heightPointOfNewRectangle));
 
     return checkIfRectangleIsWithinRectangle(circleMaxBounds);
@@ -84,10 +110,9 @@ bool Rectangle::checkIfPolygonIsWithinRectangle(const Polygon & objectToCheck) c
     {
         if (!checkIfPointIsWithinRectangle(objectToCheck.getPoints()[i]))
         {
-            result = false;
-            return result;
+            return false;
         }
     }
 
-    return result;
+    return true;
 }

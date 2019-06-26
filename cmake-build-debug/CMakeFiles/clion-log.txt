@@ -1,4 +1,4 @@
-/snap/clion/70/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/lyubo/Uni/КПК/Clean-code-project
+/snap/clion/73/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/lyubo/Uni/КПК/Clean-code-project
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug

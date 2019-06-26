@@ -1,5 +1,7 @@
 #pragma once
 #include "Headers/Base.h"
+#include "MathFunctions.h"
+
 inline void deleteDynamicArray(point* objectToDelete)
 {
 	delete[] objectToDelete;
@@ -7,6 +9,10 @@ inline void deleteDynamicArray(point* objectToDelete)
 
 inline void copyDynamicArray(point* destination, const point* source, const int sizeOfBothArrays)
 {
+    if(sizeOfBothArrays < 1)
+    {
+        throw std::invalid_argument("Invalid size");
+    }
     destination = new point[sizeOfBothArrays];
 
     for (int i = 0; i < sizeOfBothArrays; i++)
@@ -16,14 +22,31 @@ inline void copyDynamicArray(point* destination, const point* source, const int 
 }
 inline void replaceDynamicArray(point* destination, const point* source, const int sizeOfBothArrays)
 {
+    if(sizeOfBothArrays < 1)
+    {
+        throw std::invalid_argument("Invalid size");
+    }
 	deleteDynamicArray(destination);
-
 	copyDynamicArray(destination, source, sizeOfBothArrays);
 }
 
 inline point* insertObjectIntoArray(std::pair<point, const int> objectToInsertAtPosition, std::pair<point*, const int> arrayToBeInsertedInWithItsSize)
 {
-	point* resultArray = new point[arrayToBeInsertedInWithItsSize.second + 1];
+    if(arrayToBeInsertedInWithItsSize.second < 1 || objectToInsertAtPosition.second < 0)
+    {
+        throw std::invalid_argument("Invalid size or position");
+    }
+
+    bool isXisLessThanZero = !isNumberBiggerThanZero(objectToInsertAtPosition.first.x);
+    bool isYisLessThanZero = !isNumberBiggerThanZero(objectToInsertAtPosition.first.y);
+
+    if(isXisLessThanZero || isYisLessThanZero)
+    {
+        throw std::invalid_argument("The coordinates of the point should non-negative");
+    }
+
+    auto* resultArray = new point[arrayToBeInsertedInWithItsSize.second + 1];
+
 	for (int i = 0; i < objectToInsertAtPosition.second - 1; i++)
 	{
 		resultArray[i] = arrayToBeInsertedInWithItsSize.first[i];

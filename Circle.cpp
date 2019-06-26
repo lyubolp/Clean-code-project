@@ -1,8 +1,8 @@
 #include "Headers/Circle.h"
 #include <iostream>
 
-Circle::Circle() : BaseShape() {}
-Circle::Circle(const point* arrayOfPoints, const std::string shapeColor, double circleRadius) : BaseShape(arrayOfPoints, 1, shapeColor, CIRCLE), radius(circleRadius) {
+Circle::Circle() : BaseShape(), radius(0) {}
+Circle::Circle(const point* arrayOfPoints, const std::string shapeColor, double circleRadius) : BaseShape({arrayOfPoints, 1}, shapeColor, CIRCLE), radius(circleRadius) {
     if (!isNumberBiggerThanZero(radius)) {
         std::cout << "Radius is negative... setting it to 1";
         radius = 1;
@@ -10,7 +10,6 @@ Circle::Circle(const point* arrayOfPoints, const std::string shapeColor, double 
 }
 const point Circle::getAdditionalPoints() const
 {
-    std::cout << "Circle called";
 	return point(radius, 0);
 }
 
@@ -22,8 +21,7 @@ void Circle::setSize(const point circleRadius)
 	}
 	else
 	{
-		std::cout << "Radius is negative. \n";
-		return;
+		throw std::invalid_argument("Radius is negative");
 	}
 }
 

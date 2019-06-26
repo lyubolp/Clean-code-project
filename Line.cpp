@@ -3,7 +3,7 @@
 
 Line::Line() : BaseShape() {}
 
-Line::Line(const point* arrayOfPoints, const std::string lineColor) : BaseShape(arrayOfPoints, 2, lineColor, LINE) {}
+Line::Line(const point* arrayOfPoints, const std::string lineColor) : BaseShape({arrayOfPoints, 2}, lineColor, LINE) {}
 
 
 const point Line::getAdditionalPoints() const
@@ -15,8 +15,8 @@ void Line::setSize(const point size) {}
 
 void Line::print() const
 {
-    point* pointsOfTheShapeToPrint; //We get the points of the current object
-    pointsOfTheShapeToPrint = BaseShape::getPoints(); //Get the points
+    const point* pointsOfTheShapeToPrint;
+    pointsOfTheShapeToPrint = BaseShape::getPoints();
 
     std::cout << "line " << pointsOfTheShapeToPrint[0] << " " << pointsOfTheShapeToPrint[1] << " " << BaseShape::getColor() << "\n";
 

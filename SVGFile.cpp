@@ -16,10 +16,11 @@ void SVGFile::addLineToFile(std::string lineToAdd)
 
 SVGFile::SVGFile()
 {
+
 }
 
 
-void SVGFile::convertLineFromFileToCommand(std::string line)
+void SVGFile::convertLineFromFileToCommand(std::string& line)
 {
     if (line.find("<rect") != -1)
     {
@@ -80,8 +81,7 @@ const int SVGFile::openFile(const std::string & userInput)
 {
 	//open C:\Temp\file.xml
 	//open <path>
-
-    std::string filePathNotValidated = removeFirstSubstringFromString(userInput, " ");
+	std::string filePathNotValidated = removeFirstSubstringFromString(userInput, ' ');
 	fileStream.open(filePathNotValidated);
 
 	if (fileStream.is_open())

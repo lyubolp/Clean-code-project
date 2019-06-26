@@ -1,6 +1,7 @@
 
 #pragma once
 #include <string>
+#include "StringManip.h"
 
 inline bool isValidLineRectangle(std::string line)
 {
@@ -10,7 +11,8 @@ inline bool isValidLineRectangle(std::string line)
     int hf = line.find("height=");
     int cf = line.find("fill=");
 
-    return (xf == -1 || yf == -1 || wf == -1 || hf == -1 || cf == -1);
+
+    return !(xf == -1 || yf == -1 || wf == -1 || hf == -1 || cf == -1);
 }
 
 inline bool isValidLineCircle(std::string line)
@@ -20,7 +22,7 @@ inline bool isValidLineCircle(std::string line)
     int rf = line.find("r=");
     int cf = line.find("fill=");
 
-    return (xf == -1 || yf == -1 || rf == -1 || cf == -1);
+    return !(xf == -1 || yf == -1 || rf == -1 || cf == -1);
 }
 
 inline bool isValidLineLine(std::string line)
@@ -32,43 +34,38 @@ inline bool isValidLineLine(std::string line)
 
     int cf = line.find("fill=");
 
-    return  (x1f == -1 || y1f == -1 || x2f == -1 || y2f == -1 || cf == -1);
+    return  !(x1f == -1 || y1f == -1 || x2f == -1 || y2f == -1 || cf == -1);
 }
 
 
-inline bool isNumberBiggerThanZero(const int numberToCheck)
-{
-	return numberToCheck > 0;
-}
-inline bool isNumberBiggerThanZero(const double numberToCheck)
-{
-	return numberToCheck > 0;
-}
 
 inline bool isColorStringValid(const std::string colorToCheck)
 {
 	if (colorToCheck[0] != '#') return false;
 	if (colorToCheck.length() != 7) return false;
 
-	bool isNumber = true, isCapitalLetter = true, isLowerLetter = true;
+	bool isNumber = false, isCapitalLetter = false, isLowerLetter = false;
 
-	for (int i = 0; i < 7; i++)
+	for (int i = 1; i < 7; i++)
 	{
-		if (((colorToCheck[i] - '0') < 0) || ((colorToCheck[i] - '0') > 9))
+		if (0 <= ((colorToCheck[i] - '0')) && ((colorToCheck[i] - '0') <= 9))
 		{
-			isNumber = false;
+			isNumber = true;
+		}
+		else if ((0 <= (colorToCheck[i] - 'A')) && ((colorToCheck[i] - 'A') <= 25))
+		{
+			isCapitalLetter = true;
+		}
+		else if ((0 <= (colorToCheck[i] - 'a')) && ((colorToCheck[i] - 'a') <= 25))
+		{
+			isLowerLetter = true;
 		}
 
-		if (((colorToCheck[i] - 'A') < 0) || ((colorToCheck[i] - 'A') > 25))
-		{
-			isCapitalLetter = false;
-		}
-
-		if (((colorToCheck[i] - 'a') < 0) || ((colorToCheck[i] - 'a') > 25))
-		{
-			isLowerLetter = false;
-		}
+		if(!(isNumber || isCapitalLetter || isLowerLetter))
+        {
+		    return false;
+        }
 	}
 
-	return (isNumber && isCapitalLetter && isLowerLetter);
+	return true;
 }

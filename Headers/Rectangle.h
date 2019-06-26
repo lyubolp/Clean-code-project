@@ -16,8 +16,9 @@ private:
 	double height;
 public:
 	Rectangle();
-	Rectangle(const BaseShape&);
+	Rectangle(const Rectangle&);
 	Rectangle(const point*, const std::string, const double, const double);
+	Rectangle&operator=(const Rectangle&);
 	
 	const point getAdditionalPoints() const override;
 	void setSize(const point) override;

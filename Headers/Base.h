@@ -36,33 +36,36 @@ private:
 	int pointsCount; //Points count
 	std::string color;
 	shape shapeType; //Types are triangle, rectangle, circle, line
-	
+
+protected:
+
+    void setTypeOfShape(const shape);
+    void setPointCount(const int);
+    void setColor(const std::string);
+    void setShape(const std::pair<const point*, const int>& ,const std::string&, const shape&);
+
+    void setPoints(const point, int); //Sets a point based on point number (1-n), where n is the number of points;
+    void setPoints(const double, const double, int);
+    void setPoints(const point*, const int); //All points
+
+
+    virtual void setSize(const point) {};
 
 public:
-	
-	BaseShape();
-	BaseShape(const point*, const int,const std::string, const shape);
-	BaseShape(const BaseShape&);
-	BaseShape& operator=(const BaseShape&);
 
-	void setTypeOfShape(const shape);
-	void setPointCount(const int);
-	void setColor(const std::string);
+    BaseShape();
+    BaseShape(const std::pair<const point*, const int>& ,const std::string&, const shape&);
+    BaseShape(const BaseShape&);
+    BaseShape& operator=(const BaseShape&);
 
-	const shape getType() const;
-	const std::string getColor() const;
-	const point * getPoints() const;
-	const int getPointsCount() const;
-
-	void setPoints(const point, int); //Sets a point based on point number (1-n), where n is the number of points;
-	void setPoints(const double, const double, int);
-	void setPoints(const point*, const int); //All points
-	void translate(const int, const int);
-
-	virtual const point getAdditionalPoints() const{return point(-1, -1);};
-	virtual void setSize(const point) {};
+    bool translate(const int, const int);
+    const point * getPoints() const;
+    const shape getType() const;
+    const std::string getColor() const;
+    const int getPointsCount() const;
     virtual void print() const {};
 
-	virtual ~BaseShape();
+    virtual const point getAdditionalPoints() const{return point(-1, -1);};
+    virtual ~BaseShape();
 };
 

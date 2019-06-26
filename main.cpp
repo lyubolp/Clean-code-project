@@ -1,10 +1,17 @@
 #include <iostream>
+#include "Headers/InputParser.h"
+#include "Headers/InputValidation.h"
+#include "Headers/CommandLineInterface.h"
+#include <string>
 #include "Headers/Rectangle.h"
+#include "Headers/StringManip.h"
 
-//SVGContainer svgc; //Main container
-//SVGFile svgf; //Main file reader
+//#define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
+#define CATCH_CONFIG_RUNNER
+#include "catch.hpp"
+
 bool openedFile = false; //flag that shows if a file is already open
-/*
+
 void man() //Shows user manual
 {
 	std::cout << "SVG project \n";
@@ -26,168 +33,136 @@ void man() //Shows user manual
 	std::cout << "within - checks if all figures are withing a rectangle or a circle: \n\ within rectangle <x> <y> <w> <h>, within circle <x> <y> <r>\n\n";
 }
 
-void menu()
+CommandLineInterface cmd;
+
+/*TEST_CASE( "Tests are computed", "[tests]" )
 {
-	bool exit = false; //IF the program should exit, or should the menu again
-	std::string command; //The command
-	std::cout << "Please enter command or type in \"man\" to view available commands \n";
+    Tests for InputValidation.h
 
-	std::getline(std::cin, command);
+    REQUIRE(isValidLineRectangle("<rect x=\"10\" y=\"10\" width=\"10\" height=\"20\" fill=\"yellow\" />"));
+    REQUIRE(isValidLineRectangle("<rect x=\"100\" y=\"60\" width=\"10\" height=\"10\" fill=\"red\" />"));
+    REQUIRE(isValidLineRectangle("<rect x=\"5\" y=\"5\" width=\"10\" height=\"10\" fill=\"green\" />"));
+    REQUIRE(isValidLineCircle("<circle cx=\"5\" cy=\"5\" r=\"10\" fill=\"blue\" /> "));
+    REQUIRE(isValidLineCircle("<circle cx=\"20\" cy=\"20\" r=\"10\" fill=\"red\" />"));
+    REQUIRE(isValidLineLine("<line x1=\"20\" y1=\"20\" x2=\"30\" y2=\"30\" fill=\"blue\" />"));
+    REQUIRE(isValidLineLine("<line x1=\"0\" y1=\"0\" x2=\"200\" y2=\"200\" fill=\"blue\" />"));
+    REQUIRE(isColorStringValid("#FF22AA"));
+}*/
+/*TEST_CASE( "Tests are computed", "[tests]" ) {
 
-	if (command.find("open") != -1)
-	{
-		if (!openedFile)
-		{
-			if (svgf.openFile(command) == 1)
-			{
-				std::cout << "Successfully opened " << svgf.getFileName() << "\n";
-				svgc.openFromContainer(svgf.loadIntoContainer()); //We open a file
-				openedFile = true;
-			}
-			else
-			{
-				std::cout << "Error openning file \n";
-			}
-			
-		}
-		else
-		{
-			std::cout << "There is an open file at the moment, please close it.\n";
-		}
-	}
-	else if (command.find("close") != -1)
-	{
-		if (openedFile)
-		{
-			svgf.closeFile();
-			std::cout << "Successfully closed " << svgf.getFileName() << "\n";
-			openedFile = false;
-			//When we close a file, we reset the containers
-			svgc = SVGContainer();
-			svgf = SVGFile();
-		}
-		else
-		{
-			std::cout << "There is no open file at the moment, please open a file it.\n";
-		}
-	}
-	else if (command.find("save") != -1)
-	{
-		if (command[4] == 'a')
-		{
-			if (openedFile)
-			{
-				svgf.saveAsFile(command, svgc); //Saving the file in a new location
-				std::cout << "Successfully saved " << svgf.getFileName() << "\n";
-			}
-			else
-			{
-				std::cout << "There is no open file at the moment, please open a file it.\n";
-			}
-		}
-		else
-		{
-			if (openedFile)
-			{
-				svgf.saveFile(svgc); //Saveing the file
-				std::cout << "Successfully saved " << svgf.getFileName() << "\n";
-			}
-			else
-			{
-				std::cout << "There is no open file at the moment, please open a file it.\n";
-			}
-		}
-	}
-	else if (command.find("man") != -1)
-	{
-		man(); //Calls the manual
-	}
-	else if (command.find("exit") != -1)
-	{
-		exit = true; //We raise the exit flag
-	}
-	else if (command.find("print") != -1)
-	{
-		if (openedFile)
-		{
-			svgc.print(); //Print the figures
-		}
-		else
-		{
-			std::cout << "There is no open file at the moment, please open a file it.\n";
-		}
-	}
-	else if (command.find("create") != -1)
-	{
-		if (openedFile)
-		{
-			svgc.create(command); //We create a figure
-			std::cout << "Successfully created ";
-			svgc.print(svgc.getCount() - 1);
-			std::cout << "\n";
-		}
-		else
-		{
-			std::cout << "There is no open file at the moment, please open a file it.\n";
-		}
-	}
-	else if (command.find("erase") != -1)
-	{
-		if (openedFile)
-		{
-			svgc.erase(command); //Erasing the figure
-			std::cout << "Successfully erased " << command[6];
-			std::cout << "\n";
-		}
-		else
-		{
-			std::cout << "There is no open file at the moment, please open a file it.\n";
-		}
-	}
-	else if (command.find("translate") != -1)
-	{
-		if (openedFile)
-		{
-			svgc.translate(command); //Transleting the figures
-			if (command[10] == 'v')
-			{
-				std::cout << "Successfully translated all figures ";
-			}
-			else
-			{
-				std::cout << "Successfully translated " << command[10];
-			}
-			std::cout << "\n";
-		}
-		else
-		{
-			std::cout << "There is no open file at the moment, please open a file it.\n";
-		}
+    //Tests for StringManip.h
 
-	}
-	else if (command.find("within") != -1)
-	{
-		if (openedFile)
-		{
-			std::cout << "Figures within: \n";
-			svgc.within(command); //Checking within
-			
-			std::cout << "\n";
-		}
-		else
-		{
-			std::cout << "There is no open file at the moment, please open a file it.\n";
-		}
-	}
-	if(!exit) menu(); //If the exit flag is not raised, we call the menu again
+    REQUIRE(strcmp(removeChar("Hello world!", 'l').data(), "Heo word!") == 0);
+    REQUIRE(strcmp(removeBrackets("<Hello world!/>").data(), "Hello world!") == 0);
+    REQUIRE(strcmp(removeBlankSpaces("Hello world!").data(), "Helloworld!") == 0);
+    REQUIRE(strcmp(replaceAll("Hello world!", 'l', 'o').data(), "Heooo worod!") == 0);
+
+    std::string temp = "123/123/123";
+    REQUIRE(cutFirstNumberFromStringAsDouble(temp, '/') == 123);
+    REQUIRE(strcmp(temp.data(), "123/123") == 0);
+
+    temp = "/123/123/123";
+    REQUIRE(cutFirstNumberFromStringAsDouble(temp, '/') == 123);
+    REQUIRE(strcmp(temp.data(), "123/123") == 0);
 
 
+    temp = "Hello_world";
+    REQUIRE(strcmp(cutFirstSubstringFromString(temp, '_').data(), "Hello") == 0);
+    REQUIRE(strcmp(temp.data(), "world") == 0);
 
+
+    temp = "_Hello_world";
+    REQUIRE(strcmp(cutFirstSubstringFromString(temp, '_').data(), "Hello") == 0);
+    REQUIRE(strcmp(temp.data(), "world") == 0);
+
+    REQUIRE(strcmp(removeFirstSubstringFromString("Not_Hello world", '_').data(), "_Hello world") == 0);
+
+    temp = "Hello not world";
+    REQUIRE(strcmp(removeWordFromString("not", temp).data(), "Hello  world") == 0);
+
+    REQUIRE(countChar("qweasdzxcqwe", 'q') == 2);
+
+    REQUIRE(strcmp(concatenateTwoStrings("Hello" ,"world").data(), "Helloworld") == 0);
 }*/
 
+/*TEST_CASE( "Test for InputParser.h", "[tests]" )
+{
+    const std::string inputs[9]=
+            {
+                    "<rect x=\"10\" y=\"10\" width=\"10\" height=\"20\" fill=\"yellow\" />",
+                    "<rect x=\"100\" y=\"60\" width=\"10\" height=\"10\" fill=\"red\" />",
+                    "<rect x=\"5\" y=\"5\" width=\"10\" height=\"10\" fill=\"green\" />",
+                    "<circle cx=\"20\" cy=\"20\" r=\"10\" fill=\"red\" />",
+                    "<line x1=\"20\" y1=\"20\" x2=\"30\" y2=\"30\" fill=\"blue\" />",
+                    "<polygon points=\"20,20 30,30 40,40\" fill=\"cyan\"/>",
+                    "<circle cx=\"5\" cy=\"5\" r=\"10\" fill=\"blue\" />",
+                    "<line x1=\"0\" y1=\"0\" x2=\"200\" y2=\"200\" fill=\"blue\" />",
+                    "<polygon points=\"200,10 250,190 160,210\" fill=\"blue\"/>"
+            };
+    const std::string outputs[9]=
+            {
+                "create rectangle 10.000000 10.000000 10.000000 20.000000 yellow",
+                "create rectangle 100.000000 60.000000 10.000000 10.000000 red",
+                "create rectangle 5.000000 5.000000 10.000000 10.000000 green",
+                "create circle 20.000000 20.000000 10.000000 red",
+                "create line 20.000000 20.000000 30.000000 30.000000 blue",
+                "create polygon 20 20 30 30 40 40 cyan",
+                "create circle 5.000000 5.000000 10.000000 blue",
+                "create line 0.000000 0.000000 200.000000 200.000000 blue",
+                "create polygon 200 10 250 190 160 210 blue"
+            };
+    REQUIRE(strcmp(convertLineFromFileToCommandRectangle(inputs[0]).data(), outputs[0].data()) == 0);
+    REQUIRE(strcmp(convertLineFromFileToCommandRectangle(inputs[1]).data(), outputs[1].data()) == 0);
+    REQUIRE(strcmp(convertLineFromFileToCommandRectangle(inputs[2]).data(), outputs[2].data()) == 0);
+    REQUIRE(strcmp(convertLineFromFileToCommandCircle(inputs[3]).data(), outputs[3].data()) == 0);
+    REQUIRE(strcmp(convertLineFromFileToCommandLine(inputs[4]).data(), outputs[4].data()) == 0);
+    REQUIRE(strcmp(convertLineFromFileToCommandPolygon(inputs[5]).data(), outputs[5].data()) == 0);
+    REQUIRE(strcmp(convertLineFromFileToCommandCircle(inputs[6]).data(), outputs[6].data()) == 0);
+    REQUIRE(strcmp(convertLineFromFileToCommandLine(inputs[7]).data(), outputs[7].data()) == 0);
+    REQUIRE(strcmp(convertLineFromFileToCommandPolygon(inputs[8]).data(), outputs[8].data()) == 0);
+}*/
+
+TEST_CASE( "Test for InputParser.h", "[tests]" )
+{
+    const std::string inputs[9]=
+            {
+                    "<rect x=\"10\" y=\"10\" width=\"10\" height=\"20\" fill=\"yellow\" />",
+                    "<rect x=\"100\" y=\"60\" width=\"10\" height=\"10\" fill=\"red\" />",
+                    "<rect x=\"5\" y=\"5\" width=\"10\" height=\"10\" fill=\"green\" />",
+                    "<circle cx=\"20\" cy=\"20\" r=\"10\" fill=\"red\" />",
+                    "<line x1=\"20\" y1=\"20\" x2=\"30\" y2=\"30\" fill=\"blue\" />",
+                    "<polygon points=\"20,20 30,30 40,40\" fill=\"cyan\"/>",
+                    "<circle cx=\"5\" cy=\"5\" r=\"10\" fill=\"blue\" />",
+                    "<line x1=\"0\" y1=\"0\" x2=\"200\" y2=\"200\" fill=\"blue\" />",
+                    "<polygon points=\"200,10 250,190 160,210\" fill=\"blue\"/>"
+            };
+    const std::string outputs[9]=
+            {
+                    "create rectangle 10.000000 10.000000 10.000000 20.000000 yellow",
+                    "create rectangle 100.000000 60.000000 10.000000 10.000000 red",
+                    "create rectangle 5.000000 5.000000 10.000000 10.000000 green",
+                    "create circle 20.000000 20.000000 10.000000 red",
+                    "create line 20.000000 20.000000 30.000000 30.000000 blue",
+                    "create polygon 20 20 30 30 40 40 cyan",
+                    "create circle 5.000000 5.000000 10.000000 blue",
+                    "create line 0.000000 0.000000 200.000000 200.000000 blue",
+                    "create polygon 200 10 250 190 160 210 blue"
+            };
+    REQUIRE(strcmp(convertLineFromFileToCommandRectangle(inputs[0]).data(), outputs[0].data()) == 0);
+    REQUIRE(strcmp(convertLineFromFileToCommandRectangle(inputs[1]).data(), outputs[1].data()) == 0);
+    REQUIRE(strcmp(convertLineFromFileToCommandRectangle(inputs[2]).data(), outputs[2].data()) == 0);
+    REQUIRE(strcmp(convertLineFromFileToCommandCircle(inputs[3]).data(), outputs[3].data()) == 0);
+    REQUIRE(strcmp(convertLineFromFileToCommandLine(inputs[4]).data(), outputs[4].data()) == 0);
+    REQUIRE(strcmp(convertLineFromFileToCommandPolygon(inputs[5]).data(), outputs[5].data()) == 0);
+    REQUIRE(strcmp(convertLineFromFileToCommandCircle(inputs[6]).data(), outputs[6].data()) == 0);
+    REQUIRE(strcmp(convertLineFromFileToCommandLine(inputs[7]).data(), outputs[7].data()) == 0);
+    REQUIRE(strcmp(convertLineFromFileToCommandPolygon(inputs[8]).data(), outputs[8].data()) == 0);
+}
 int main()
 {
-	//menu();
+    //cmd.exec("open sample.svg");
 
-	return 0;
+    int result = Catch::Session().run();
+
+    return result;
 }

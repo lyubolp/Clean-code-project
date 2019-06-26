@@ -28,7 +28,7 @@ SVGContainer& SVGContainer::operator=(const SVGContainer& objectToCopyFrom)
 	return *this;
 }
 
-const shape SVGContainer::checkTypeOfShape(BaseShape *)
+const shape SVGContainer::checkTypeOfShape(BaseShape * toCheck)
 {
 	return toCheck->getType();
 }
@@ -98,14 +98,13 @@ void SVGContainer::eraseShape(const int idOfTheShapeToErase)
 {
 	if (idOfTheShapeToErase <= itemCount) //If the figure exists
 	{
-		std::vector<BaseShape*>::iterator it = shapes.begin(); 
-		shapes.erase(it + (idOfTheShapeToErase - 1)); //We find the one we need to delete
-		std::cout << "Deleted successfully  figure " << idOfTheShapeToErase << "\n";
+		auto it = shapes.begin();
+		shapes.erase(it + (idOfTheShapeToErase - 1));
 		itemCount--;
 	}
 	else 
 	{
-		std::cout << "There is no figure " << idOfTheShapeToErase << "\n";
+	    throw std::out_of_range("No shape has index " + std::to_string(idOfTheShapeToErase));
 	}
 }
 
@@ -116,11 +115,11 @@ void SVGContainer::translateShape(const int & idOfFigureToTranslate , const doub
 }
 
 
-const bool SVGContainer::figureWithingARectanglePassedAsAnObject(const Rectangle &, const BaseShape &) //TO BE REFACTORED
+const bool SVGContainer::figureWithingARectanglePassedAsAnObject(const Rectangle & bound, const BaseShape & obj) //TO BE REFACTORED
 {
 	if (obj.getType() == RECTANGLE)
 	{
-	    Rectangle temp = obj;
+	    //Rectangle temp = obj;
 		//return bound.checkIfRectangleIsWithinRectangle(temp);
 	}
 	else if (obj.getType() == CIRCLE)
@@ -143,7 +142,7 @@ const bool SVGContainer::figureWithingARectanglePassedAsAnObject(const Rectangle
 	return false;
 }
 
-const bool SVGContainer::figureWithingACirclePassedAsAnObject(const Circle &, const BaseShape &)
+const bool SVGContainer::figureWithingACirclePassedAsAnObject(const Circle & bound, const BaseShape & obj)
 {
 
 	if (obj.getType() == RECTANGLE)

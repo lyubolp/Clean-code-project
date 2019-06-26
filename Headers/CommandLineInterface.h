@@ -11,10 +11,13 @@
 #include "Headers/Circle.h"
 #include "Headers/Line.h"
 #include "Headers/SVGContainer.h"
+#include "SVGFile.h"
 
 class CommandLineInterface {
 private:
+    bool isFileOpen;
     SVGContainer shapes;
+    SVGFile file;
     Rectangle* createRectangleFromUserInput(const std::string&);
     Circle* createCircleFromUserInput(const std::string&);
     Line* createLineFromUserInput(const std::string&);
@@ -22,12 +25,15 @@ private:
 
     void fillPointsFromUserInput(point*, int&, std::string&);
 
-public:
     void createShape(const std::string&);
     void eraseShape(const std::string&);
     void translateShape(const std::string&);
     void figureWithingCommand(const std::string&);
     void openFromContainer(const std::vector <std::string>&);
+
+public:
+    CommandLineInterface();
+    bool exec(const std::string&);
 
 
 };

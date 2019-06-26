@@ -2,8 +2,11 @@
 #define CLEAN_CODE_PROJECT_STRINGMANIP_H
 #include <iostream>
 #include <string>
+#include <limits>
 
-inline std::string removeChar(const std::string userInput, const char charToRemove)
+const std::string invalidDelimiter = "Invalid delimiter";
+
+inline const std::string removeChar(const std::string& userInput, const char charToRemove)
 {
 	std::string result = userInput;
 
@@ -14,13 +17,14 @@ inline std::string removeChar(const std::string userInput, const char charToRemo
 		if (result[i] == charToRemove)
 		{
 			result.erase(i, 1);
+			i--;
 			lengthOfResult--;
 		}
 	}
 	return result;
 }
 
-inline std::string removeBrackets(const std::string userInput)
+inline const std::string removeBrackets(const std::string& userInput)
 {
 	std::string result = userInput;
 
@@ -32,12 +36,13 @@ inline std::string removeBrackets(const std::string userInput)
 		{
 			result.erase(i, 1);
 			lengthOfResult = result.length();
+			i--;
 		}
 	}
 	return result;
 }
 
-inline std::string removeBlankSpaces(const std::string userInput)
+inline const std::string removeBlankSpaces(const std::string& userInput)
 {
 	std::string result = userInput;
 
@@ -48,7 +53,7 @@ inline std::string removeBlankSpaces(const std::string userInput)
 	return result;
 }
 
-inline std::string replaceAll(const std::string input, const char replaced, const char with)
+inline const std::string replaceAll(const std::string& input, const char replaced, const char with)
 {
 	std::string result = input;
 	int lengthOfResult = result.size();
@@ -57,68 +62,121 @@ inline std::string replaceAll(const std::string input, const char replaced, cons
 		if (result[i] == replaced)
 		{
 			result[i] = with;
-			lengthOfResult--;
 		}
 	}
 	return result;
 }
+inline const int findNthOccuranceOfChar(const std::string& input, const char& toFind, const int& n)
+{
+    int counter = 0;
 
-inline double cutFirstNumberFromStringAsDouble(std::string& input, std::string delimiter)
+    for(int i = 0; i < input.length(); i++)
+    {
+        if(input[i] == toFind)
+        {
+            counter++;
+            if(counter == n)
+            {
+                return i;
+            }
+        }
+    }
+    return -1;
+}
+inline const double cutFirstNumberFromStringAsDouble(std::string& input, const char& delimiter)
 {
 	int indexOfFirstSpace;
+    int isFirstSymbolDelimitier = 0;
+	double result = -1;
 
-	double result;
-	indexOfFirstSpace = input.find(delimiter);
-	result = std::stod(input.substr(0, indexOfFirstSpace));
+	if(input[0] == delimiter)
+    {
+	    isFirstSymbolDelimitier = 1;
+        indexOfFirstSpace = findNthOccuranceOfChar(input, delimiter, 2);
+    }
+	else
+    {
+
+        indexOfFirstSpace = findNthOccuranceOfChar(input, delimiter, 1);
+    }
+
+	if(indexOfFirstSpace == std::string::npos)
+    {
+	    std::cout << invalidDelimiter;
+	    return std::numeric_limits<double>::min();
+    }
+	result = std::stod(input.substr(isFirstSymbolDelimitier, indexOfFirstSpace - isFirstSymbolDelimitier));
 	input = input.substr(indexOfFirstSpace + 1);
 
 	return result;
 }
 
-inline std::string cutFirstSubstringFromString(std::string& input, std::string delimiter)
+inline const std::string cutFirstSubstringFromString(std::string& input, const char& delimiter)
 {
 	int indexOfFirstSpace;
-
+    int isFirstSymbolDelimitier = 0;
 	std::string result;
-	indexOfFirstSpace = input.find(delimiter);
-	result = input.substr(0, indexOfFirstSpace);
+
+    if(input[0] == delimiter)
+    {
+        isFirstSymbolDelimitier = 1;
+
+        indexOfFirstSpace = findNthOccuranceOfChar(input, delimiter, 2);
+    }
+    else
+    {
+        indexOfFirstSpace = findNthOccuranceOfChar(input, delimiter, 1);
+    }
+    if(indexOfFirstSpace == std::string::npos)
+    {
+	    return invalidDelimiter;
+    }
+	result = input.substr(isFirstSymbolDelimitier, indexOfFirstSpace - isFirstSymbolDelimitier);
 	input = input.substr(indexOfFirstSpace + 1);
 
 	return result;
 }
 
-inline std::string removeFirstSubstringFromString(std::string input, std::string delimiter)
+inline const std::string removeFirstSubstringFromString(const std::string& input, const char& delimiter)
 {
 	int indexOfFirstSpace;
 
 	std::string result;
 	indexOfFirstSpace = input.find(delimiter);
-	result = input.substr(indexOfFirstSpace + 1);
+	result = input.substr(indexOfFirstSpace);
 
 	return result;
 }
-inline std::string removeWordFromString(std::string wordToRemove, std::string input)
+
+
+inline const std::string concatenateTwoStrings(const std::string& first, const std::string& second)
 {
-	int indexOfWordToRemove = input.find(input);
+    std::string result;
+
+    result.append(first);
+    result.append(second);
+
+    return result;
+}
+
+inline const std::string removeWordFromString(const std::string& wordToRemove, const std::string& from)
+{
+	int indexOfWordToRemove = from.find(wordToRemove);
 	int lengthOfWordToRemove = wordToRemove.length();
-	std::string result = input.substr(indexOfWordToRemove + lengthOfWordToRemove);
+	std::string part1 = from.substr(0, indexOfWordToRemove);
+	std::string part2 = from.substr(indexOfWordToRemove + lengthOfWordToRemove);
+	std::string result = concatenateTwoStrings(part1, part2);
 
 	return result;
 }
 
-inline int cutFirstNumberFromStringAsInt(std::string& input, std::string delimiter)
+
+inline const int cutFirstNumberFromStringAsInt(std::string& input, const char& delimiter)
 {
-	int indexOfFirstSpace;
-
-	int result;
-	indexOfFirstSpace = input.find(delimiter);
-	result = std::stoi(input.substr(0, indexOfFirstSpace));
-	input = input.substr(indexOfFirstSpace + 1);
-
-	return result;
+	return (int)cutFirstNumberFromStringAsDouble(input, delimiter);
 }
 
-inline int countChar(const std::string userInput, const char searched)
+inline const int countChar(const std::string& userInput, const char searched)
 {
 	int amountOfChars = 0, s = userInput.length();
 	for (int i = 0; i < s; i++)
@@ -131,14 +189,5 @@ inline int countChar(const std::string userInput, const char searched)
 	return amountOfChars;
 }
 
-inline std::string concatenateTwoStrings(std::string first, std::string second)
-{
-	std::string result;
-
-	result.append(first);
-	result.append(second);
-
-	return result;
-}
 
 #endif

@@ -17,7 +17,7 @@ public:
 	Circle();
 	Circle(const point*, const std::string, double);
 
-    void setSize(const point) override;
+	void setSize(const point) override;
     void print() const override;
 
 
