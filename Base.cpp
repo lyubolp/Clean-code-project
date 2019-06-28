@@ -13,6 +13,7 @@ BaseShape::BaseShape()
 }
 BaseShape::BaseShape(const std::pair<const point*,const int>& newPoints, const std::string& shapeColor, const shape& typeOfShape)
 {
+    points = nullptr;
     setShape(newPoints, shapeColor, typeOfShape);
 }
 BaseShape::BaseShape(const BaseShape& rhs) : BaseShape({rhs.points, rhs.pointsCount}, rhs.color, rhs.shapeType) {}
@@ -67,7 +68,7 @@ void BaseShape::setPoints(const point pointToBeReplacedWith, int indexOfPointsTo
 
         try
         {
-            replaceDynamicArray(points, newPoints, pointsCount);
+            points = replaceDynamicArray(newPoints, pointsCount);
         }
         catch(std::invalid_argument& e)
         {
@@ -91,7 +92,7 @@ void BaseShape::setPoints(const double xCoordinate, const double yCoordinate, in
 
         try
         {
-            replaceDynamicArray(points, newPoints, pointsCount);
+            points = replaceDynamicArray(newPoints, pointsCount);
         }
         catch(std::invalid_argument& e)
         {
@@ -110,11 +111,10 @@ void BaseShape::setPoints(const point* pointsToSetAs, const int amountOfPoints) 
 {
     if (isNumberBiggerThanZero(amountOfPoints) && !isNullptr(pointsToSetAs))
     {
-        deleteDynamicArray(points);
-
         try
         {
-            replaceDynamicArray(points, pointsToSetAs, amountOfPoints);
+            deleteDynamicArray(points);
+            points = replaceDynamicArray(pointsToSetAs, amountOfPoints);
         }
         catch(std::invalid_argument& e)
         {
@@ -171,7 +171,7 @@ const std::string BaseShape::getColor() const
 }
 
 
-bool BaseShape::translate(const int horizontal, const int vertical)
+void BaseShape::translate(const int horizontal, const int vertical)
 {
 	if (isNumberBiggerThanZero(horizontal) && isNumberBiggerThanZero(vertical))
 	{
@@ -180,12 +180,11 @@ bool BaseShape::translate(const int horizontal, const int vertical)
 			points[i].x += horizontal;
 			points[i].y += vertical;
 		}
-		return true;
+
 	}
 	else
 	{
-		std::cout << "Invalid coordinates... ignoring request";
-		return false;
+		throw std::invalid_argument("Invalid coordinates");
 	}
 }
 

@@ -24,15 +24,36 @@ void SVGFile::convertLineFromFileToCommand(std::string& line)
 {
     if (line.find("<rect") != -1)
     {
-        parsedLines.push_back(convertLineFromFileToCommandRectangle(line));
+        try
+        {
+            parsedLines.push_back(convertLineFromFileToCommandRectangle(line));
+        }
+        catch(std::invalid_argument& e)
+        {
+            throw e;
+        }
     }
     else if (line.find("<circle") != -1) //The same is done for the circle
     {
-        parsedLines.push_back(convertLineFromFileToCommandCircle(line));
+        try
+        {
+            parsedLines.push_back(convertLineFromFileToCommandCircle(line));
+        }
+        catch(std::invalid_argument& e)
+        {
+            throw e;
+        }
     }
     else if (line.find("<line") != -1) //And the line
     {
-        parsedLines.push_back(convertLineFromFileToCommandLine(line));
+        try
+        {
+            parsedLines.push_back(convertLineFromFileToCommandLine(line));
+        }
+        catch(std::invalid_argument& e)
+        {
+            throw e;
+        }
     }
     else if (line.find("<polygon") != -1)
     {
@@ -40,7 +61,6 @@ void SVGFile::convertLineFromFileToCommand(std::string& line)
     }
     else
     {
-        std::cout << line;
         return;
     }
 
@@ -53,23 +73,52 @@ void SVGFile::convertObjectToLine(const BaseShape * currentObject) {
 
     if(typeOfShape == RECTANGLE)
     {
-        std::string lineForFile = convertRectangleObjectToLine(currentObject);
-        addLineToFile(lineForFile);
+        try
+        {
+            std::string lineForFile = convertRectangleObjectToLine(currentObject);
+            addLineToFile(lineForFile);
+        }
+        catch(std::exception& e)
+        {
+            throw e;
+        }
     }
     else if(typeOfShape == CIRCLE)
     {
-        std::string lineForFile = convertCircleObjectToLine(currentObject);
-        addLineToFile(lineForFile);
+        try
+        {
+            std::string lineForFile = convertCircleObjectToLine(currentObject);
+            addLineToFile(lineForFile);
+        }
+        catch(std::exception& e)
+        {
+            throw e;
+        }
     }
     else if (typeOfShape == LINE)
     {
-        std::string lineForFile = convertLineObjectToLine(currentObject);
-        addLineToFile(lineForFile);
+        try
+        {
+            std::string lineForFile = convertLineObjectToLine(currentObject);
+            addLineToFile(lineForFile);
+        }
+        catch(std::exception& e)
+        {
+            throw e;
+        }
+
     }
     else if (typeOfShape == POLYGON)
     {
-        std::string lineForFile = convertPolygonObjectToLine(currentObject);
-        addLineToFile(lineForFile);
+        try
+        {
+            std::string lineForFile = convertPolygonObjectToLine(currentObject);
+            addLineToFile(lineForFile);
+        }
+        catch(std::exception& e)
+        {
+            throw e;
+        }
     }
     else
     {
@@ -90,13 +139,19 @@ const int SVGFile::openFile(const std::string & userInput)
         std::string line("Invalid line");
 		while (getline(fileStream, line)) //We get each line and check the tag name
 		{
-            convertLineFromFileToCommand(line);
+            try
+            {
+                convertLineFromFileToCommand(line);
+            }
+            catch(std::invalid_argument& e)
+            {
+                return 0;
+            }
 		}
 		fileStream.close();
 	}
 	else
 	{
-		std::cout << "File cannot be opened\n";
 		return 0;
 	}
 	return 1;
@@ -115,17 +170,24 @@ int SVGFile::saveFile(const SVGContainer& shapesContainer)
 		const BaseShape* currentObject = new BaseShape();
 		int amountOfShape = shapesContainer.getCount();
 
-		for (int i = 0; i < amountOfShape; i++) //We loop all objects in the container
-		{
-			currentObject = shapesContainer.getItem(i);
-            convertObjectToLine(currentObject);
-		}
-		addLineToFile(tags[6]);
-		fileWrite.close();
+		try
+        {
+            for (int i = 0; i < amountOfShape; i++) //We loop all objects in the container
+            {
+                currentObject = shapesContainer.getItem(i);
+                convertObjectToLine(currentObject);
+            }
+            addLineToFile(tags[6]);
+            fileWrite.close();
+        }
+        catch(std::exception& e)
+        {
+            throw e;
+        }
 	}
 	else
 	{
-		std::cout << "Error opening file...\n";
+		throw std::runtime_error("Invalid file");
 	}
 	return 1;
 }
@@ -138,11 +200,18 @@ int SVGFile::saveAsFile(const std::string userInput, const SVGContainer& contain
 {
     std::string tempPath = filePath;
 
-	filePath = removeWordFromString(filePath, "saveas");
+	filePath = removeWordFromString("saveas", userInput);
 	filePath = removeChar(filePath, '"');
 	std::cout << filePath << " ";
 
-	saveFile(containerWhichWillBeSaved);
+	try
+    {
+	    saveFile(containerWhichWillBeSaved);
+    }
+    catch(std::exception& e)
+    {
+        throw e;
+    }
 
 	filePath = tempPath;
 	return 1;

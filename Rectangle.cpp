@@ -63,7 +63,7 @@ void Rectangle::setSize(const point size)
 
 void Rectangle::print() const
 {
-    std::cout << "rectangle " << BaseShape::getPoints() << " " << BaseShape::getAdditionalPoints() << " " << BaseShape::getColor() << "\n";
+    std::cout << "rectangle " << *(getPoints()) << " " << getAdditionalPoints() << " " << BaseShape::getColor() << "\n";
 }
 
 bool Rectangle::checkIfPointIsWithinRectangle(const point & pointToCheck) const

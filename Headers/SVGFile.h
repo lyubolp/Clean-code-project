@@ -9,7 +9,7 @@
 #include "Headers/InputParser.h"
 
 
-class SVGFile : public SVGContainer
+class SVGFile
 {
 private:
 	std::string filePath;

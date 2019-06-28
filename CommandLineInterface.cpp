@@ -47,24 +47,19 @@ Rectangle *CommandLineInterface::createRectangleFromUserInput(const std::string 
         if(xCoordinate == std::numeric_limits<double>::min() || yCoordinate == std::numeric_limits<double>::min()
            || width == std::numeric_limits<double>::min() || height == std::numeric_limits<double>::min())
         {
-            throw std::invalid_argument("Invalid input");
+            throw std::invalid_argument("Invalid input... coordinates (x,y, width or height) are invalid.");
         }
 
-        std::string color = cutFirstSubstringFromString(inputWithoutRectangle, ' ');
+        std::string color = inputWithoutRectangle;
 
-        if(color == invalidDelimiter)
-        {
-            throw std::invalid_argument(invalidDelimiter);
-        }
-
-        point p(xCoordinate, yCoordinate);
-        Rectangle *result = new Rectangle(&p, color, width, height);
+        point* p = new point(xCoordinate, yCoordinate);
+        Rectangle *result = new Rectangle(p, color, width, height);
 
         return result;
     }
     else
     {
-        throw std::invalid_argument("Invalid input");
+        throw std::invalid_argument("Invalid input... the line does not contain <rect");
     }
 
 }
@@ -87,15 +82,10 @@ Circle *CommandLineInterface::createCircleFromUserInput(const std::string &userI
             throw std::invalid_argument("Invalid input");
         }
 
-        std::string color = cutFirstSubstringFromString(inputWithoutCircle, ' ');
+        std::string color = inputWithoutCircle;
 
-        if(color == invalidDelimiter)
-        {
-            throw std::invalid_argument(invalidDelimiter);
-        }
-
-        point p(xCoordinate, yCoordinate);
-        Circle *result = new Circle(&p, color, radius);
+        point* p = new point(xCoordinate, yCoordinate);
+        Circle *result = new Circle(p, color, radius);
 
         return result;
 
@@ -124,12 +114,7 @@ Line *CommandLineInterface::createLineFromUserInput(const std::string &userInput
         {
             throw std::invalid_argument(invalidDelimiter);
         }
-        std::string color = cutFirstSubstringFromString(inputWithoutLine, ' ');
-
-        if(color == invalidDelimiter)
-        {
-            throw std::invalid_argument(invalidDelimiter);
-        }
+        std::string color = inputWithoutLine;
 
         //Pushes the item to the vector
         auto *temp = new point[2];
@@ -158,13 +143,10 @@ Polygon *CommandLineInterface::createPolygonFromUserInput(const std::string &use
             try
             {
                 fillPointsFromUserInput(temp, amountOfPoints, inputWithoutPolygon);
-                color = cutFirstSubstringFromString(inputWithoutPolygon, ' ');
+                color = inputWithoutPolygon;
+                Polygon *result = new Polygon(temp, amountOfPoints / 2, color);
 
-                if(color != invalidDelimiter)
-                {
-                    Polygon *result = new Polygon(temp, amountOfPoints / 2, color);
-                    return result;
-                }
+                return result;
             }
             catch(std::length_error& lengthError)
             {
@@ -188,46 +170,153 @@ bool CommandLineInterface::exec(const std::string &userInput)
 {
     if(userInput.find("create") != std::string::npos)
     {
-        try
+        if(isFileOpen)
         {
-            createShape(userInput);
+            try
+            {
+                createShape(userInput);
+            }
+            catch(std::invalid_argument& )
+            {
+                    std::cout << "Error with command!";
+                    return false;
+            }
         }
-        catch(std::invalid_argument& )
+        else
         {
-                std::cout << "Error with command!";
-                return false;
+            std::cout << "No file is open...\n Please use open <file_name> to open a file\n";
+        }
+    }
+    else if(userInput.find("save") != std::string::npos)
+    {
+        if(isFileOpen)
+        {
+            if(userInput.length() == 4)
+            {
+                try
+                {
+                    file.saveFile(shapes);
+                }
+                catch(std::exception& e)
+                {
+                    std::cout << "Unable to save file...\n" << e.what() << "\n";
+                }
+            }
+            else if(userInput.length() > 6)
+            {
+                try
+                {
+                    file.saveAsFile(userInput, shapes);
+                }
+                catch(std::exception& e)
+                {
+                    std::cout << "Unable to save file...\n" << e.what() << "\n";
+                }
+            }
+        }
+        else
+        {
+            std::cout << "No file is open...\n Please use open <file_name> to open a file\n";
         }
     }
     else if(userInput.find("erase") != std::string::npos)
     {
-        try
+        if(isFileOpen)
         {
-            eraseShape(userInput);
+            try
+            {
+                eraseShape(userInput);
+            }
+            catch(std::invalid_argument &e)
+            {
+                std::cout << "Cannot erase shape\n" << e.what() << "\n";
+                return false;
+            }
         }
-        catch(std::invalid_argument& e)
+        else
         {
-            //std::cout << "Cannot erase shape\n";
-            return false;
+            std::cout << "No file is open...\n Please use open <file_name> to open a file\n";
         }
     }
     else if(userInput.find("translate") != std::string::npos)
     {
-        /*if(!translateShape(userInput))
+        if(isFileOpen)
         {
-            std::cout << "Cannot translate shape\n";
-            return false;
-        }*/
+            try
+            {
+                translateShape(userInput);
+                return true;
+            }
+            catch(std::invalid_argument &e)
+            {
+                std::cout << "Cannot translate shape\n";
+                std::cout << e.what() << "\n";
+                return false;
+            }
+        }
+        else
+        {
+            std::cout << "No file is open...\n Please use open <file_name> to open a file\n";
+        }
     }
-    else if(userInput.find("within") != std::string::npos)
+    else if(userInput.find("close") != std::string::npos)
     {
-        /*if(!figureWithingCommand(userInput))
+        if(isFileOpen)
         {
-            return false;
-        }*/
+            isFileOpen = false;
+            file.closeFile();
+            std::cout << "File has been closed successfully";
+        }
+        else
+        {
+            std::cout << "No file is open...\n Please use open <file_name> to open a file\n";
+        }
     }
     else if(userInput.find("open") != std::string::npos)
     {
-        file.openFile(userInput);
+        if(file.openFile(userInput) == 1)
+        {
+            std::cout << "File opened successfully\n";
+
+            std::vector<std::string> commandsToCreate = file.loadIntoContainer();
+
+            for(std::string item : commandsToCreate)
+            {
+                try
+                {
+                    createShape(item);
+                }
+                catch(std::invalid_argument& e)
+                {
+                    std::cout << "Unable to read the file\n" << e.what();
+                    return false;
+                }
+            }
+            isFileOpen = true;
+        }
+        else
+        {
+            std::cout << "File could not be opened\n";
+            return false;
+        }
+    }
+    else if(userInput.find("print") != std::string::npos)
+    {
+        if(isFileOpen)
+        {
+            try
+            {
+                shapes.printShapes();
+            }
+            catch(std::invalid_argument& e)
+            {
+                std::cout << "Cannot print shapes.\n" << e.what() << "\n";
+            }
+        }
+        else
+        {
+            std::cout << "No file is open...\n Please use open <file_name> to open a file\n";
+        }
     }
     return true;
 }
@@ -249,12 +338,19 @@ void CommandLineInterface::createShape(const std::string &userInput)
     {
         if(countChar(userInput, SPACE_ASCII) < AMOUNT_WHITESPACE_COMMAND_RECTANGLE)
         {
-            throw std::invalid_argument("Invalid command");
+            throw std::invalid_argument("Invalid command: The amount of attributes is invalid");
         }
         else
         {
-            Rectangle *temp = createRectangleFromUserInput(userInput);
-            shapes.addShape(temp);
+            try
+            {
+                Rectangle *temp = createRectangleFromUserInput(userInput);
+                shapes.addShape(temp);
+            }
+            catch(std::invalid_argument& e)
+            {
+                throw e;
+            }
         }
 
     }
@@ -306,89 +402,63 @@ void CommandLineInterface::eraseShape(const std::string &userInput)
 
 void CommandLineInterface::translateShape(const std::string &coordinates)
 {
-    //translate vertical=10 horizontal=100
-    //translate 1 vertical=20 horizontal=200
+    //translate vertical="10" horizontal="100"
+    //translate "1" vertical="20" horizontal="200"
 
     int indexOfWordTranslate = coordinates.find("translate");
-    std::string inputWithoutTranslate = coordinates.substr(
-            indexOfWordTranslate + OFFSET_TRANSLATE_WORD); //removes translate
-
+    std::string inputWithoutTranslate = coordinates.substr(indexOfWordTranslate + OFFSET_TRANSLATE_WORD); //removes translate
+    inputWithoutTranslate = removeBlankSpaces(inputWithoutTranslate);
     int idOfFigureToTranslate = -1;
     if(inputWithoutTranslate[0] != FIRST_LETTER_VERTICAL)
     {
         //Input has id
-        idOfFigureToTranslate = cutFirstNumberFromStringAsInt(inputWithoutTranslate, ' ');
+        idOfFigureToTranslate = cutFirstNumberFromStringAsInt(inputWithoutTranslate, '"');
+        if(idOfFigureToTranslate == (int)std::numeric_limits<double>::min())
+        {
+            throw std::invalid_argument("Id of the figure is bad\n");
+        }
     }
 
     inputWithoutTranslate = removeWordFromString("vertical=", inputWithoutTranslate);
-    double vertical = cutFirstNumberFromStringAsDouble(inputWithoutTranslate, ' ');
+    double vertical = cutFirstNumberFromStringAsDouble(inputWithoutTranslate, '"');
+    if(vertical == std::numeric_limits<double>::min())
+    {
+        throw std::invalid_argument("Vertical translate is invalid\n");
+    }
 
     inputWithoutTranslate = removeWordFromString("horizontal=", inputWithoutTranslate);
-    double horizontal = cutFirstNumberFromStringAsDouble(inputWithoutTranslate, ' ');
+    double horizontal = cutFirstNumberFromStringAsDouble(inputWithoutTranslate, '"');
+    if(horizontal == std::numeric_limits<double>::min())
+    {
+        throw std::invalid_argument("Horizontal translate is invalid\n");
+    }
 
     if(idOfFigureToTranslate == -1) //If we have to translate all figures, we loop them
     {
         int s = shapes.getCount();
         for(int i = 0; i < s; i++)
         {
-            shapes.translateShape(i, vertical, horizontal);
+            try
+            {
+                shapes.translateShape(i, vertical, horizontal);
+            }
+            catch(std::invalid_argument& e)
+    //coordinates = removeBlankSpaces(coordinates);
+            {
+                std::cout << "Horizontal or vertical args are invalid \n" << e.what();
+            }
         }
     }
     else
     {
-        shapes.translateShape(idOfFigureToTranslate, vertical, horizontal);
-    }
-}
-
-void CommandLineInterface::figureWithingCommand(const std::string &userInput)
-{
-    //within circle 0 0 5
-
-    //within rectangle <x> <y> <w> <h>
-    //within circle <x> <y> <r>
-
-    std::string inputWithoutWithin = removeFirstSubstringFromString(userInput, ' ');
-
-    if(inputWithoutWithin[0] == FIRST_LETTER_RECTANGLE)
-    {
-        int results = 0;
-        Rectangle bound = *createRectangleFromUserInput(inputWithoutWithin);
-
-        for(int i = 0; i < shapes.getCount(); i++)
+        try
         {
-            if(shapes.figureWithingARectanglePassedAsAnObject(bound, *shapes.getItem(i)))
-            {
-                shapes.printShapes(i);
-                results++;
-            }
+            shapes.translateShape(idOfFigureToTranslate-1, vertical, horizontal);
         }
-        if(results == 0)
+        catch(std::invalid_argument& e)
         {
-            std::cout << "No figures are located " << userInput;
+            std::cout << "Horizontal or vertical args are invalid \n" << e.what();
         }
-    }
-    else if(inputWithoutWithin[0] == FIRST_LETTER_CIRCLE)
-    {
-        Circle bound = *createCircleFromUserInput(inputWithoutWithin);
-        int results = 0;
-        for(int i = 0; i < shapes.getCount(); i++)
-        {
-            if(shapes.figureWithingACirclePassedAsAnObject(bound, *shapes.getItem(i)))
-            {
-                shapes.printShapes(i);
-                results++;
-            }
-        }
-        if(results == 0)
-        {
-            std::cout << "No figures are located " << userInput;
-        }
-    }
-    else
-    {
-        //Error
-
-        return;
     }
 }
 

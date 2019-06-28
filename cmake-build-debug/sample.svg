@@ -1,9 +1,16 @@
 <?xml version="1.0" standalone="no"?>
-<!DOCTYPE svg PUBLIC " - //W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!DOCTYPE svg PUBLIC " - //W3C//DTD SVG 1.1//EN" " http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd "> 
 <svg>
-	<rect x="5" y="5" width="10" height="10" fill="green" />
-	<circle cx="5" cy="5" r="10" fill="blue" /> 
-	<rect x="100" y="60" width="10" height="10" fill="red" />
-	<line x1="0" y1="0" x2="200" y2="200" fill="blue" />
-	<polygon points="200,10 250,190 160,210" fill="blue"/>
-</svg> 
+<rect x="77.000000" y="73.000000" width="1.000000" height="1.000000" fill="#3399ff" />
+<rect x="64.000000" y="65.000000" width="2.000000" height="2.000000" fill="#3399ff" />
+<rect x="33.000000" y="33.000000" width="1.000000" height="1.000000" fill="#3399ff" />
+<circle cx="35.000000" cy="32.000000" r="2.000000" fill="#3399ff" />
+<line x1="24.000000" y1="25.000000" x2="22.000000" y2="22.000000" fill="#3399ff" />
+<circle cx="25.000000" cy="22.000000" r="2.000000" fill="#3399ff" />
+<rect x="13.000000" y="13.000000" width="1.000000" height="1.000000" fill="#3399ff" />
+<rect x="14.000000" y="15.000000" width="2.000000" height="2.000000" fill="#3399ff" />
+<rect x="17.000000" y="13.000000" width="1.000000" height="1.000000" fill="#3399ff" />
+<circle cx="14.000000" cy="15.000000" r="5.000000" fill="#3399ff" />
+<line x1="14.000000" y1="15.000000" x2="12.000000" y2="12.000000" fill="#3399ff" />
+<circle cx="15.000000" cy="12.000000" r="2.000000" fill="#3399ff" />
+</svg>

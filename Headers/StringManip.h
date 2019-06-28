@@ -5,6 +5,18 @@
 #include <limits>
 
 const std::string invalidDelimiter = "Invalid delimiter";
+inline const int countChar(const std::string& userInput, const char searched)
+{
+    int amountOfChars = 0, s = userInput.length();
+    for (int i = 0; i < s; i++)
+    {
+        if (userInput[i] == searched)
+        {
+            amountOfChars++;
+        }
+    }
+    return amountOfChars;
+}
 
 inline const std::string removeChar(const std::string& userInput, const char charToRemove)
 {
@@ -85,20 +97,20 @@ inline const int findNthOccuranceOfChar(const std::string& input, const char& to
 }
 inline const double cutFirstNumberFromStringAsDouble(std::string& input, const char& delimiter)
 {
-	int indexOfFirstSpace;
+	int indexOfFirstSpace = 0;
     int isFirstSymbolDelimitier = 0;
 	double result = -1;
 
-	if(input[0] == delimiter)
+	if(input[0] == delimiter && countChar(input, delimiter) > 1)
     {
 	    isFirstSymbolDelimitier = 1;
         indexOfFirstSpace = findNthOccuranceOfChar(input, delimiter, 2);
     }
 	else
     {
-
         indexOfFirstSpace = findNthOccuranceOfChar(input, delimiter, 1);
     }
+
 
 	if(indexOfFirstSpace == std::string::npos)
     {
@@ -143,7 +155,7 @@ inline const std::string removeFirstSubstringFromString(const std::string& input
 
 	std::string result;
 	indexOfFirstSpace = input.find(delimiter);
-	result = input.substr(indexOfFirstSpace);
+	result = input.substr(indexOfFirstSpace+1);
 
 	return result;
 }
@@ -176,18 +188,6 @@ inline const int cutFirstNumberFromStringAsInt(std::string& input, const char& d
 	return (int)cutFirstNumberFromStringAsDouble(input, delimiter);
 }
 
-inline const int countChar(const std::string& userInput, const char searched)
-{
-	int amountOfChars = 0, s = userInput.length();
-	for (int i = 0; i < s; i++)
-	{
-		if (userInput[i] == searched)
-		{
-			amountOfChars++;
-		}
-	}
-	return amountOfChars;
-}
 
 
 #endif

@@ -229,12 +229,14 @@ inline std::string convertLineFromFileToCommandPolygon(std::string line)
     //x1,y1 x2,y2 x3,y3 etc...
     //but we can remove the commas and send it to the vector
 
-    line = removeBrackets(line);
+    //<polygon points="200,10 250,190 160,210" fill="#0000FF"/>
+    line = removeBrackets(line); //polygon points="200,10 250,190 160,210" fill="#0000FF"
     line = removeWordFromString("points=", line);
     line = removeWordFromString("fill=", line);
-    line = removeChar(line, '"');
-    line = replaceAll(line, ',', ' ');
+    line = removeChar(line, '"'); //polygon =200,10 250,190 160,210 =#0000FF
+    line = replaceAll(line, ',', ' '); //polygon =200 10 250 190 160 210" #0000FF
 
+    std::string points, color;
     return "create " + line;
 
 }
@@ -244,13 +246,19 @@ inline std::string convertRectangleObjectToLine(const BaseShape *objectToConvert
     std::string lineForFile(tags[1]);
     point pointOfShape = *objectToConvert->getPoints();
 
-    lineForFile += concatenateTwoStrings(" x=\"", std::to_string(pointOfShape.x));
-    lineForFile += concatenateTwoStrings("\" y=\"", std::to_string(pointOfShape.y));
-    lineForFile += concatenateTwoStrings("\" width=\"", std::to_string(objectToConvert->getAdditionalPoints().x));
-    lineForFile += concatenateTwoStrings("\" height=\"", std::to_string(objectToConvert->getAdditionalPoints().y));
-    lineForFile += concatenateTwoStrings("\" fill=\"", objectToConvert->getColor());
-    lineForFile += "\" />";
-
+    try
+    {
+        lineForFile += concatenateTwoStrings(" x=\"", std::to_string(pointOfShape.x));
+        lineForFile += concatenateTwoStrings("\" y=\"", std::to_string(pointOfShape.y));
+        lineForFile += concatenateTwoStrings("\" width=\"", std::to_string(objectToConvert->getAdditionalPoints().x));
+        lineForFile += concatenateTwoStrings("\" height=\"", std::to_string(objectToConvert->getAdditionalPoints().y));
+        lineForFile += concatenateTwoStrings("\" fill=\"", objectToConvert->getColor());
+        lineForFile += "\" />";
+    }
+    catch(std::exception& e)
+    {
+        throw e;
+    }
     return lineForFile;
 }
 
@@ -259,12 +267,18 @@ inline std::string convertCircleObjectToLine(const BaseShape *objectToConvert)
     std::string lineForFile(tags[2]);
     point pointOfShape = *objectToConvert->getPoints();
 
-    lineForFile += concatenateTwoStrings(" cx=\"", std::to_string(pointOfShape.x));
-    lineForFile += concatenateTwoStrings("\" cy=\"", std::to_string(pointOfShape.y));
-    lineForFile += concatenateTwoStrings("\" r=\"", std::to_string(objectToConvert->getAdditionalPoints().x));
-    lineForFile += concatenateTwoStrings("\" fill=\"", objectToConvert->getColor());
-    lineForFile += "\" />";
-
+    try
+    {
+        lineForFile += concatenateTwoStrings(" cx=\"", std::to_string(pointOfShape.x));
+        lineForFile += concatenateTwoStrings("\" cy=\"", std::to_string(pointOfShape.y));
+        lineForFile += concatenateTwoStrings("\" r=\"", std::to_string(objectToConvert->getAdditionalPoints().x));
+        lineForFile += concatenateTwoStrings("\" fill=\"", objectToConvert->getColor());
+        lineForFile += "\" />";
+    }
+    catch(std::exception& e)
+    {
+        throw e;
+    }
     return lineForFile;
 
 }
@@ -273,14 +287,21 @@ inline std::string convertLineObjectToLine(const BaseShape *objectToConvert)
 {
     std::string lineForFile(tags[3]);
 
-    lineForFile += concatenateTwoStrings(" x1=\"", std::to_string(objectToConvert->getPoints()[0].x));
-    lineForFile += concatenateTwoStrings("\" y1=\"", std::to_string(objectToConvert->getPoints()[0].y));
-    lineForFile += concatenateTwoStrings("\" x2=\"", std::to_string(objectToConvert->getPoints()[1].x));
-    lineForFile += concatenateTwoStrings("\" y2=\"", std::to_string(objectToConvert->getPoints()[1].y));
+    try
+    {
+        lineForFile += concatenateTwoStrings(" x1=\"", std::to_string(objectToConvert->getPoints()[0].x));
 
-    lineForFile += concatenateTwoStrings("\" fill=\"", objectToConvert->getColor());
-    lineForFile += "\" />";
+        lineForFile += concatenateTwoStrings("\" y1=\"", std::to_string(objectToConvert->getPoints()[0].y));
+        lineForFile += concatenateTwoStrings("\" x2=\"", std::to_string(objectToConvert->getPoints()[1].x));
+        lineForFile += concatenateTwoStrings("\" y2=\"", std::to_string(objectToConvert->getPoints()[1].y));
 
+        lineForFile += concatenateTwoStrings("\" fill=\"", objectToConvert->getColor());
+        lineForFile += "\" />";
+    }
+    catch(std::exception& e)
+    {
+        throw e;
+    }
     return lineForFile;
 
 }
@@ -292,16 +313,23 @@ inline std::string convertPolygonObjectToLine(const BaseShape *currentObject)
     lineForFile.append(" points=\"");
 
     int amountOfPoints = currentObject->getPointsCount();
-    for(int i = 0; i < amountOfPoints - 1; i++)
-    {
-        lineForFile += concatenateTwoStrings(std::to_string(currentObject->getPoints()[i].x), ",");
-        lineForFile += concatenateTwoStrings(std::to_string(currentObject->getPoints()[i].y), " ");
-    }
-    lineForFile += std::to_string(currentObject->getPoints()[amountOfPoints - 1].x);
-    lineForFile += concatenateTwoStrings(",", std::to_string(currentObject->getPoints()[amountOfPoints - 1].y));
-    lineForFile += concatenateTwoStrings("\" fill=\"", currentObject->getColor());
-    lineForFile += "\"/>";
 
+    try
+    {
+        for(int i = 0; i < amountOfPoints - 1; i++)
+        {
+            lineForFile += concatenateTwoStrings(std::to_string(currentObject->getPoints()[i].x), ",");
+            lineForFile += concatenateTwoStrings(std::to_string(currentObject->getPoints()[i].y), " ");
+        }
+        lineForFile += std::to_string(currentObject->getPoints()[amountOfPoints - 1].x);
+        lineForFile += concatenateTwoStrings(",", std::to_string(currentObject->getPoints()[amountOfPoints - 1].y));
+        lineForFile += concatenateTwoStrings("\" fill=\"", currentObject->getColor());
+        lineForFile += "\"/>";
+    }
+    catch(std::exception& e)
+    {
+        throw e;
+    }
     return lineForFile;
 }
 

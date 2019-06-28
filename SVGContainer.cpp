@@ -78,8 +78,7 @@ void SVGContainer::printShapes(int idOfTheShapeToPrint)
 	}
 	else
 	{
-		std::cout << "Invalid shape!";
-		return;
+		throw std::invalid_argument("Invalid shape");
 	}
 }
 
@@ -88,7 +87,14 @@ void SVGContainer::printShapes()
 	//If we want to print all objects, we just make a loop
 	for (int i = 0; i < itemCount; i++)
 	{
-		printShapes(i);
+		try
+        {
+		    printShapes(i);
+        }
+		catch(std::invalid_argument& e)
+        {
+		    throw e;
+        }
 	}
 }
 
@@ -111,58 +117,16 @@ void SVGContainer::eraseShape(const int idOfTheShapeToErase)
 
 void SVGContainer::translateShape(const int & idOfFigureToTranslate , const double & vertical, const double & horizontal)
 {
-    shapes[idOfFigureToTranslate]->translate(vertical, horizontal);
+    try
+    {
+        shapes[idOfFigureToTranslate]->translate(vertical, horizontal);
+    }
+    catch (std::invalid_argument& e)
+    {
+        throw e;
+    }
 }
 
-
-const bool SVGContainer::figureWithingARectanglePassedAsAnObject(const Rectangle & bound, const BaseShape & obj) //TO BE REFACTORED
-{
-	if (obj.getType() == RECTANGLE)
-	{
-	    //Rectangle temp = obj;
-		//return bound.checkIfRectangleIsWithinRectangle(temp);
-	}
-	else if (obj.getType() == CIRCLE)
-	{
-        //return bound.checkIfCircleIsWithinRectangle(obj);
-	}
-	else if (obj.getType() == LINE)
-	{
-        //return bound.checkIfLineIsWithinRectangle(obj);
-	}
-	else if (obj.getType() == POLYGON)
-	{
-        //return bound.checkIfPolygonIsWithinRectangle(obj);
-	}
-	else
-	{
-		std::cout << "Error";
-		return false;
-	}
-	return false;
-}
-
-const bool SVGContainer::figureWithingACirclePassedAsAnObject(const Circle & bound, const BaseShape & obj)
-{
-
-	if (obj.getType() == RECTANGLE)
-	{
-		//return checkIfRectangleIsWithinCircle(bound, obj);
-	}
-	else if (obj.getType() == CIRCLE)
-	{
-		//return checkIfCircleIsWithinCircle(bound, obj);
-	}
-	else if (obj.getType() == LINE)
-	{
-		//return checkIfLineIsWithinCircle(bound, obj);
-	}
-	else if (obj.getType() == POLYGON)
-	{
-		//return checkIfPolygonIsWithinCircle(bound, obj);
-	}
-	return true;
-}
 
 const BaseShape * SVGContainer::getItem(const int idOfTheItem) const
 {

@@ -48,17 +48,15 @@ protected:
     void setPoints(const double, const double, int);
     void setPoints(const point*, const int); //All points
 
-
     virtual void setSize(const point) {};
 
 public:
-
     BaseShape();
     BaseShape(const std::pair<const point*, const int>& ,const std::string&, const shape&);
     BaseShape(const BaseShape&);
     BaseShape& operator=(const BaseShape&);
 
-    bool translate(const int, const int);
+    void translate(const int, const int);
     const point * getPoints() const;
     const shape getType() const;
     const std::string getColor() const;

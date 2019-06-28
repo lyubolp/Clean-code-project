@@ -7,27 +7,27 @@ inline void deleteDynamicArray(point* objectToDelete)
 	delete[] objectToDelete;
 }
 
-inline void copyDynamicArray(point* destination, const point* source, const int sizeOfBothArrays)
+inline point* copyDynamicArray(const point* source, const int sizeOfBothArrays)
 {
     if(sizeOfBothArrays < 1)
     {
         throw std::invalid_argument("Invalid size");
     }
-    destination = new point[sizeOfBothArrays];
+    point* destination = new point[sizeOfBothArrays];
 
     for (int i = 0; i < sizeOfBothArrays; i++)
     {
         destination[i] = source[i];
     }
+    return destination;
 }
-inline void replaceDynamicArray(point* destination, const point* source, const int sizeOfBothArrays)
+inline point* replaceDynamicArray(const point* source, const int sizeOfBothArrays)
 {
     if(sizeOfBothArrays < 1)
     {
         throw std::invalid_argument("Invalid size");
     }
-	deleteDynamicArray(destination);
-	copyDynamicArray(destination, source, sizeOfBothArrays);
+	return copyDynamicArray(source, sizeOfBothArrays);
 }
 
 inline point* insertObjectIntoArray(std::pair<point, const int> objectToInsertAtPosition, std::pair<point*, const int> arrayToBeInsertedInWithItsSize)

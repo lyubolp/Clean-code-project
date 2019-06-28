@@ -27,7 +27,7 @@ void Circle::setSize(const point circleRadius)
 
 void Circle::print() const
 {
-    std::cout << "circle " << BaseShape::getPoints() << radius << BaseShape::getColor() << "\n";
+    std::cout << "circle " << *getPoints() << " " << getAdditionalPoints().x << " " << getColor() << "\n";
 }
 
 /*bool Circle::checkIfPointIsWithinCircle(const point & pointToCheck) const

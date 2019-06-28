@@ -1,22 +1,6 @@
 # Plan for the project
 
-## Unit testing
-
-InputParser.h
-MathFunctions.h
-Base.h
-Polygon.h
-Circle.h
-Rectangle.h
-Line.h
-DynamicMemoryManagment.h
-CommandLineInterface.h
-SVGContainer.h
-SVGFile.h
-
-## Putting it all together
-
-## Defensive programming. Exceptions. Optimizations 
+## Defensive programming. Exceptions. Optimizations (28) 
 
 ### Expect incorrect input and handle it correctly
 
@@ -30,7 +14,7 @@ SVGFile.h
 
 ### Use descriptive error messages
 
-## Source code – formating and (self-)documentation
+## Source code – formating and (self-)documentation (28)
 
 ### THE FORMATTING of the source code should disclose its logical structure
 
@@ -95,13 +79,18 @@ SVGFile.h
 
 ### Give the file a name related to its contents 
 
-### SVGContainer & SVGFile should be Singleton
 
-## Support for non-hex colors
 
-## Fix the bug with Circle/Rectangle
+## SVGContainer & SVGFile should be Singleton (29)
 
-## Migrate from .h to .hpp
+## Support for non-hex colors (29)
 
-## Putting it all together
+## Fix the bug with Circle/Rectangle (29)
 
+## Migrate from .h to .hpp (29)
+
+## Rewrite Polygon support (Maybe remove it if there is no time) (29)
+
+## Comments in the SVG file (How are they handeled) (29)
+
+## Unit testing (30)
