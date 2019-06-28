@@ -1,4 +1,4 @@
-#include "Headers/SVGContainer.h"
+#include "Headers/SVGContainer.hpp"
 #include <iostream>
 #include <cmath>
 
@@ -26,6 +26,15 @@ SVGContainer& SVGContainer::operator=(const SVGContainer& objectToCopyFrom)
 		itemCount = objectToCopyFrom.itemCount;
 	}
 	return *this;
+}
+
+SVGContainer::~SVGContainer()
+{
+    int s = shapes.size();
+    for (int i = 0; i < s; i++)
+    {
+        delete shapes[i];
+    }
 }
 
 const shape SVGContainer::checkTypeOfShape(BaseShape * toCheck)
@@ -98,8 +107,6 @@ void SVGContainer::printShapes()
 	}
 }
 
-
-
 void SVGContainer::eraseShape(const int idOfTheShapeToErase)
 {
 	if (idOfTheShapeToErase <= itemCount) //If the figure exists
@@ -138,12 +145,5 @@ const int SVGContainer::getCount() const
 	return itemCount;
 }
 
-SVGContainer::~SVGContainer()
-{
-	int s = shapes.size();
-	for (int i = 0; i < s; i++)
-	{
-		delete shapes[i];
-	}
-}
+
  

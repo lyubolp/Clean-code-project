@@ -1,10 +1,10 @@
 #include <iostream>
-#include "Headers/InputParser.h"
-#include "Headers/InputValidation.h"
-#include "Headers/CommandLineInterface.h"
+#include "Headers/InputParser.hpp"
+#include "Headers/InputValidation.hpp"
+#include "Headers/CommandLineInterface.hpp"
 #include <string>
-#include "Headers/Rectangle.h"
-#include "Headers/StringManip.h"
+#include "Headers/Rectangle.hpp"
+#include "Headers/StringManip.hpp"
 
 //#define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 #define CATCH_CONFIG_RUNNER

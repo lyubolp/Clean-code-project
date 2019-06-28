@@ -1,13 +1,13 @@
 #pragma once
-#include "Headers/Base.h"
-#include "Headers/Rectangle.h"
-#include "Headers/Polygon.h"
-#include "Headers/Line.h"
-#include "Headers/Circle.h"
+#include "Headers/Base.hpp"
+#include "Headers/Rectangle.hpp"
+#include "Headers/Polygon.hpp"
+#include "Headers/Line.hpp"
+#include "Headers/Circle.hpp"
 
-#include "Headers/MathFunctions.h"
+#include "Headers/MathFunctions.hpp"
 
-#include "Headers/StringManip.h"
+#include "Headers/StringManip.hpp"
 #include <vector>
 
 const int OFFSET_RECTANGLE_WORD = 10;
@@ -32,14 +32,6 @@ const char FIRST_LETTER_HORIZONTAL = 'h';
 
 class SVGContainer
 {
-private:
-	
-	int itemCount;
-	std::vector<BaseShape*> shapes;
-
-	//Wrapper for getType()
-    const shape checkTypeOfShape(BaseShape *);
-
 public:
 	
 	/*
@@ -56,6 +48,7 @@ public:
 	SVGContainer(const SVGContainer&);
 	SVGContainer& operator=(const SVGContainer&);
 
+    ~SVGContainer();
 
 	void addShape(BaseShape*);
 
@@ -66,16 +59,15 @@ public:
 
     void translateShape(const int&, const double&, const double&);
 
-	const bool figureWithingARectanglePassedAsAnObject(const Rectangle &, const BaseShape &);
-	const bool figureWithingACirclePassedAsAnObject(const Circle &, const BaseShape &);
-
-
-	//Access
-    const BaseShape * getItem(const int) const;
+	const BaseShape * getItem(const int) const;
 	const int getCount() const;
 
-	
+private:
 
+    int itemCount;
+    std::vector<BaseShape*> shapes;
 
-	~SVGContainer();
+    //Wrapper for getType()
+    const shape checkTypeOfShape(BaseShape *);
+
 };

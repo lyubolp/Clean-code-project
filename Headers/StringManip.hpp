@@ -1,5 +1,5 @@
-#ifndef CLEAN_CODE_PROJECT_STRINGMANIP_H
-#define CLEAN_CODE_PROJECT_STRINGMANIP_H
+#ifndef CLEAN_CODE_PROJECT_STRINGMANIP_HPP
+#define CLEAN_CODE_PROJECT_STRINGMANIP_HPP
 #include <iostream>
 #include <string>
 #include <limits>
@@ -97,6 +97,8 @@ inline const int findNthOccuranceOfChar(const std::string& input, const char& to
 }
 inline const double cutFirstNumberFromStringAsDouble(std::string& input, const char& delimiter)
 {
+    //Returns the first number surrounded by <delimiter>. Also remove the <delimiters> around the number and the number
+    //itself from the string
 	int indexOfFirstSpace = 0;
     int isFirstSymbolDelimitier = 0;
 	double result = -1;
@@ -125,7 +127,9 @@ inline const double cutFirstNumberFromStringAsDouble(std::string& input, const c
 
 inline const std::string cutFirstSubstringFromString(std::string& input, const char& delimiter)
 {
-	int indexOfFirstSpace;
+    //Returns the first substring surrounded by <delimiter>. Also remove the <delimiters> around the substring
+    // and the substring itself from the string
+    int indexOfFirstSpace;
     int isFirstSymbolDelimitier = 0;
 	std::string result;
 
@@ -151,6 +155,7 @@ inline const std::string cutFirstSubstringFromString(std::string& input, const c
 
 inline const std::string removeFirstSubstringFromString(const std::string& input, const char& delimiter)
 {
+    //Removes the first substring surrounder by <delimiter>. Does not return it
 	int indexOfFirstSpace;
 
 	std::string result;

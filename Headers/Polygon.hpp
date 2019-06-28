@@ -1,9 +1,7 @@
 #pragma once
-#include "Headers/Base.h"
+#include "Headers/Base.hpp"
 class Polygon : public BaseShape
 {
-private:
-
 public:
 	Polygon();
 	Polygon(const point*, int,const std::string);

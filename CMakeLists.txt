@@ -7,23 +7,23 @@ include_directories(.)
 
 add_executable(Clean_code_project
         Base.cpp
-        Headers/Base.h
+        Headers/Base.hpp
         Circle.cpp
-        Headers/Circle.h
-        Headers/DynamicMemoryManagment.h
-        Headers/InputValidation.h
+        Headers/Circle.hpp
+        Headers/DynamicMemoryManagment.hpp
+        Headers/InputValidation.hpp
         Line.cpp
-        Headers/Line.h
+        Headers/Line.hpp
         main.cpp
         Polygon.cpp
-        Headers/Polygon.h
+        Headers/Polygon.hpp
         Rectangle.cpp
-        Headers/Rectangle.h
-        Headers/StringManip.h
+        Headers/Rectangle.hpp
+        Headers/StringManip.hpp
         SVGContainer.cpp
-        Headers/SVGContainer.h
+        Headers/SVGContainer.hpp
         SVGFile.cpp
-        Headers/SVGFile.h
+        Headers/SVGFile.hpp
         CommandLineInterface.cpp
-        Headers/CommandLineInterface.h
-        Headers/MathFunctions.h Headers/InputParser.h)
+        Headers/CommandLineInterface.hpp
+        Headers/MathFunctions.hpp Headers/InputParser.hpp)

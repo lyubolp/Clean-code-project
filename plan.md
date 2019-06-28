@@ -1,19 +1,5 @@
 # Plan for the project
 
-## Defensive programming. Exceptions. Optimizations (28) 
-
-### Expect incorrect input and handle it correctly
-
-### Check the values of all routine input parameters
-
-### Decide how to handle bad inputs 
-
-### Assertion
-
-### Exceptions
-
-### Use descriptive error messages
-
 ## Source code – formating and (self-)documentation (28)
 
 ### THE FORMATTING of the source code should disclose its logical structure
@@ -24,9 +10,9 @@
 
 ### Use the following order of definitions: 
 
-### 	Constants, inner types, fields, constructors, get/set, methods 
+public, protected, private
 
-### 	Static members, public members, protected members, default/internal members, private members 
+types (including `typedef`,`using`, and nested structs and classes), constants, factory functions, constructors, assignment operators, destructor, all other methods, data members.
 
 ### External documentation
 

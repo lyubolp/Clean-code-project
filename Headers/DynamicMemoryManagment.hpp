@@ -1,6 +1,6 @@
 #pragma once
-#include "Headers/Base.h"
-#include "MathFunctions.h"
+#include "Headers/Base.hpp"
+#include "MathFunctions.hpp"
 
 inline void deleteDynamicArray(point* objectToDelete)
 {
@@ -13,12 +13,14 @@ inline point* copyDynamicArray(const point* source, const int sizeOfBothArrays)
     {
         throw std::invalid_argument("Invalid size");
     }
-    point* destination = new point[sizeOfBothArrays];
+
+    auto* destination = new point[sizeOfBothArrays];
 
     for (int i = 0; i < sizeOfBothArrays; i++)
     {
         destination[i] = source[i];
     }
+
     return destination;
 }
 inline point* replaceDynamicArray(const point* source, const int sizeOfBothArrays)

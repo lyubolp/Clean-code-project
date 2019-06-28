@@ -4,40 +4,27 @@
 
 #include <string>
 #include <cstring>
-#include "Headers/CommandLineInterface.h"
-#include "Headers/StringManip.h"
+#include "Headers/CommandLineInterface.hpp"
+#include "Headers/StringManip.hpp"
 
 
-CommandLineInterface::CommandLineInterface()
+CommandLineInterface::CommandLineInterface():isFileOpen(false)
 {
-    isFileOpen = false;
-}
-void CommandLineInterface::fillPointsFromUserInput(point *toFill, int &amountOfPoints, std::string &inputWtihoutPolygon)
-{
-    if(amountOfPoints % 2 != 0)
-    {
-        throw std::length_error("Invalid amount of points");
-    }
-    double x = 0, y = 0;
-    for(int i = 0; i < amountOfPoints / 2; i++)
-    {
-        x = cutFirstNumberFromStringAsDouble(inputWtihoutPolygon, ' ');
-        y = cutFirstNumberFromStringAsDouble(inputWtihoutPolygon, ' ');
-        if(x == std::numeric_limits<double>::min() || y == -std::numeric_limits<double>::min())
-        {
-            throw std::invalid_argument("Invalid user input");
-        }
-        toFill[i] = point(x, y);
-    }
+
 }
 
 Rectangle *CommandLineInterface::createRectangleFromUserInput(const std::string &userInput)
 {
+    //Turns <rect x="77.000000" y="73.000000" width="1.000000" height="1.000000" fill="#3399ff" />
+    //into
+    //create rectangle 77.000000 73.000000 1.000000 1.000000 #3399ff
+    //That is due to the fact that the SVGContainer can parse commands to create a Rectangle object
+
     int indexOfWordRectangle = userInput.find("rectangle");
     if(indexOfWordRectangle != std::string::npos)
     {
-        std::string inputWithoutRectangle = userInput.substr(indexOfWordRectangle +
-                                                             OFFSET_RECTANGLE_WORD);
+        //Converting the XML to a command by getting the numbers
+        std::string inputWithoutRectangle = userInput.substr(indexOfWordRectangle + OFFSET_RECTANGLE_WORD);
 
         double xCoordinate = cutFirstNumberFromStringAsDouble(inputWithoutRectangle, ' ');
         double yCoordinate = cutFirstNumberFromStringAsDouble(inputWithoutRectangle, ' ');
@@ -50,9 +37,9 @@ Rectangle *CommandLineInterface::createRectangleFromUserInput(const std::string 
             throw std::invalid_argument("Invalid input... coordinates (x,y, width or height) are invalid.");
         }
 
-        std::string color = inputWithoutRectangle;
+        const std::string color = inputWithoutRectangle;
 
-        point* p = new point(xCoordinate, yCoordinate);
+        const auto* p = new point(xCoordinate, yCoordinate);
         Rectangle *result = new Rectangle(p, color, width, height);
 
         return result;
@@ -66,11 +53,16 @@ Rectangle *CommandLineInterface::createRectangleFromUserInput(const std::string 
 
 Circle *CommandLineInterface::createCircleFromUserInput(const std::string &userInput)
 {
+    //Turns <circle cx="35.000000" cy="32.000000" r="2.000000" fill="#3399ff" />
+    //into
+    //create circle 32.000000 32.000000 2.000000 #3399ff
+    //That is due to the fact that the SVGContainer can parse commands to create a Circle object
+
     int indexOfWordCircle = userInput.find("circle");
     if(indexOfWordCircle != std::string::npos)
     {
-        std::string inputWithoutCircle = userInput.substr(indexOfWordCircle +
-                                                          OFFSET_CIRCLE_WORD);
+        std::string inputWithoutCircle = userInput.substr(indexOfWordCircle + OFFSET_CIRCLE_WORD);
+        //Converting the XML to a command by getting the numbers
 
         double xCoordinate = cutFirstNumberFromStringAsDouble(inputWithoutCircle, ' ');
         double yCoordinate = cutFirstNumberFromStringAsDouble(inputWithoutCircle, ' ');
@@ -84,7 +76,7 @@ Circle *CommandLineInterface::createCircleFromUserInput(const std::string &userI
 
         std::string color = inputWithoutCircle;
 
-        point* p = new point(xCoordinate, yCoordinate);
+        auto* p = new point(xCoordinate, yCoordinate);
         Circle *result = new Circle(p, color, radius);
 
         return result;
@@ -98,6 +90,11 @@ Circle *CommandLineInterface::createCircleFromUserInput(const std::string &userI
 
 Line *CommandLineInterface::createLineFromUserInput(const std::string &userInput)
 {
+    //Turns <line x1="24.000000" y1="25.000000" x2="22.000000" y2="22.000000" fill="#3399ff" />
+    //into
+    //create line 24.000000 25.000000 22.000000 22.000000 #3399ff
+    //That is due to the fact that the SVGContainer can parse commands to create a Rectangle object
+
     int indexOfWordLine = userInput.find("line");
     if(indexOfWordLine != 1)
     {
@@ -131,6 +128,11 @@ Line *CommandLineInterface::createLineFromUserInput(const std::string &userInput
 
 Polygon *CommandLineInterface::createPolygonFromUserInput(const std::string &userInput)
 {
+    //Turns <polygon points="20,20 30,30 40,40" fill="#00FFFF" />
+    //into
+    //create polygon 20 20 30 30 40 40 #00FFFF
+    //That is due to the fact that the SVGContainer can parse commands to create a Polygon object
+
     int indexOfWordPolygon = userInput.find("polygon");
     if(indexOfWordPolygon != 1)
     {
@@ -164,6 +166,26 @@ Polygon *CommandLineInterface::createPolygonFromUserInput(const std::string &use
         }
     }
     return nullptr;
+}
+
+void CommandLineInterface::fillPointsFromUserInput(point *toFill, int &amountOfPoints, std::string &inputWtihoutPolygon)
+{
+    //Fills an array of points from a string
+    if(amountOfPoints % 2 != 0) //The count of points should be even
+    {
+        throw std::length_error("Invalid amount of points");
+    }
+    double x = 0, y = 0;
+    for(int i = 0; i < amountOfPoints / 2; i++)
+    {
+        x = cutFirstNumberFromStringAsDouble(inputWtihoutPolygon, ' ');
+        y = cutFirstNumberFromStringAsDouble(inputWtihoutPolygon, ' ');
+        if(x == std::numeric_limits<double>::min() || y == -std::numeric_limits<double>::min())
+        {
+            throw std::invalid_argument("Invalid user input");
+        }
+        toFill[i] = point(x, y);
+    }
 }
 
 bool CommandLineInterface::exec(const std::string &userInput)

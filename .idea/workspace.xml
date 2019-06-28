@@ -2,7 +2,7 @@
 <project version="4">
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/SVGContainer.cpp" line="6" />
-    <bookmark url="file://$PROJECT_DIR$/Headers/InputParser.h" />
+    <bookmark url="file://$PROJECT_DIR$/Headers/InputParser.hpp" />
   </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
@@ -16,33 +16,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8af62897-b4c8-43f6-b0d6-f98695808dec" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Headers/Base.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Headers/Circle.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Headers/Line.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Headers/Rectangle.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Headers/SVGFile.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Base.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Base.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Circle.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Circle.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CommandLineInterface.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/CommandLineInterface.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Headers/Base.h" beforeDir="false" afterPath="$PROJECT_DIR$/Headers/Base.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Headers/DynamicMemoryManagment.h" beforeDir="false" afterPath="$PROJECT_DIR$/Headers/DynamicMemoryManagment.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Headers/InputParser.h" beforeDir="false" afterPath="$PROJECT_DIR$/Headers/InputParser.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Headers/SVGFile.h" beforeDir="false" afterPath="$PROJECT_DIR$/Headers/SVGFile.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Headers/StringManip.h" beforeDir="false" afterPath="$PROJECT_DIR$/Headers/StringManip.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Headers/Base.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Headers/Circle.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Headers/CommandLineInterface.h" beforeDir="false" afterPath="$PROJECT_DIR$/Headers/CommandLineInterface.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Headers/DynamicMemoryManagment.h" beforeDir="false" afterPath="$PROJECT_DIR$/Headers/DynamicMemoryManagment.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Headers/InputParser.h" beforeDir="false" afterPath="$PROJECT_DIR$/Headers/InputParser.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Headers/InputValidation.h" beforeDir="false" afterPath="$PROJECT_DIR$/Headers/InputValidation.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Headers/Line.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Headers/MathFunctions.h" beforeDir="false" afterPath="$PROJECT_DIR$/Headers/MathFunctions.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Headers/Polygon.h" beforeDir="false" afterPath="$PROJECT_DIR$/Headers/Polygon.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Headers/Rectangle.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Headers/SVGContainer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Headers/SVGContainer.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Headers/SVGFile.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Headers/StringManip.h" beforeDir="false" afterPath="$PROJECT_DIR$/Headers/StringManip.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Line.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Line.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Polygon.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Polygon.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Rectangle.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Rectangle.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SVGContainer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/SVGContainer.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SVGFile.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/SVGFile.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Clean_code_project.dir/Base.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Clean_code_project.dir/Base.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Clean_code_project.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Clean_code_project.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Clean_code_project.dir/Circle.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Clean_code_project.dir/Circle.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Clean_code_project.dir/CommandLineInterface.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Clean_code_project.dir/CommandLineInterface.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Clean_code_project.dir/Polygon.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Clean_code_project.dir/Polygon.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Clean_code_project.dir/Rectangle.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Clean_code_project.dir/Rectangle.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Clean_code_project.dir/SVGContainer.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Clean_code_project.dir/SVGContainer.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Clean_code_project.dir/SVGFile.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Clean_code_project.dir/SVGFile.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Clean_code_project.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Clean_code_project.dir/main.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Clean_code_project" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Clean_code_project" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/sample.svg" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/sample.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/plan.md" beforeDir="false" afterPath="$PROJECT_DIR$/plan.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample2.svg" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -58,22 +61,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
-              <caret line="62" column="61" selection-start-line="62" selection-start-column="61" selection-end-line="62" selection-end-column="61" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CommandLineInterface.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="212" column="80" selection-start-line="212" selection-start-column="80" selection-end-line="212" selection-end-column="80" />
+            <state relative-caret-position="414">
+              <caret line="23" column="44" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
               <folding>
                 <element signature="e#40#57#0" expanded="true" />
               </folding>
@@ -81,25 +72,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SVGFile.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="601">
-              <caret line="210" column="4" lean-forward="true" selection-start-line="210" selection-start-column="4" selection-end-line="213" selection-end-column="5" />
+            <state relative-caret-position="288">
+              <caret line="16" column="29" lean-forward="true" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Headers/InputParser.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="316" column="7" lean-forward="true" selection-start-line="316" selection-start-column="7" selection-end-line="316" selection-end-column="7" />
-              <folding>
-                <element signature="e#123#142#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -127,7 +106,10 @@
       <find>\\\</find>
       <find>X is</find>
       <find>is less than 0, setting it to 0.</find>
+      <find>setSize</find>
+      <find>getAd</find>
       <find>print</find>
+      <find>setShape</find>
     </findStrings>
     <replaceStrings>
       <replace>CommandLineInterface</replace>
@@ -162,38 +144,40 @@
         <option value="$PROJECT_DIR$/MathFunctions.h" />
         <option value="$PROJECT_DIR$/StringManip.h" />
         <option value="$PROJECT_DIR$/SVGFile.h" />
-        <option value="$PROJECT_DIR$/Headers/Line.h" />
-        <option value="$PROJECT_DIR$/Headers/Polygon.h" />
-        <option value="$PROJECT_DIR$/Headers/SVGContainer.h" />
-        <option value="$PROJECT_DIR$/Headers/Circle.h" />
-        <option value="$PROJECT_DIR$/Line.cpp" />
         <option value="$PROJECT_DIR$/Polygon.cpp" />
-        <option value="$PROJECT_DIR$/Headers/Rectangle.h" />
         <option value="$PROJECT_DIR$/Headers/MathFunctions.h" />
         <option value="$PROJECT_DIR$/Headers/InputValidation.h" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_2.cpp" />
-        <option value="$PROJECT_DIR$/Headers/CommandLineInterface.h" />
-        <option value="$PROJECT_DIR$/Headers/SVGFile.h" />
         <option value="$PROJECT_DIR$/sample.svg" />
         <option value="$PROJECT_DIR$/sample2.svg" />
-        <option value="$PROJECT_DIR$/Headers/DynamicMemoryManagment.h" />
-        <option value="$PROJECT_DIR$/Rectangle.cpp" />
-        <option value="$PROJECT_DIR$/Circle.cpp" />
-        <option value="$PROJECT_DIR$/Base.cpp" />
-        <option value="$PROJECT_DIR$/Headers/Base.h" />
-        <option value="$PROJECT_DIR$/Headers/StringManip.h" />
         <option value="$PROJECT_DIR$/cmake-build-debug/sample.svg" />
         <option value="$PROJECT_DIR$/main.cpp" />
-        <option value="$PROJECT_DIR$/SVGContainer.cpp" />
+        <option value="$PROJECT_DIR$/Headers/Base.h" />
+        <option value="$PROJECT_DIR$/Circle.cpp" />
+        <option value="$PROJECT_DIR$/Base.cpp" />
+        <option value="$PROJECT_DIR$/Headers/Circle.h" />
+        <option value="$PROJECT_DIR$/Rectangle.cpp" />
+        <option value="$PROJECT_DIR$/Headers/CommandLineInterface.h" />
+        <option value="$PROJECT_DIR$/Headers/DynamicMemoryManagment.h" />
         <option value="$PROJECT_DIR$/Headers/InputParser.h" />
+        <option value="$PROJECT_DIR$/Headers/Line.h" />
+        <option value="$PROJECT_DIR$/Line.cpp" />
+        <option value="$PROJECT_DIR$/Headers/Polygon.h" />
+        <option value="$PROJECT_DIR$/Headers/Rectangle.h" />
+        <option value="$PROJECT_DIR$/Headers/StringManip.h" />
+        <option value="$PROJECT_DIR$/Headers/SVGContainer.h" />
+        <option value="$PROJECT_DIR$/Headers/SVGFile.h" />
         <option value="$PROJECT_DIR$/SVGFile.cpp" />
+        <option value="$PROJECT_DIR$/SVGContainer.cpp" />
         <option value="$PROJECT_DIR$/CommandLineInterface.cpp" />
+        <option value="$PROJECT_DIR$/Headers/StringManip.hpp" />
       </list>
     </option>
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
-  <component name="ProjectFrameBounds" extendedState="7" fullScreen="true">
-    <option name="y" value="-37" />
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+    <option name="x" value="1366" />
+    <option name="y" value="137" />
     <option name="width" value="1920" />
     <option name="height" value="1117" />
   </component>
@@ -310,15 +294,15 @@
       <workItem from="1561470882407" duration="1804000" />
       <workItem from="1561546779272" duration="21830000" />
       <workItem from="1561614989392" duration="17580000" />
-      <workItem from="1561701818053" duration="3773000" />
+      <workItem from="1561701818053" duration="21048000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="162876000" />
+    <option name="totallyTimeSpent" value="180151000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-37" width="1920" height="1117" extended-state="7" />
+    <frame x="1366" y="137" width="1920" height="1117" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16080937" />
@@ -441,25 +425,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/MathFunctions.cpp" />
     <entry file="file://$PROJECT_DIR$/Source.cpp" />
-    <entry file="file://$PROJECT_DIR$/Headers/Line.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor />
           <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Headers/Polygon.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -473,26 +443,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Headers/Circle.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
-          <folding>
-            <element signature="e#74#99#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Polygon.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" column="1" lean-forward="true" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/catch.hpp">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -500,16 +450,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
           <caret line="82" selection-start-line="82" selection-end-line="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Headers/MathFunctions.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
-          <folding>
-            <element signature="e#13#32#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -539,118 +479,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Headers/InputValidation.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="851">
-          <caret line="69" selection-end-line="71" />
-          <folding>
-            <element signature="e#14#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.txt">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Headers/Rectangle.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="9" lean-forward="true" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="13" />
-          <folding>
-            <element signature="e#79#104#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Headers/DynamicMemoryManagment.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="e#13#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Line.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Rectangle.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="70" column="46" lean-forward="true" selection-start-line="70" selection-start-column="46" selection-end-line="70" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Circle.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Base.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="736">
-          <caret line="186" column="59" selection-start-line="186" selection-start-column="59" selection-end-line="186" selection-end-column="59" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Headers/Base.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="58" column="41" lean-forward="true" selection-start-line="58" selection-start-column="41" selection-end-line="58" selection-end-column="41" />
-          <folding>
-            <element signature="e#13#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Headers/SVGContainer.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="55" column="38" lean-forward="true" selection-start-line="55" selection-start-column="38" selection-end-line="55" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmake-build-debug/sample2.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Headers/CommandLineInterface.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="27" column="17" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="17" />
-          <folding>
-            <element signature="e#153#170#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmake-build-debug/sample.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Headers/SVGFile.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
-          <folding>
-            <element signature="e#14#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/buffer1.txt">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
@@ -662,58 +495,209 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SVGContainer.cpp">
+    <entry file="file://$PROJECT_DIR$/ClassDiagram.jpeg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Headers/Base.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1076">
-          <caret line="95" column="20" selection-start-line="95" selection-start-column="20" selection-end-line="95" selection-end-column="20" />
+        <state relative-caret-position="389">
+          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
           <folding>
-            <element signature="e#0#33#0" expanded="true" />
+            <element signature="e#13#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.txt">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/sample.svg">
+      <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/buffer1.txt">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/sample3.svg">
+      <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Headers/StringManip.h">
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/sample2.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Headers/Line.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6">
-          <caret line="143" column="32" lean-forward="true" selection-start-line="143" selection-start-column="32" selection-end-line="143" selection-end-column="32" />
+        <state relative-caret-position="216">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Headers/Rectangle.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="25" column="17" lean-forward="true" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
           <folding>
-            <element signature="e#82#101#0" expanded="true" />
+            <element signature="e#79#104#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Headers/InputParser.h">
+    <entry file="file://$PROJECT_DIR$/Headers/SVGContainer.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="316" column="7" lean-forward="true" selection-start-line="316" selection-start-column="7" selection-end-line="316" selection-end-column="7" />
+        <state relative-caret-position="295">
+          <caret line="40" column="14" selection-start-line="40" selection-start-column="14" selection-end-line="40" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Headers/SVGFile.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+          <folding>
+            <element signature="e#14#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Headers/CommandLineInterface.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+          <folding>
+            <element signature="e#153#170#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Headers/DynamicMemoryManagment.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+          <folding>
+            <element signature="e#13#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Headers/InputParser.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="315" column="30" selection-start-line="315" selection-start-column="30" selection-end-line="315" selection-end-column="30" />
           <folding>
             <element signature="e#123#142#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SVGFile.cpp">
+    <entry file="file://$PROJECT_DIR$/Headers/InputValidation.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="601">
-          <caret line="210" column="4" lean-forward="true" selection-start-line="210" selection-start-column="4" selection-end-line="213" selection-end-column="5" />
+        <state relative-caret-position="264">
+          <caret line="37" column="1" lean-forward="true" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
           <folding>
-            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#14#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Headers/Polygon.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="2" lean-forward="true" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Circle.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Line.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Headers/Circle.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="23" column="1" lean-forward="true" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SVGContainer.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-371">
+          <caret line="80" column="5" lean-forward="true" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CommandLineInterface.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="212" column="80" selection-start-line="212" selection-start-column="80" selection-end-line="212" selection-end-column="80" />
+        <state relative-caret-position="414">
+          <caret line="23" column="44" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
           <folding>
             <element signature="e#40#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rectangle.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Headers/MathFunctions.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" column="29" lean-forward="true" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+          <folding>
+            <element signature="e#13#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Base.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-587">
+          <caret line="132" column="11" lean-forward="true" selection-start-line="132" selection-start-column="11" selection-end-line="132" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Headers/StringManip.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="179" column="1" selection-start-line="179" selection-start-column="1" selection-end-line="179" selection-end-column="1" />
+          <folding>
+            <element signature="e#82#101#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Polygon.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="30" lean-forward="true" selection-start-column="30" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SVGFile.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="16" column="29" lean-forward="true" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>

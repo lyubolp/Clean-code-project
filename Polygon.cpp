@@ -1,4 +1,4 @@
-#include "Headers/Polygon.h"
+#include "Headers/Polygon.hpp"
 #include <iostream>
 
 

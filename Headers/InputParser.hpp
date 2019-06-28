@@ -2,15 +2,15 @@
 // Created by lyubo on 14.05.19.
 //
 
-#ifndef CLEAN_CODE_PROJECT_INPUTPARSER_H
-#define CLEAN_CODE_PROJECT_INPUTPARSER_H
+#ifndef CLEAN_CODE_PROJECT_INPUTPARSER_HPP
+#define CLEAN_CODE_PROJECT_INPUTPARSER_HPP
 
 #include <iostream>
 #include <string.h>
-#include "InputValidation.h"
-#include "StringManip.h"
-#include "Base.h"
-#include "SVGFile.h"
+#include "InputValidation.hpp"
+#include "StringManip.hpp"
+#include "Base.hpp"
+#include "SVGFile.hpp"
 
 
 static std::string firstLine = "<?xml version=\"1.0\" standalone=\"no\"?>";
@@ -19,6 +19,7 @@ static std::string tags[7] = {"<svg>", "<rect", "<circle", "<line", "<polygon", 
 
 inline const std::string convertLineFromFileToCommandRectangle(const std::string &line)
 {
+    //The function that converts XML to command for SVGContainer
     double x = -1, y = -1, width = -1, height = -1;
     std::string color, parsedString, lineCut;
 
@@ -28,7 +29,6 @@ inline const std::string convertLineFromFileToCommandRectangle(const std::string
         lineCut = removeBrackets(lineCut);
         lineCut = removeBlankSpaces(lineCut);
 
-        //while (lineCut.compare(">") != 0)
         for(int i = 0; i < 5; i++)
         {
             int locationOfEquals = lineCut.find('=');
@@ -113,6 +113,7 @@ inline const std::string convertLineFromFileToCommandRectangle(const std::string
 
 inline std::string convertLineFromFileToCommandCircle(std::string line)
 {
+    //The function that converts XML to command for SVGContainer
     if(isValidLineCircle(line))
     {
         double x, y, radius;
@@ -169,6 +170,7 @@ inline std::string convertLineFromFileToCommandCircle(std::string line)
 
 inline std::string convertLineFromFileToCommandLine(std::string line)
 {
+    //The function that converts XML to command for SVGContainer
     if(isValidLineLine(line))
     {
         double x, y, x2, y2;
@@ -243,6 +245,7 @@ inline std::string convertLineFromFileToCommandPolygon(std::string line)
 
 inline std::string convertRectangleObjectToLine(const BaseShape *objectToConvert)
 {
+    //This converts an Rectangle object to XML
     std::string lineForFile(tags[1]);
     point pointOfShape = *objectToConvert->getPoints();
 
@@ -264,6 +267,7 @@ inline std::string convertRectangleObjectToLine(const BaseShape *objectToConvert
 
 inline std::string convertCircleObjectToLine(const BaseShape *objectToConvert)
 {
+    //This converts an Circle object to XML
     std::string lineForFile(tags[2]);
     point pointOfShape = *objectToConvert->getPoints();
 
@@ -285,6 +289,7 @@ inline std::string convertCircleObjectToLine(const BaseShape *objectToConvert)
 
 inline std::string convertLineObjectToLine(const BaseShape *objectToConvert)
 {
+    //This converts an Line object to XML
     std::string lineForFile(tags[3]);
 
     try
@@ -308,6 +313,7 @@ inline std::string convertLineObjectToLine(const BaseShape *objectToConvert)
 
 inline std::string convertPolygonObjectToLine(const BaseShape *currentObject)
 {
+    //This converts an Polygon object to XML
     std::string lineForFile(tags[4]);
 
     lineForFile.append(" points=\"");
@@ -333,4 +339,4 @@ inline std::string convertPolygonObjectToLine(const BaseShape *currentObject)
     return lineForFile;
 }
 
-#endif //CLEAN_CODE_PROJECT_INPUTPARSER_H
+#endif //CLEAN_CODE_PROJECT_INPUTPARSER_HPP
