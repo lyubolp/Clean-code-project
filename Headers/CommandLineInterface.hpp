@@ -15,7 +15,7 @@
 class CommandLineInterface {
 public:
 
-    CommandLineInterface& getInstance();
+    static CommandLineInterface& getInstance();
 
     bool exec(const std::string&);
 
@@ -47,12 +47,10 @@ private:
 
     void eraseShape(const std::string&);
 
-
     const double getValueFromCommand(std::string&, const std::string&);
     void translateShape(const std::string&);
 
     bool isFileOpen;
-    SVGContainer shapes;
 };
 
 

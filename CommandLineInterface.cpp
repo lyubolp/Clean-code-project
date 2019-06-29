@@ -7,15 +7,36 @@
 #include "Headers/CommandLineInterface.hpp"
 #include "Headers/StringManip.hpp"
 
-
-CommandLineInterface &CommandLineInterface::getInstance()
+void man() //Shows user manual
 {
-    static CommandLineInterface instance;
-
-    return instance;
+    std::cout << "SVG project \n";
+    std::cout << "Avaiable commands:\n";
+    std::cout << "open - to open a file: open C:\\file.svg\n";
+    std::cout << "close - to close the file: close\n";
+    std::cout << "save - to save the current file: save\n";
+    std::cout << "saveas - to save the file in a new place: saveas C:\\file.svg\n";
+    std::cout << "exit - to exit the program: exit\n";
+    std::cout << "print - prints all figures\n";
+    std::cout << "create - creates a new figure:\n\n";
+    std::cout << "create <figure> <points> <additionalPoints> <color>\n";
+    std::cout << " <rectangle> := create rectangle <x> <y> <width> <height> <color>\n";
+    std::cout << " <circle> := create circle <x> <y> <r> <color>\n";
+    std::cout << " <line> := create line <x1> <y1> <x2> <y2> <color>\n";
+    std::cout << "erase - erase a figure, by id: erase 2\n";
+    std::cout << "translates - translates all or one figure:\n translate vertical=10 horizontal=100 \n translate 1 vertical=20 horizontal=200\n \n";
 }
 
 
+CommandLineInterface& CommandLineInterface::getInstance()
+{
+    static CommandLineInterface instance;
+    return instance;
+}
+
+CommandLineInterface::CommandLineInterface()
+{
+
+}
 std::pair<Point *, Point> CommandLineInterface::generatePointsFromUserInput(std::string &userInput, const shape &typeOf) const
 {
     auto *coordinates = new Point();
@@ -132,7 +153,7 @@ Line *CommandLineInterface::createLineFromUserInput(const std::string &userInput
         try
         {
             //Point* -> x1 and y1; Point -> x2 and y2
-            std::pair<Point *, Point> pointsOfLine = generatePointsFromUserInput(inputWithoutLine, CIRCLE);
+            std::pair<Point *, Point> pointsOfLine = generatePointsFromUserInput(inputWithoutLine, LINE);
 
             std::string color = inputWithoutLine;
 
@@ -201,7 +222,7 @@ bool CommandLineInterface::execSave(const std::string &userInput) const
     {
         try
         {
-            SVGFile::getInstance().saveFile(shapes);
+            SVGFile::getInstance().saveFile(SVGContainer::getInstance());
             return true;
         }
         catch(std::exception &e)
@@ -223,7 +244,7 @@ bool CommandLineInterface::execSaveAs(const std::string &userInput) const
     {
         try
         {
-            SVGFile::getInstance().saveAsFile(userInput, shapes);
+            SVGFile::getInstance().saveAsFile(userInput, SVGContainer::getInstance());
             return true;
         }
         catch(std::exception &e)
@@ -258,6 +279,7 @@ bool CommandLineInterface::execErase(const std::string &userInput)
     {
         std::cout << "No file is open...\n Please use open <file_name> to open a file\n";
     }
+    return false;
 }
 
 bool CommandLineInterface::execTranslate(const std::string & userInput)
@@ -281,6 +303,7 @@ bool CommandLineInterface::execTranslate(const std::string & userInput)
         std::cout << "No file is open...\n Please use open <file_name> to open a file\n";
         return false;
     }
+    return false;
 }
 
 bool CommandLineInterface::execClose(const std::string &userInput)
@@ -335,12 +358,12 @@ bool CommandLineInterface::execPrint(const std::string &userInput)
     {
         try
         {
-            shapes.printShapes();
+            SVGContainer::getInstance().printShapes();
             return true;
         }
         catch(std::invalid_argument &e)
         {
-            std::cout << "Cannot print shapes.\n" << e.what() << "\n";
+            std::cout << "Cannot print SVGContainer::getInstance().\n" << e.what() << "\n";
             return false;
         }
     }
@@ -388,6 +411,10 @@ bool CommandLineInterface::exec(const std::string &userInput)
     {
         return execPrint(userInput);
     }
+    else if(userInput.find("man") != std::string::npos)
+    {
+        man();
+    }
     return true;
 }
 
@@ -415,7 +442,7 @@ void CommandLineInterface::createShape(const std::string &userInput)
             try
             {
                 Rectangle *temp = createRectangleFromUserInput(userInput);
-                shapes.addShape(temp);
+                SVGContainer::getInstance().addShape(temp);
             }
             catch(std::invalid_argument &e)
             {
@@ -433,7 +460,7 @@ void CommandLineInterface::createShape(const std::string &userInput)
         else
         {
             Circle *temp = createCircleFromUserInput(userInput);
-            shapes.addShape(temp);
+            SVGContainer::getInstance().addShape(temp);
         }
     }
     else if(userInput[INSERT_COMMAND_FIRST_LETTER_OF_SHAPE_LOCATION] == FIRST_LETTER_LINE)
@@ -445,7 +472,7 @@ void CommandLineInterface::createShape(const std::string &userInput)
         else
         {
             Line *temp = createLineFromUserInput(userInput);
-            shapes.addShape(temp);
+            SVGContainer::getInstance().addShape(temp);
         }
     }
     else
@@ -462,10 +489,10 @@ void CommandLineInterface::eraseShape(const std::string &userInput)
     {
         throw std::invalid_argument("Invalid command");
     }
-    shapes.eraseShape(std::stoi(userInput.substr(indexOfWordErase + OFFSET_ERASE_WORD)));
+    SVGContainer::getInstance().eraseShape(std::stoi(userInput.substr(indexOfWordErase + OFFSET_ERASE_WORD)));
 }
 
-const double getValueFromCommand(std::string& userInput, const std::string& attributeToGetFrom)
+const double CommandLineInterface::getValueFromCommand(std::string& userInput, const std::string& attributeToGetFrom)
 {
     userInput = removeWordFromString(attributeToGetFrom, userInput);
     double result = cutFirstNumberFromStringAsDouble(userInput, '"');
@@ -503,12 +530,12 @@ void CommandLineInterface::translateShape(const std::string &coordinates)
 
     if(idOfFigureToTranslate == -1) //If we have to translate all figures, we loop them
     {
-        int s = shapes.getCount();
+        int s = SVGContainer::getInstance().getCount();
         for(int i = 0; i < s; i++)
         {
             try
             {
-                shapes.translateShape(i, vertical, horizontal);
+                SVGContainer::getInstance().translateShape(i, vertical, horizontal);
             }
             catch(std::invalid_argument &e)
             {
@@ -520,7 +547,7 @@ void CommandLineInterface::translateShape(const std::string &coordinates)
     {
         try
         {
-            shapes.translateShape(idOfFigureToTranslate - 1, vertical, horizontal);
+            SVGContainer::getInstance().translateShape(idOfFigureToTranslate - 1, vertical, horizontal);
         }
         catch(std::invalid_argument &e)
         {

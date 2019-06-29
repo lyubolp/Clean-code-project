@@ -705,6 +705,8 @@ Headers/CommandLineInterface.hpp
 /home/lyubo/Uni/КПК/Clean-code-project/Headers/CommandLineInterface.hpp
 string
 -
+fcntl.h
+-
 Headers/Rectangle.hpp
 /home/lyubo/Uni/КПК/Clean-code-project/Headers/Rectangle.hpp
 Headers/StringManip.hpp

@@ -18,7 +18,7 @@ public:
 	const int openFile(const std::string &);
 
 	int saveFile(const SVGContainer&);
-	int saveAsFile(const std::string, const SVGContainer&);
+	int saveAsFile(const std::string&, const SVGContainer&);
 
 	int closeFile();
 
@@ -27,13 +27,10 @@ public:
 	std::vector<std::string> loadIntoContainer() const;
 
 private:
-
     SVGFile();
 
     SVGFile(const SVGFile&) = delete;
     SVGFile operator=(const SVGFile&) = delete;
-
-
 
     std::string filePath;
     std::ifstream fileStream;
@@ -44,9 +41,4 @@ private:
     void addLineToFile(std::string);
     void convertLineFromFileToCommand(std::string&);
     void convertObjectToLine(const BaseShape*);
-
-
-
-
-
 };

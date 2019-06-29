@@ -149,6 +149,9 @@
 		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/SVGFile.cpp">
 			<Option target="Clean_code_project"/>
 		</Unit>
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/UnitTests.h">
+			<Option target="Clean_code_project"/>
+		</Unit>
 		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/main.cpp">
 			<Option target="Clean_code_project"/>
 		</Unit>

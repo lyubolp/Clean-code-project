@@ -8,6 +8,11 @@ SVGFile& SVGFile::getInstance()
 
     return instance;
 }
+
+SVGFile::SVGFile()
+{
+
+}
 void SVGFile::addFirstTagsToFile()
 {
 	fileWrite << firstLine << "\n";
@@ -85,7 +90,7 @@ int SVGFile::saveFile(const SVGContainer& shapesContainer)
     return 1;
 }
 
-int SVGFile::saveAsFile(const std::string userInput, const SVGContainer& containerWhichWillBeSaved)
+int SVGFile::saveAsFile(const std::string& userInput, const SVGContainer& containerWhichWillBeSaved)
 {
     std::string tempPath = filePath;
 

@@ -1,0 +1,41 @@
+Opening file...
+File opened successfully
+  	Printing all shapes...
+1. circle 65 62 2 #3399ff
+2. circle 55 52 2 #3399ff
+3. circle 25 22 2 #3399ff
+4. line 14 15 12 12 #3399ff
+5. circle 15 12 2 #3399ff
+  	 Creating a rectangle and printing all shapes again...
+1. circle 65 62 2 #3399ff
+2. circle 55 52 2 #3399ff
+3. circle 25 22 2 #3399ff
+4. line 14 15 12 12 #3399ff
+5. circle 15 12 2 #3399ff
+6. rectangle 3 3 1 1 #3399ff
+  	 Creating some more shapes and printing all...
+1. circle 65 62 2 #3399ff
+2. circle 55 52 2 #3399ff
+3. circle 25 22 2 #3399ff
+4. line 14 15 12 12 #3399ff
+5. circle 15 12 2 #3399ff
+6. rectangle 3 3 1 1 #3399ff
+7. rectangle 4 5 2 2 #3399ff
+8. rectangle 7 3 1 1 #3399ff
+9. circle 4 5 5 #3399ff
+10. line 4 5 2 2 #3399ff
+11. circle 5 2 2 #3399ff
+  	 Time to erase the new ones... 
+1. circle 55 52 2 #3399ff
+2. circle 25 22 2 #3399ff
+3. circle 15 12 2 #3399ff
+4. line 4 5 2 2 #3399ff
+5. circle 5 2 2 #3399ff
+  	 Testing the translate feature... 
+1. circle 65 62 2 #3399ff
+2. circle 55 52 2 #3399ff
+3. circle 25 22 2 #3399ff
+4. line 14 15 12 12 #3399ff
+5. circle 15 12 2 #3399ff
+  	 Testing the save feature... 
+ sample3.svg File has been closed successfully
