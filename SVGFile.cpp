@@ -60,7 +60,7 @@ int SVGFile::saveFile(const SVGContainer& shapesContainer)
     {
         addFirstTagsToFile();
 
-        const BaseShape* currentObject = new BaseShape();
+        const BaseShape* currentObject;
         int amountOfShape = shapesContainer.getCount();
 
         try
@@ -159,10 +159,6 @@ void SVGFile::convertLineFromFileToCommand(std::string& line)
             throw e;
         }
     }
-    else if (line.find("<polygon") != -1)
-    {
-        parsedLines.push_back(convertLineFromFileToCommandPolygon(line));
-    }
     else
     {
         return;
@@ -204,19 +200,6 @@ void SVGFile::convertObjectToLine(const BaseShape * currentObject) {
         try
         {
             std::string lineForFile = convertLineObjectToLine(currentObject);
-            addLineToFile(lineForFile);
-        }
-        catch(std::exception& e)
-        {
-            throw e;
-        }
-
-    }
-    else if (typeOfShape == POLYGON)
-    {
-        try
-        {
-            std::string lineForFile = convertPolygonObjectToLine(currentObject);
             addLineToFile(lineForFile);
         }
         catch(std::exception& e)

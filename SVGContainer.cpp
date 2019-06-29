@@ -10,10 +10,6 @@ SVGContainer& SVGContainer::getInstance()
 }
 
 
-SVGContainer::SVGContainer() :itemCount(0)
-{
-
-}
 
 const shape SVGContainer::checkTypeOfShape(BaseShape * toCheck)
 {
@@ -34,13 +30,11 @@ void SVGContainer::printShapes(int idOfTheShapeToPrint)
 	//<rectangle>:= <id> <type> <x> <y> <width> <height> <color>
 	//<circle>:= <id> <type> <x> <y> <radius> <color>
 	//<line>:= <id> <type> <x1> <y1> <x2> <y2> <color>
-	//<polygon>:= <id> <type> <point1> <point2> ... <pointN> <color>
 
 	//1. rectangle 5 5 10 10 green
 	//2. circle 5 5 10 blue
 	//3. rectangle 100 60 10 10 red
-	//4. polygon 12 12 12
-	//5. line 1 1 2 2
+	//4. line 1 1 2 2
 
 	std::cout << idOfTheShapeToPrint + 1 << ". "; //Prints the id-s
 
@@ -56,10 +50,6 @@ void SVGContainer::printShapes(int idOfTheShapeToPrint)
 		shapeToPrint->print();
 	}
 	else if (typeOfShapeToPrint == LINE)
-	{
-        shapeToPrint->print();
-	}
-	else if (typeOfShapeToPrint == POLYGON)
 	{
         shapeToPrint->print();
 	}

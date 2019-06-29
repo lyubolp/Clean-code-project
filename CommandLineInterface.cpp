@@ -152,47 +152,6 @@ Line *CommandLineInterface::createLineFromUserInput(const std::string &userInput
     return nullptr;
 }
 
-Polygon *CommandLineInterface::createPolygonFromUserInput(const std::string &userInput) const
-{
-    //Turns <polygon points="20,20 30,30 40,40" fill="#00FFFF" />
-    //into
-    //create polygon 20 20 30 30 40 40 #00FFFF
-    //That is due to the fact that the SVGContainer can parse commands to create a Polygon object
-
-    int indexOfWordPolygon = userInput.find("polygon");
-    if(indexOfWordPolygon != 1)
-    {
-        std::string inputWithoutPolygon = userInput.substr(indexOfWordPolygon + OFFSET_POLYGON_WORD), color;
-        int amountOfPoints = countChar(inputWithoutPolygon, SPACE_ASCII) - 1; //We also have one ' ' for the color
-
-        if(amountOfPoints % 2 == 0)
-        {
-            auto *temp = new Point[amountOfPoints / 2];
-            try
-            {
-                fillPointsFromUserInput(temp, amountOfPoints, inputWithoutPolygon);
-                color = inputWithoutPolygon;
-                Polygon *result = new Polygon(temp, amountOfPoints / 2, color);
-
-                return result;
-            }
-            catch(std::length_error &lengthError)
-            {
-                throw lengthError;
-            }
-            catch(std::invalid_argument &invalidArgument)
-            {
-                throw invalidArgument;
-            }
-
-        }
-        else
-        {
-            throw std::invalid_argument("Invalid command\n");
-        }
-    }
-    return nullptr;
-}
 
 void CommandLineInterface::fillPointsFromUserInput(Point *toFill, int &amountOfPoints, std::string &inputWtihoutPolygon) const
 {
@@ -488,11 +447,6 @@ void CommandLineInterface::createShape(const std::string &userInput)
             Line *temp = createLineFromUserInput(userInput);
             shapes.addShape(temp);
         }
-    }
-    else if(userInput[INSERT_COMMAND_FIRST_LETTER_OF_SHAPE_LOCATION] == FIRST_LETTER_POLYGON)
-    {
-        Polygon *temp = createPolygonFromUserInput(userInput);
-        shapes.addShape(temp);
     }
     else
     {

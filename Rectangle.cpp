@@ -19,7 +19,7 @@ Rectangle::Rectangle(const Point* arrayOfPoints, const std::string  shapeColor ,
 	}
 
 }
-Rectangle::Rectangle(const Rectangle& objectToCopyFrom):BaseShape(objectToCopyFrom),width(objectToCopyFrom.getAdditionalPoints().x), height(objectToCopyFrom.getAdditionalPoints().y)
+Rectangle::Rectangle(const Rectangle& objectToCopyFrom):BaseShape(objectToCopyFrom),width(objectToCopyFrom.getAdditionalPoints().getX()), height(objectToCopyFrom.getAdditionalPoints().getY())
 {
 
 }
@@ -41,18 +41,18 @@ const Point Rectangle::getAdditionalPoints() const
 
 void Rectangle::setSize(const Point& size)
 {
-    if (isNumberBiggerThanZero(size.x))
+    if (isNumberBiggerThanZero(size.getX()))
     {
-        width = size.x;
+        width = size.getX();
     }
     else
     {
         throw std::invalid_argument("Width is negative\n");
     }
 
-    if (isNumberBiggerThanZero(size.y))
+    if (isNumberBiggerThanZero(size.getY()))
     {
-        height = size.y;
+        height = size.getY();
     }
     else
     {

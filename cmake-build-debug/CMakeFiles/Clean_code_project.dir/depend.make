@@ -14,7 +14,6 @@ CMakeFiles/Clean_code_project.dir/Circle.cpp.o: .././Headers/InputValidation.hpp
 CMakeFiles/Clean_code_project.dir/Circle.cpp.o: .././Headers/Line.hpp
 CMakeFiles/Clean_code_project.dir/Circle.cpp.o: .././Headers/MathFunctions.hpp
 CMakeFiles/Clean_code_project.dir/Circle.cpp.o: .././Headers/Point.hpp
-CMakeFiles/Clean_code_project.dir/Circle.cpp.o: .././Headers/Polygon.hpp
 CMakeFiles/Clean_code_project.dir/Circle.cpp.o: .././Headers/StringManip.hpp
 CMakeFiles/Clean_code_project.dir/Circle.cpp.o: ../Circle.cpp
 CMakeFiles/Clean_code_project.dir/Circle.cpp.o: ../Headers/Circle.hpp
@@ -26,7 +25,6 @@ CMakeFiles/Clean_code_project.dir/CommandLineInterface.cpp.o: .././Headers/Input
 CMakeFiles/Clean_code_project.dir/CommandLineInterface.cpp.o: .././Headers/Line.hpp
 CMakeFiles/Clean_code_project.dir/CommandLineInterface.cpp.o: .././Headers/MathFunctions.hpp
 CMakeFiles/Clean_code_project.dir/CommandLineInterface.cpp.o: .././Headers/Point.hpp
-CMakeFiles/Clean_code_project.dir/CommandLineInterface.cpp.o: .././Headers/Polygon.hpp
 CMakeFiles/Clean_code_project.dir/CommandLineInterface.cpp.o: .././Headers/Rectangle.hpp
 CMakeFiles/Clean_code_project.dir/CommandLineInterface.cpp.o: .././Headers/SVGContainer.hpp
 CMakeFiles/Clean_code_project.dir/CommandLineInterface.cpp.o: .././Headers/StringManip.hpp
@@ -35,18 +33,13 @@ CMakeFiles/Clean_code_project.dir/CommandLineInterface.cpp.o: ../Headers/Command
 CMakeFiles/Clean_code_project.dir/CommandLineInterface.cpp.o: ../Headers/SVGFile.hpp
 CMakeFiles/Clean_code_project.dir/CommandLineInterface.cpp.o: ../Headers/StringManip.hpp
 
-CMakeFiles/Clean_code_project.dir/Headers/Point.cpp.o: ../Headers/Point.cpp
-CMakeFiles/Clean_code_project.dir/Headers/Point.cpp.o: ../Headers/Point.hpp
-
 CMakeFiles/Clean_code_project.dir/Line.cpp.o: .././Headers/Base.hpp
 CMakeFiles/Clean_code_project.dir/Line.cpp.o: .././Headers/Point.hpp
 CMakeFiles/Clean_code_project.dir/Line.cpp.o: ../Headers/Line.hpp
 CMakeFiles/Clean_code_project.dir/Line.cpp.o: ../Line.cpp
 
-CMakeFiles/Clean_code_project.dir/Polygon.cpp.o: .././Headers/Base.hpp
-CMakeFiles/Clean_code_project.dir/Polygon.cpp.o: .././Headers/Point.hpp
-CMakeFiles/Clean_code_project.dir/Polygon.cpp.o: ../Headers/Polygon.hpp
-CMakeFiles/Clean_code_project.dir/Polygon.cpp.o: ../Polygon.cpp
+CMakeFiles/Clean_code_project.dir/Point.cpp.o: ../Headers/Point.hpp
+CMakeFiles/Clean_code_project.dir/Point.cpp.o: ../Point.cpp
 
 CMakeFiles/Clean_code_project.dir/Rectangle.cpp.o: .././Headers/Base.hpp
 CMakeFiles/Clean_code_project.dir/Rectangle.cpp.o: .././Headers/Circle.hpp
@@ -54,7 +47,6 @@ CMakeFiles/Clean_code_project.dir/Rectangle.cpp.o: .././Headers/InputValidation.
 CMakeFiles/Clean_code_project.dir/Rectangle.cpp.o: .././Headers/Line.hpp
 CMakeFiles/Clean_code_project.dir/Rectangle.cpp.o: .././Headers/MathFunctions.hpp
 CMakeFiles/Clean_code_project.dir/Rectangle.cpp.o: .././Headers/Point.hpp
-CMakeFiles/Clean_code_project.dir/Rectangle.cpp.o: .././Headers/Polygon.hpp
 CMakeFiles/Clean_code_project.dir/Rectangle.cpp.o: .././Headers/StringManip.hpp
 CMakeFiles/Clean_code_project.dir/Rectangle.cpp.o: ../Headers/Rectangle.hpp
 CMakeFiles/Clean_code_project.dir/Rectangle.cpp.o: ../Rectangle.cpp
@@ -65,7 +57,6 @@ CMakeFiles/Clean_code_project.dir/SVGContainer.cpp.o: .././Headers/InputValidati
 CMakeFiles/Clean_code_project.dir/SVGContainer.cpp.o: .././Headers/Line.hpp
 CMakeFiles/Clean_code_project.dir/SVGContainer.cpp.o: .././Headers/MathFunctions.hpp
 CMakeFiles/Clean_code_project.dir/SVGContainer.cpp.o: .././Headers/Point.hpp
-CMakeFiles/Clean_code_project.dir/SVGContainer.cpp.o: .././Headers/Polygon.hpp
 CMakeFiles/Clean_code_project.dir/SVGContainer.cpp.o: .././Headers/Rectangle.hpp
 CMakeFiles/Clean_code_project.dir/SVGContainer.cpp.o: .././Headers/StringManip.hpp
 CMakeFiles/Clean_code_project.dir/SVGContainer.cpp.o: ../Headers/SVGContainer.hpp
@@ -78,7 +69,6 @@ CMakeFiles/Clean_code_project.dir/SVGFile.cpp.o: .././Headers/InputValidation.hp
 CMakeFiles/Clean_code_project.dir/SVGFile.cpp.o: .././Headers/Line.hpp
 CMakeFiles/Clean_code_project.dir/SVGFile.cpp.o: .././Headers/MathFunctions.hpp
 CMakeFiles/Clean_code_project.dir/SVGFile.cpp.o: .././Headers/Point.hpp
-CMakeFiles/Clean_code_project.dir/SVGFile.cpp.o: .././Headers/Polygon.hpp
 CMakeFiles/Clean_code_project.dir/SVGFile.cpp.o: .././Headers/Rectangle.hpp
 CMakeFiles/Clean_code_project.dir/SVGFile.cpp.o: .././Headers/SVGContainer.hpp
 CMakeFiles/Clean_code_project.dir/SVGFile.cpp.o: .././Headers/SVGFile.hpp
@@ -90,7 +80,6 @@ CMakeFiles/Clean_code_project.dir/main.cpp.o: .././Headers/Base.hpp
 CMakeFiles/Clean_code_project.dir/main.cpp.o: .././Headers/Circle.hpp
 CMakeFiles/Clean_code_project.dir/main.cpp.o: .././Headers/Line.hpp
 CMakeFiles/Clean_code_project.dir/main.cpp.o: .././Headers/MathFunctions.hpp
-CMakeFiles/Clean_code_project.dir/main.cpp.o: .././Headers/Polygon.hpp
 CMakeFiles/Clean_code_project.dir/main.cpp.o: .././Headers/SVGContainer.hpp
 CMakeFiles/Clean_code_project.dir/main.cpp.o: ../Headers/Base.hpp
 CMakeFiles/Clean_code_project.dir/main.cpp.o: ../Headers/CommandLineInterface.hpp

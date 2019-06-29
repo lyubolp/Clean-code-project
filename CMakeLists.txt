@@ -15,8 +15,6 @@ add_executable(Clean_code_project
         Line.cpp
         Headers/Line.hpp
         main.cpp
-        Polygon.cpp
-        Headers/Polygon.hpp
         Rectangle.cpp
         Headers/Rectangle.hpp
         Headers/StringManip.hpp
@@ -26,4 +24,4 @@ add_executable(Clean_code_project
         Headers/SVGFile.hpp
         CommandLineInterface.cpp
         Headers/CommandLineInterface.hpp
-        Headers/MathFunctions.hpp Headers/InputParser.hpp Headers/Point.cpp Headers/Point.hpp)
+        Headers/MathFunctions.hpp Headers/InputParser.hpp Point.cpp Headers/Point.hpp)

@@ -251,10 +251,10 @@ inline std::string convertRectangleObjectToLine(const BaseShape *objectToConvert
 
     try
     {
-        lineForFile += concatenateTwoStrings(" x=\"", std::to_string(pointOfShape.x));
-        lineForFile += concatenateTwoStrings("\" y=\"", std::to_string(pointOfShape.y));
-        lineForFile += concatenateTwoStrings("\" width=\"", std::to_string(objectToConvert->getAdditionalPoints().x));
-        lineForFile += concatenateTwoStrings("\" height=\"", std::to_string(objectToConvert->getAdditionalPoints().y));
+        lineForFile += concatenateTwoStrings(" x=\"", std::to_string(pointOfShape.getX()));
+        lineForFile += concatenateTwoStrings("\" y=\"", std::to_string(pointOfShape.getY()));
+        lineForFile += concatenateTwoStrings("\" width=\"", std::to_string(objectToConvert->getAdditionalPoints().getX()));
+        lineForFile += concatenateTwoStrings("\" height=\"", std::to_string(objectToConvert->getAdditionalPoints().getY()));
         lineForFile += concatenateTwoStrings("\" fill=\"", objectToConvert->getColor());
         lineForFile += "\" />";
     }
@@ -273,9 +273,9 @@ inline std::string convertCircleObjectToLine(const BaseShape *objectToConvert)
 
     try
     {
-        lineForFile += concatenateTwoStrings(" cx=\"", std::to_string(pointOfShape.x));
-        lineForFile += concatenateTwoStrings("\" cy=\"", std::to_string(pointOfShape.y));
-        lineForFile += concatenateTwoStrings("\" r=\"", std::to_string(objectToConvert->getAdditionalPoints().x));
+        lineForFile += concatenateTwoStrings(" cx=\"", std::to_string(pointOfShape.getX()));
+        lineForFile += concatenateTwoStrings("\" cy=\"", std::to_string(pointOfShape.getY()));
+        lineForFile += concatenateTwoStrings("\" r=\"", std::to_string(objectToConvert->getAdditionalPoints().getX()));
         lineForFile += concatenateTwoStrings("\" fill=\"", objectToConvert->getColor());
         lineForFile += "\" />";
     }
@@ -294,11 +294,11 @@ inline std::string convertLineObjectToLine(const BaseShape *objectToConvert)
 
     try
     {
-        lineForFile += concatenateTwoStrings(" x1=\"", std::to_string(objectToConvert->getPoints()[0].x));
+        lineForFile += concatenateTwoStrings(" x1=\"", std::to_string(objectToConvert->getPoints()[0].getX()));
 
-        lineForFile += concatenateTwoStrings("\" y1=\"", std::to_string(objectToConvert->getPoints()[0].y));
-        lineForFile += concatenateTwoStrings("\" x2=\"", std::to_string(objectToConvert->getPoints()[1].x));
-        lineForFile += concatenateTwoStrings("\" y2=\"", std::to_string(objectToConvert->getPoints()[1].y));
+        lineForFile += concatenateTwoStrings("\" y1=\"", std::to_string(objectToConvert->getPoints()[0].getY()));
+        lineForFile += concatenateTwoStrings("\" x2=\"", std::to_string(objectToConvert->getPoints()[1].getX()));
+        lineForFile += concatenateTwoStrings("\" y2=\"", std::to_string(objectToConvert->getPoints()[1].getY()));
 
         lineForFile += concatenateTwoStrings("\" fill=\"", objectToConvert->getColor());
         lineForFile += "\" />";
@@ -324,11 +324,11 @@ inline std::string convertPolygonObjectToLine(const BaseShape *currentObject)
     {
         for(int i = 0; i < amountOfPoints - 1; i++)
         {
-            lineForFile += concatenateTwoStrings(std::to_string(currentObject->getPoints()[i].x), ",");
-            lineForFile += concatenateTwoStrings(std::to_string(currentObject->getPoints()[i].y), " ");
+            lineForFile += concatenateTwoStrings(std::to_string(currentObject->getPoints()[i].getX()), ",");
+            lineForFile += concatenateTwoStrings(std::to_string(currentObject->getPoints()[i].getY()), " ");
         }
-        lineForFile += std::to_string(currentObject->getPoints()[amountOfPoints - 1].x);
-        lineForFile += concatenateTwoStrings(",", std::to_string(currentObject->getPoints()[amountOfPoints - 1].y));
+        lineForFile += std::to_string(currentObject->getPoints()[amountOfPoints - 1].getX());
+        lineForFile += concatenateTwoStrings(",", std::to_string(currentObject->getPoints()[amountOfPoints - 1].getY()));
         lineForFile += concatenateTwoStrings("\" fill=\"", currentObject->getColor());
         lineForFile += "\"/>";
     }

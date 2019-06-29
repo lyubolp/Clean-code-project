@@ -39,8 +39,8 @@ inline Point* insertObjectIntoArray(std::pair<Point, const int> objectToInsertAt
         throw std::invalid_argument("Invalid size or position");
     }
 
-    bool isXisLessThanZero = !isNumberBiggerThanZero(objectToInsertAtPosition.first.x);
-    bool isYisLessThanZero = !isNumberBiggerThanZero(objectToInsertAtPosition.first.y);
+    bool isXisLessThanZero = !isNumberBiggerThanZero(objectToInsertAtPosition.first.getX());
+    bool isYisLessThanZero = !isNumberBiggerThanZero(objectToInsertAtPosition.first.getY());
 
     if(isXisLessThanZero || isYisLessThanZero)
     {

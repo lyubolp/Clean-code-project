@@ -7,7 +7,6 @@
 
 #include <string>
 #include "Headers/Rectangle.hpp"
-#include "Headers/Polygon.hpp"
 #include "Headers/Circle.hpp"
 #include "Headers/Line.hpp"
 #include "Headers/SVGContainer.hpp"
@@ -22,7 +21,7 @@ public:
 
 private:
 
-    CommandLineInterface() = default;
+    CommandLineInterface();
 
     CommandLineInterface(const CommandLineInterface&) = delete;
     CommandLineInterface operator=(const CommandLineInterface&) = delete;
@@ -41,7 +40,6 @@ private:
     Rectangle* createRectangleFromUserInput(const std::string&) const;
     Circle* createCircleFromUserInput(const std::string&) const;
     Line* createLineFromUserInput(const std::string&) const;
-    Polygon* createPolygonFromUserInput(const std::string&) const;
 
     void fillPointsFromUserInput(Point*, int&, std::string&) const;
 

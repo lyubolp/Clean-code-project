@@ -25,6 +25,9 @@ BaseShape::BaseShape(const std::pair<const Point*,const int>& newPoints, const s
 BaseShape::BaseShape(const BaseShape& rhs) : BaseShape({rhs.points, rhs.pointsCount}, rhs.color, rhs.shapeType)
 {
     //Copy constructor
+    setAllFields(std::pair<const Point *, const int>(rhs.getPoints(), rhs.getPointsCount()), rhs.getColor(),
+                 rhs.getType());
+
 }
 
 BaseShape& BaseShape::operator=(const BaseShape& rhs)
@@ -70,8 +73,8 @@ void BaseShape::translate(const int& horizontal, const int& vertical)
 	{
 		for (int i = 0; i < pointsCount; i++)
 		{
-			points[i].x += horizontal;
-			points[i].y += vertical;
+			points[i].setX(points[i].getX() + horizontal);
+			points[i].setY(points[i].getY() + vertical);
 		}
 	}
 	else
@@ -208,6 +211,6 @@ void BaseShape::setPointCount(const int& amountOfPoints)
 
 std::ostream& operator<<(std::ostream& outputStream, Point pointToPrint)
 {
-	outputStream << pointToPrint.x << " " << pointToPrint.y;
+	outputStream << pointToPrint.getX() << " " << pointToPrint.getY();
 	return outputStream;
 }

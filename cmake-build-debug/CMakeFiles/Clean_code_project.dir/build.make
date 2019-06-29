@@ -109,22 +109,9 @@ CMakeFiles/Clean_code_project.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Clean_code_project.dir/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lyubo/Uni/КПК/Clean-code-project/main.cpp -o CMakeFiles/Clean_code_project.dir/main.cpp.s
 
-CMakeFiles/Clean_code_project.dir/Polygon.cpp.o: CMakeFiles/Clean_code_project.dir/flags.make
-CMakeFiles/Clean_code_project.dir/Polygon.cpp.o: ../Polygon.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Clean_code_project.dir/Polygon.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Clean_code_project.dir/Polygon.cpp.o -c /home/lyubo/Uni/КПК/Clean-code-project/Polygon.cpp
-
-CMakeFiles/Clean_code_project.dir/Polygon.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Clean_code_project.dir/Polygon.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lyubo/Uni/КПК/Clean-code-project/Polygon.cpp > CMakeFiles/Clean_code_project.dir/Polygon.cpp.i
-
-CMakeFiles/Clean_code_project.dir/Polygon.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Clean_code_project.dir/Polygon.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lyubo/Uni/КПК/Clean-code-project/Polygon.cpp -o CMakeFiles/Clean_code_project.dir/Polygon.cpp.s
-
 CMakeFiles/Clean_code_project.dir/Rectangle.cpp.o: CMakeFiles/Clean_code_project.dir/flags.make
 CMakeFiles/Clean_code_project.dir/Rectangle.cpp.o: ../Rectangle.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Clean_code_project.dir/Rectangle.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Clean_code_project.dir/Rectangle.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Clean_code_project.dir/Rectangle.cpp.o -c /home/lyubo/Uni/КПК/Clean-code-project/Rectangle.cpp
 
 CMakeFiles/Clean_code_project.dir/Rectangle.cpp.i: cmake_force
@@ -137,7 +124,7 @@ CMakeFiles/Clean_code_project.dir/Rectangle.cpp.s: cmake_force
 
 CMakeFiles/Clean_code_project.dir/SVGContainer.cpp.o: CMakeFiles/Clean_code_project.dir/flags.make
 CMakeFiles/Clean_code_project.dir/SVGContainer.cpp.o: ../SVGContainer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Clean_code_project.dir/SVGContainer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Clean_code_project.dir/SVGContainer.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Clean_code_project.dir/SVGContainer.cpp.o -c /home/lyubo/Uni/КПК/Clean-code-project/SVGContainer.cpp
 
 CMakeFiles/Clean_code_project.dir/SVGContainer.cpp.i: cmake_force
@@ -150,7 +137,7 @@ CMakeFiles/Clean_code_project.dir/SVGContainer.cpp.s: cmake_force
 
 CMakeFiles/Clean_code_project.dir/SVGFile.cpp.o: CMakeFiles/Clean_code_project.dir/flags.make
 CMakeFiles/Clean_code_project.dir/SVGFile.cpp.o: ../SVGFile.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Clean_code_project.dir/SVGFile.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Clean_code_project.dir/SVGFile.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Clean_code_project.dir/SVGFile.cpp.o -c /home/lyubo/Uni/КПК/Clean-code-project/SVGFile.cpp
 
 CMakeFiles/Clean_code_project.dir/SVGFile.cpp.i: cmake_force
@@ -163,7 +150,7 @@ CMakeFiles/Clean_code_project.dir/SVGFile.cpp.s: cmake_force
 
 CMakeFiles/Clean_code_project.dir/CommandLineInterface.cpp.o: CMakeFiles/Clean_code_project.dir/flags.make
 CMakeFiles/Clean_code_project.dir/CommandLineInterface.cpp.o: ../CommandLineInterface.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Clean_code_project.dir/CommandLineInterface.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Clean_code_project.dir/CommandLineInterface.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Clean_code_project.dir/CommandLineInterface.cpp.o -c /home/lyubo/Uni/КПК/Clean-code-project/CommandLineInterface.cpp
 
 CMakeFiles/Clean_code_project.dir/CommandLineInterface.cpp.i: cmake_force
@@ -174,18 +161,18 @@ CMakeFiles/Clean_code_project.dir/CommandLineInterface.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Clean_code_project.dir/CommandLineInterface.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lyubo/Uni/КПК/Clean-code-project/CommandLineInterface.cpp -o CMakeFiles/Clean_code_project.dir/CommandLineInterface.cpp.s
 
-CMakeFiles/Clean_code_project.dir/Headers/Point.cpp.o: CMakeFiles/Clean_code_project.dir/flags.make
-CMakeFiles/Clean_code_project.dir/Headers/Point.cpp.o: ../Headers/Point.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Clean_code_project.dir/Headers/Point.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Clean_code_project.dir/Headers/Point.cpp.o -c /home/lyubo/Uni/КПК/Clean-code-project/Headers/Point.cpp
+CMakeFiles/Clean_code_project.dir/Point.cpp.o: CMakeFiles/Clean_code_project.dir/flags.make
+CMakeFiles/Clean_code_project.dir/Point.cpp.o: ../Point.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Clean_code_project.dir/Point.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Clean_code_project.dir/Point.cpp.o -c /home/lyubo/Uni/КПК/Clean-code-project/Point.cpp
 
-CMakeFiles/Clean_code_project.dir/Headers/Point.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Clean_code_project.dir/Headers/Point.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lyubo/Uni/КПК/Clean-code-project/Headers/Point.cpp > CMakeFiles/Clean_code_project.dir/Headers/Point.cpp.i
+CMakeFiles/Clean_code_project.dir/Point.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Clean_code_project.dir/Point.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lyubo/Uni/КПК/Clean-code-project/Point.cpp > CMakeFiles/Clean_code_project.dir/Point.cpp.i
 
-CMakeFiles/Clean_code_project.dir/Headers/Point.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Clean_code_project.dir/Headers/Point.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lyubo/Uni/КПК/Clean-code-project/Headers/Point.cpp -o CMakeFiles/Clean_code_project.dir/Headers/Point.cpp.s
+CMakeFiles/Clean_code_project.dir/Point.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Clean_code_project.dir/Point.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lyubo/Uni/КПК/Clean-code-project/Point.cpp -o CMakeFiles/Clean_code_project.dir/Point.cpp.s
 
 # Object files for target Clean_code_project
 Clean_code_project_OBJECTS = \
@@ -193,12 +180,11 @@ Clean_code_project_OBJECTS = \
 "CMakeFiles/Clean_code_project.dir/Circle.cpp.o" \
 "CMakeFiles/Clean_code_project.dir/Line.cpp.o" \
 "CMakeFiles/Clean_code_project.dir/main.cpp.o" \
-"CMakeFiles/Clean_code_project.dir/Polygon.cpp.o" \
 "CMakeFiles/Clean_code_project.dir/Rectangle.cpp.o" \
 "CMakeFiles/Clean_code_project.dir/SVGContainer.cpp.o" \
 "CMakeFiles/Clean_code_project.dir/SVGFile.cpp.o" \
 "CMakeFiles/Clean_code_project.dir/CommandLineInterface.cpp.o" \
-"CMakeFiles/Clean_code_project.dir/Headers/Point.cpp.o"
+"CMakeFiles/Clean_code_project.dir/Point.cpp.o"
 
 # External object files for target Clean_code_project
 Clean_code_project_EXTERNAL_OBJECTS =
@@ -207,15 +193,14 @@ Clean_code_project: CMakeFiles/Clean_code_project.dir/Base.cpp.o
 Clean_code_project: CMakeFiles/Clean_code_project.dir/Circle.cpp.o
 Clean_code_project: CMakeFiles/Clean_code_project.dir/Line.cpp.o
 Clean_code_project: CMakeFiles/Clean_code_project.dir/main.cpp.o
-Clean_code_project: CMakeFiles/Clean_code_project.dir/Polygon.cpp.o
 Clean_code_project: CMakeFiles/Clean_code_project.dir/Rectangle.cpp.o
 Clean_code_project: CMakeFiles/Clean_code_project.dir/SVGContainer.cpp.o
 Clean_code_project: CMakeFiles/Clean_code_project.dir/SVGFile.cpp.o
 Clean_code_project: CMakeFiles/Clean_code_project.dir/CommandLineInterface.cpp.o
-Clean_code_project: CMakeFiles/Clean_code_project.dir/Headers/Point.cpp.o
+Clean_code_project: CMakeFiles/Clean_code_project.dir/Point.cpp.o
 Clean_code_project: CMakeFiles/Clean_code_project.dir/build.make
 Clean_code_project: CMakeFiles/Clean_code_project.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable Clean_code_project"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/lyubo/Uni/КПК/Clean-code-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable Clean_code_project"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Clean_code_project.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

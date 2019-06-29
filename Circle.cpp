@@ -12,7 +12,7 @@ void Circle::setSize(const Point& circleRadius)
 {
 	if (isNumberBiggerThanZero(radius))
 	{
-		radius = circleRadius.x;
+		radius = circleRadius.getX();
 	}
 	else
 	{
@@ -22,7 +22,7 @@ void Circle::setSize(const Point& circleRadius)
 
 void Circle::print() const
 {
-    std::cout << "circle " << *getPoints() << " " << getAdditionalPoints().x << " " << getColor() << "\n";
+    std::cout << "circle " << *getPoints() << " " << getAdditionalPoints().getX() << " " << getColor() << "\n";
 }
 
 const Point Circle::getAdditionalPoints() const

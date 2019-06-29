@@ -1,7 +1,6 @@
 #pragma once
 #include "Headers/Base.hpp"
 #include "Headers/Rectangle.hpp"
-#include "Headers/Polygon.hpp"
 #include "Headers/Line.hpp"
 #include "Headers/Circle.hpp"
 

@@ -119,13 +119,7 @@
 		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/MathFunctions.hpp">
 			<Option target="Clean_code_project"/>
 		</Unit>
-		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/Point.cpp">
-			<Option target="Clean_code_project"/>
-		</Unit>
 		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/Point.hpp">
-			<Option target="Clean_code_project"/>
-		</Unit>
-		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/Polygon.hpp">
 			<Option target="Clean_code_project"/>
 		</Unit>
 		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/Rectangle.hpp">
@@ -143,7 +137,7 @@
 		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Line.cpp">
 			<Option target="Clean_code_project"/>
 		</Unit>
-		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Polygon.cpp">
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Point.cpp">
 			<Option target="Clean_code_project"/>
 		</Unit>
 		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Rectangle.cpp">

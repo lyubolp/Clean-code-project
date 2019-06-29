@@ -3,7 +3,6 @@
 #define CLEAN_CODE_PROJECT_CIRCLE_HPP
 
 #include "Headers/Base.hpp"
-#include "Headers/Polygon.hpp"
 #include "Headers/Line.hpp"
 
 #include "Headers/InputValidation.hpp"

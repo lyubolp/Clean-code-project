@@ -204,33 +204,6 @@ CommandLineInterface.cpp.s:
 	$(MAKE) -f CMakeFiles/Clean_code_project.dir/build.make CMakeFiles/Clean_code_project.dir/CommandLineInterface.cpp.s
 .PHONY : CommandLineInterface.cpp.s
 
-Headers/Point.o: Headers/Point.cpp.o
-
-.PHONY : Headers/Point.o
-
-# target to build an object file
-Headers/Point.cpp.o:
-	$(MAKE) -f CMakeFiles/Clean_code_project.dir/build.make CMakeFiles/Clean_code_project.dir/Headers/Point.cpp.o
-.PHONY : Headers/Point.cpp.o
-
-Headers/Point.i: Headers/Point.cpp.i
-
-.PHONY : Headers/Point.i
-
-# target to preprocess a source file
-Headers/Point.cpp.i:
-	$(MAKE) -f CMakeFiles/Clean_code_project.dir/build.make CMakeFiles/Clean_code_project.dir/Headers/Point.cpp.i
-.PHONY : Headers/Point.cpp.i
-
-Headers/Point.s: Headers/Point.cpp.s
-
-.PHONY : Headers/Point.s
-
-# target to generate assembly for a file
-Headers/Point.cpp.s:
-	$(MAKE) -f CMakeFiles/Clean_code_project.dir/build.make CMakeFiles/Clean_code_project.dir/Headers/Point.cpp.s
-.PHONY : Headers/Point.cpp.s
-
 Line.o: Line.cpp.o
 
 .PHONY : Line.o
@@ -258,32 +231,32 @@ Line.cpp.s:
 	$(MAKE) -f CMakeFiles/Clean_code_project.dir/build.make CMakeFiles/Clean_code_project.dir/Line.cpp.s
 .PHONY : Line.cpp.s
 
-Polygon.o: Polygon.cpp.o
+Point.o: Point.cpp.o
 
-.PHONY : Polygon.o
+.PHONY : Point.o
 
 # target to build an object file
-Polygon.cpp.o:
-	$(MAKE) -f CMakeFiles/Clean_code_project.dir/build.make CMakeFiles/Clean_code_project.dir/Polygon.cpp.o
-.PHONY : Polygon.cpp.o
+Point.cpp.o:
+	$(MAKE) -f CMakeFiles/Clean_code_project.dir/build.make CMakeFiles/Clean_code_project.dir/Point.cpp.o
+.PHONY : Point.cpp.o
 
-Polygon.i: Polygon.cpp.i
+Point.i: Point.cpp.i
 
-.PHONY : Polygon.i
+.PHONY : Point.i
 
 # target to preprocess a source file
-Polygon.cpp.i:
-	$(MAKE) -f CMakeFiles/Clean_code_project.dir/build.make CMakeFiles/Clean_code_project.dir/Polygon.cpp.i
-.PHONY : Polygon.cpp.i
+Point.cpp.i:
+	$(MAKE) -f CMakeFiles/Clean_code_project.dir/build.make CMakeFiles/Clean_code_project.dir/Point.cpp.i
+.PHONY : Point.cpp.i
 
-Polygon.s: Polygon.cpp.s
+Point.s: Point.cpp.s
 
-.PHONY : Polygon.s
+.PHONY : Point.s
 
 # target to generate assembly for a file
-Polygon.cpp.s:
-	$(MAKE) -f CMakeFiles/Clean_code_project.dir/build.make CMakeFiles/Clean_code_project.dir/Polygon.cpp.s
-.PHONY : Polygon.cpp.s
+Point.cpp.s:
+	$(MAKE) -f CMakeFiles/Clean_code_project.dir/build.make CMakeFiles/Clean_code_project.dir/Point.cpp.s
+.PHONY : Point.cpp.s
 
 Rectangle.o: Rectangle.cpp.o
 
@@ -411,15 +384,12 @@ help:
 	@echo "... CommandLineInterface.o"
 	@echo "... CommandLineInterface.i"
 	@echo "... CommandLineInterface.s"
-	@echo "... Headers/Point.o"
-	@echo "... Headers/Point.i"
-	@echo "... Headers/Point.s"
 	@echo "... Line.o"
 	@echo "... Line.i"
 	@echo "... Line.s"
-	@echo "... Polygon.o"
-	@echo "... Polygon.i"
-	@echo "... Polygon.s"
+	@echo "... Point.o"
+	@echo "... Point.i"
+	@echo "... Point.s"
 	@echo "... Rectangle.o"
 	@echo "... Rectangle.i"
 	@echo "... Rectangle.s"

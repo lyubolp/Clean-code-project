@@ -8,7 +8,6 @@ enum shape
 	RECTANGLE,
 	CIRCLE,
 	LINE,
-	POLYGON,
 	DEFAULT
 };
 std::ostream& operator<<(std::ostream& os, Point p);

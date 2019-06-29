@@ -27,60 +27,20 @@ void man() //Shows user manual
 	std::cout << " <rectangle> := create rectangle <x> <y> <width> <height> <color>\n";
 	std::cout << " <circle> := create circle <x> <y> <r> <color>\n";
 	std::cout << " <line> := create line <x1> <y1> <x2> <y2> <color>\n";
-	std::cout << " <polygon> := create polygon <point1> <point2> ... <pointN> <color>\n\n";
 	std::cout << "erase - erase a figure, by id: erase 2\n";
 	std::cout << "translates - translates all or one figure:\n translate vertical=10 horizontal=100 \n translate 1 vertical=20 horizontal=200\n \n";
-	std::cout << "within - checks if all figures are withing a rectangle or a circle: \n\ within rectangle <x> <y> <w> <h>, within circle <x> <y> <r>\n\n";
 }
-
-CommandLineInterface cmd;
-
 
 
 int main()
 {
+    std::string userInput;
 
-    std::cout << "Opening file...\n";
-    cmd.exec("open sample.svg");
-
-    std::cout << "\n \n \tPrinting all shapes...\n";
-    cmd.exec("print");
-
-    std::cout << "\n \n \t Creating a rectangle and printing all shapes again...\n";
-    cmd.exec("create rectangle 3 3 1 1 #3399ff");
-    cmd.exec("print");
-
-
-    std::cout << "\n \n \t Creating some more shapes and printing all...\n";
-    cmd.exec("create rectangle 4 5 2 2 #3399ff");
-    cmd.exec("create rectangle 7 3 1 1 #3399ff");
-    cmd.exec("create circle 4 5 5 #3399ff");
-    cmd.exec("create line 4 5 2 2 #3399ff");
-    cmd.exec("create circle 5 2 2 #3399ff");
-    cmd.exec("print");
-
-
-    std::cout << "\n \n \t Time to erase the new ones... \n";
-    cmd.exec("erase 6");
-    cmd.exec("erase 6");
-    cmd.exec("erase 1");
-    cmd.exec("erase 6");
-    cmd.exec("erase 5");
-    cmd.exec("print");
-
-    std::cout << "\n \n \t Testing the translate feature... \n";
-    cmd.exec("translate \"2\" vertical=\"20\" horizontal=\"20\"");
-    cmd.exec("translate vertical=\"10\" horizontal=\"10\"");
-    cmd.exec("print");
-
-    std::cout << "\n \n \t Testing the save feature... \n";
-    cmd.exec("save");
-
-    cmd.exec("saveas sample3.svg");
-    cmd.exec("close");
-
-
-    //int result = Catch::Session().run();
+    while(userInput.compare("exit") != 0)
+    {
+        std::cout << "Please enter a command (type man for manual)... \n";
+        getline(std::cin, userInput);
+    }
 
     return 0;
 }
