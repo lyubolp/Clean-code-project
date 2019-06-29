@@ -247,7 +247,7 @@ inline std::string convertRectangleObjectToLine(const BaseShape *objectToConvert
 {
     //This converts an Rectangle object to XML
     std::string lineForFile(tags[1]);
-    point pointOfShape = *objectToConvert->getPoints();
+    Point pointOfShape = *objectToConvert->getPoints();
 
     try
     {
@@ -269,7 +269,7 @@ inline std::string convertCircleObjectToLine(const BaseShape *objectToConvert)
 {
     //This converts an Circle object to XML
     std::string lineForFile(tags[2]);
-    point pointOfShape = *objectToConvert->getPoints();
+    Point pointOfShape = *objectToConvert->getPoints();
 
     try
     {

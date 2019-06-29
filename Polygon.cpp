@@ -5,11 +5,11 @@
 
 
 Polygon::Polygon(): BaseShape(){ }
-Polygon::Polygon(const point* arrayOfPoints, int amountOfPoints, const std::string lineColor) : BaseShape({arrayOfPoints, amountOfPoints},lineColor, POLYGON) {}
+Polygon::Polygon(const Point* arrayOfPoints, int amountOfPoints, const std::string lineColor) : BaseShape({arrayOfPoints, amountOfPoints},lineColor, POLYGON) {}
 
 void Polygon::print() const
 {
-    const point* pointsOfTheShapeToPrint;
+    const Point* pointsOfTheShapeToPrint;
     pointsOfTheShapeToPrint = BaseShape::getPoints();
 
     std::cout << "polygon ";

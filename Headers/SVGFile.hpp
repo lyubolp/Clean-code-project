@@ -12,7 +12,8 @@
 class SVGFile
 {
 public:
-	SVGFile();
+
+    static SVGFile& getInstance();
 
 	const int openFile(const std::string &);
 
@@ -26,6 +27,14 @@ public:
 	std::vector<std::string> loadIntoContainer() const;
 
 private:
+
+    SVGFile();
+
+    SVGFile(const SVGFile&) = delete;
+    SVGFile operator=(const SVGFile&) = delete;
+
+
+
     std::string filePath;
     std::ifstream fileStream;
     std::ofstream fileWrite;
@@ -35,6 +44,8 @@ private:
     void addLineToFile(std::string);
     void convertLineFromFileToCommand(std::string&);
     void convertObjectToLine(const BaseShape*);
+
+
 
 
 

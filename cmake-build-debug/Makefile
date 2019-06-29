@@ -204,6 +204,33 @@ CommandLineInterface.cpp.s:
 	$(MAKE) -f CMakeFiles/Clean_code_project.dir/build.make CMakeFiles/Clean_code_project.dir/CommandLineInterface.cpp.s
 .PHONY : CommandLineInterface.cpp.s
 
+Headers/Point.o: Headers/Point.cpp.o
+
+.PHONY : Headers/Point.o
+
+# target to build an object file
+Headers/Point.cpp.o:
+	$(MAKE) -f CMakeFiles/Clean_code_project.dir/build.make CMakeFiles/Clean_code_project.dir/Headers/Point.cpp.o
+.PHONY : Headers/Point.cpp.o
+
+Headers/Point.i: Headers/Point.cpp.i
+
+.PHONY : Headers/Point.i
+
+# target to preprocess a source file
+Headers/Point.cpp.i:
+	$(MAKE) -f CMakeFiles/Clean_code_project.dir/build.make CMakeFiles/Clean_code_project.dir/Headers/Point.cpp.i
+.PHONY : Headers/Point.cpp.i
+
+Headers/Point.s: Headers/Point.cpp.s
+
+.PHONY : Headers/Point.s
+
+# target to generate assembly for a file
+Headers/Point.cpp.s:
+	$(MAKE) -f CMakeFiles/Clean_code_project.dir/build.make CMakeFiles/Clean_code_project.dir/Headers/Point.cpp.s
+.PHONY : Headers/Point.cpp.s
+
 Line.o: Line.cpp.o
 
 .PHONY : Line.o
@@ -384,6 +411,9 @@ help:
 	@echo "... CommandLineInterface.o"
 	@echo "... CommandLineInterface.i"
 	@echo "... CommandLineInterface.s"
+	@echo "... Headers/Point.o"
+	@echo "... Headers/Point.i"
+	@echo "... Headers/Point.s"
 	@echo "... Line.o"
 	@echo "... Line.i"
 	@echo "... Line.s"

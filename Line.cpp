@@ -3,23 +3,23 @@
 
 Line::Line() : BaseShape() {}
 
-Line::Line(const point* arrayOfPoints, const std::string lineColor) : BaseShape({arrayOfPoints, 2}, lineColor, LINE) {}
+Line::Line(const Point* arrayOfPoints, const std::string lineColor) : BaseShape({arrayOfPoints, 2}, lineColor, LINE) {}
 
 void Line::print() const
 {
-    const point* pointsOfTheShapeToPrint;
+    const Point* pointsOfTheShapeToPrint;
     pointsOfTheShapeToPrint = BaseShape::getPoints();
 
     std::cout << "line " << pointsOfTheShapeToPrint[0] << " " << pointsOfTheShapeToPrint[1] << " " << BaseShape::getColor() << "\n";
 
 }
 
-const point Line::getAdditionalPoints() const
+const Point Line::getAdditionalPoints() const
 {
-	return point(0, 0); 
+	return Point(0, 0);
 };
 
-void Line::setSize(const point& size)
+void Line::setSize(const Point& size)
 {
 
 }

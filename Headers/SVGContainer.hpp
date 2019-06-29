@@ -43,12 +43,8 @@ public:
 		- remove a shape
 	    - translate a shape
 	*/
-	SVGContainer();
-	SVGContainer(const std::vector<BaseShape*>);
-	SVGContainer(const SVGContainer&);
-	SVGContainer& operator=(const SVGContainer&);
 
-    ~SVGContainer();
+	static SVGContainer& getInstance();
 
 	void addShape(BaseShape*);
 
@@ -63,6 +59,10 @@ public:
 	const int getCount() const;
 
 private:
+
+    SVGContainer() {}
+    SVGContainer(const SVGContainer&) = delete;
+    SVGContainer& operator=(const SVGContainer&) = delete;
 
     int itemCount;
     std::vector<BaseShape*> shapes;

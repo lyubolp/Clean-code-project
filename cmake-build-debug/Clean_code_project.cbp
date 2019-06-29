@@ -95,43 +95,49 @@
 		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/CommandLineInterface.cpp">
 			<Option target="Clean_code_project"/>
 		</Unit>
-		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/Base.h">
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/Base.hpp">
 			<Option target="Clean_code_project"/>
 		</Unit>
-		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/Circle.h">
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/Circle.hpp">
 			<Option target="Clean_code_project"/>
 		</Unit>
-		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/CommandLineInterface.h">
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/CommandLineInterface.hpp">
 			<Option target="Clean_code_project"/>
 		</Unit>
-		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/DynamicMemoryManagment.h">
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/DynamicMemoryManagment.hpp">
 			<Option target="Clean_code_project"/>
 		</Unit>
-		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/InputParser.h">
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/InputParser.hpp">
 			<Option target="Clean_code_project"/>
 		</Unit>
-		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/InputValidation.h">
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/InputValidation.hpp">
 			<Option target="Clean_code_project"/>
 		</Unit>
-		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/Line.h">
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/Line.hpp">
 			<Option target="Clean_code_project"/>
 		</Unit>
-		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/MathFunctions.h">
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/MathFunctions.hpp">
 			<Option target="Clean_code_project"/>
 		</Unit>
-		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/Polygon.h">
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/Point.cpp">
 			<Option target="Clean_code_project"/>
 		</Unit>
-		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/Rectangle.h">
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/Point.hpp">
 			<Option target="Clean_code_project"/>
 		</Unit>
-		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/SVGContainer.h">
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/Polygon.hpp">
 			<Option target="Clean_code_project"/>
 		</Unit>
-		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/SVGFile.h">
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/Rectangle.hpp">
 			<Option target="Clean_code_project"/>
 		</Unit>
-		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/StringManip.h">
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/SVGContainer.hpp">
+			<Option target="Clean_code_project"/>
+		</Unit>
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/SVGFile.hpp">
+			<Option target="Clean_code_project"/>
+		</Unit>
+		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Headers/StringManip.hpp">
 			<Option target="Clean_code_project"/>
 		</Unit>
 		<Unit filename="/home/lyubo/Uni/КПК/Clean-code-project/Line.cpp">

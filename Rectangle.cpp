@@ -2,7 +2,7 @@
 #include <iostream>
 
 Rectangle::Rectangle(): BaseShape(), width(0), height(0) {}
-Rectangle::Rectangle(const point* arrayOfPoints, const std::string  shapeColor , const double rectangleWidth, const double rectangleHeight) : BaseShape({arrayOfPoints, 1},shapeColor, RECTANGLE ), width(rectangleWidth), height(rectangleHeight)
+Rectangle::Rectangle(const Point* arrayOfPoints, const std::string  shapeColor , const double rectangleWidth, const double rectangleHeight) : BaseShape({arrayOfPoints, 1},shapeColor, RECTANGLE ), width(rectangleWidth), height(rectangleHeight)
 {
     bool isWidthLessThanZero = !isNumberBiggerThanZero(width);
 	if (isWidthLessThanZero)
@@ -34,12 +34,12 @@ Rectangle& Rectangle::operator=(const Rectangle & rhs)
     return *this;
 }
 
-const point Rectangle::getAdditionalPoints() const
+const Point Rectangle::getAdditionalPoints() const
 {
-	return point(width, height);
+	return Point(width, height);
 }
 
-void Rectangle::setSize(const point& size)
+void Rectangle::setSize(const Point& size)
 {
     if (isNumberBiggerThanZero(size.x))
     {

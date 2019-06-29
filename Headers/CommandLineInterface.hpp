@@ -15,29 +15,46 @@
 
 class CommandLineInterface {
 public:
-    CommandLineInterface();
+
+    CommandLineInterface& getInstance();
 
     bool exec(const std::string&);
 
 private:
-    Rectangle* createRectangleFromUserInput(const std::string&);
-    Circle* createCircleFromUserInput(const std::string&);
-    Line* createLineFromUserInput(const std::string&);
-    Polygon* createPolygonFromUserInput(const std::string&);
 
-    void fillPointsFromUserInput(point*, int&, std::string&);
+    CommandLineInterface() = default;
+
+    CommandLineInterface(const CommandLineInterface&) = delete;
+    CommandLineInterface operator=(const CommandLineInterface&) = delete;
+
+    bool execCreate(const std::string&);
+    bool execSave(const std::string&) const;
+    bool execSaveAs(const std::string&) const;
+    bool execErase(const std::string&);
+    bool execTranslate(const std::string&);
+    bool execClose(const std::string&);
+    bool execOpen(const std::string&);
+    bool execPrint(const std::string&);
+
+    std::pair<Point*, Point> generatePointsFromUserInput(std::string&, const shape&) const;
+
+    Rectangle* createRectangleFromUserInput(const std::string&) const;
+    Circle* createCircleFromUserInput(const std::string&) const;
+    Line* createLineFromUserInput(const std::string&) const;
+    Polygon* createPolygonFromUserInput(const std::string&) const;
+
+    void fillPointsFromUserInput(Point*, int&, std::string&) const;
 
     void createShape(const std::string&);
 
     void eraseShape(const std::string&);
 
-    void translateShape(const std::string&);
 
-    void openFromContainer(const std::vector <std::string>&);
+    const double getValueFromCommand(std::string&, const std::string&);
+    void translateShape(const std::string&);
 
     bool isFileOpen;
     SVGContainer shapes;
-    SVGFile file;
 };
 
 

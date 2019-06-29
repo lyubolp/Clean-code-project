@@ -4,7 +4,7 @@ class Polygon : public BaseShape
 {
 public:
 	Polygon();
-	Polygon(const point*, int,const std::string);
+	Polygon(const Point*, int,const std::string);
 
     void print() const override;
 };

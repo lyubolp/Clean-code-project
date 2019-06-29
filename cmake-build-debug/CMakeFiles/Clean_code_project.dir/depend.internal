@@ -3,91 +3,103 @@
 
 CMakeFiles/Clean_code_project.dir/Base.cpp.o
  /home/lyubo/Uni/КПК/Clean-code-project/Base.cpp
- /home/lyubo/Uni/КПК/Clean-code-project/Headers/Base.h
- /home/lyubo/Uni/КПК/Clean-code-project/Headers/DynamicMemoryManagment.h
- /home/lyubo/Uni/КПК/Clean-code-project/Headers/InputValidation.h
- /home/lyubo/Uni/КПК/Clean-code-project/Headers/MathFunctions.h
- /home/lyubo/Uni/КПК/Clean-code-project/Headers/StringManip.h
+ /home/lyubo/Uni/КПК/Clean-code-project/Headers/Base.hpp
+ /home/lyubo/Uni/КПК/Clean-code-project/Headers/DynamicMemoryManagment.hpp
+ /home/lyubo/Uni/КПК/Clean-code-project/Headers/InputValidation.hpp
+ /home/lyubo/Uni/КПК/Clean-code-project/Headers/MathFunctions.hpp
+ /home/lyubo/Uni/КПК/Clean-code-project/Headers/Point.hpp
+ /home/lyubo/Uni/КПК/Clean-code-project/Headers/StringManip.hpp
 CMakeFiles/Clean_code_project.dir/Circle.cpp.o
- .././Headers/Base.h
- .././Headers/InputValidation.h
- .././Headers/Line.h
- .././Headers/MathFunctions.h
- .././Headers/Polygon.h
- .././Headers/StringManip.h
+ .././Headers/Base.hpp
+ .././Headers/InputValidation.hpp
+ .././Headers/Line.hpp
+ .././Headers/MathFunctions.hpp
+ .././Headers/Point.hpp
+ .././Headers/Polygon.hpp
+ .././Headers/StringManip.hpp
  /home/lyubo/Uni/КПК/Clean-code-project/Circle.cpp
- /home/lyubo/Uni/КПК/Clean-code-project/Headers/Circle.h
+ /home/lyubo/Uni/КПК/Clean-code-project/Headers/Circle.hpp
 CMakeFiles/Clean_code_project.dir/CommandLineInterface.cpp.o
- .././Headers/Base.h
- .././Headers/Circle.h
- .././Headers/InputParser.h
- .././Headers/InputValidation.h
- .././Headers/Line.h
- .././Headers/MathFunctions.h
- .././Headers/Polygon.h
- .././Headers/Rectangle.h
- .././Headers/SVGContainer.h
- .././Headers/StringManip.h
+ .././Headers/Base.hpp
+ .././Headers/Circle.hpp
+ .././Headers/InputParser.hpp
+ .././Headers/InputValidation.hpp
+ .././Headers/Line.hpp
+ .././Headers/MathFunctions.hpp
+ .././Headers/Point.hpp
+ .././Headers/Polygon.hpp
+ .././Headers/Rectangle.hpp
+ .././Headers/SVGContainer.hpp
+ .././Headers/StringManip.hpp
  /home/lyubo/Uni/КПК/Clean-code-project/CommandLineInterface.cpp
- /home/lyubo/Uni/КПК/Clean-code-project/Headers/CommandLineInterface.h
- /home/lyubo/Uni/КПК/Clean-code-project/Headers/SVGFile.h
- /home/lyubo/Uni/КПК/Clean-code-project/Headers/StringManip.h
+ /home/lyubo/Uni/КПК/Clean-code-project/Headers/CommandLineInterface.hpp
+ /home/lyubo/Uni/КПК/Clean-code-project/Headers/SVGFile.hpp
+ /home/lyubo/Uni/КПК/Clean-code-project/Headers/StringManip.hpp
+CMakeFiles/Clean_code_project.dir/Headers/Point.cpp.o
+ /home/lyubo/Uni/КПК/Clean-code-project/Headers/Point.cpp
+ /home/lyubo/Uni/КПК/Clean-code-project/Headers/Point.hpp
 CMakeFiles/Clean_code_project.dir/Line.cpp.o
- .././Headers/Base.h
- /home/lyubo/Uni/КПК/Clean-code-project/Headers/Line.h
+ .././Headers/Base.hpp
+ .././Headers/Point.hpp
+ /home/lyubo/Uni/КПК/Clean-code-project/Headers/Line.hpp
  /home/lyubo/Uni/КПК/Clean-code-project/Line.cpp
 CMakeFiles/Clean_code_project.dir/Polygon.cpp.o
- .././Headers/Base.h
- /home/lyubo/Uni/КПК/Clean-code-project/Headers/Polygon.h
+ .././Headers/Base.hpp
+ .././Headers/Point.hpp
+ /home/lyubo/Uni/КПК/Clean-code-project/Headers/Polygon.hpp
  /home/lyubo/Uni/КПК/Clean-code-project/Polygon.cpp
 CMakeFiles/Clean_code_project.dir/Rectangle.cpp.o
- .././Headers/Base.h
- .././Headers/Circle.h
- .././Headers/InputValidation.h
- .././Headers/Line.h
- .././Headers/MathFunctions.h
- .././Headers/Polygon.h
- .././Headers/StringManip.h
- /home/lyubo/Uni/КПК/Clean-code-project/Headers/Rectangle.h
+ .././Headers/Base.hpp
+ .././Headers/Circle.hpp
+ .././Headers/InputValidation.hpp
+ .././Headers/Line.hpp
+ .././Headers/MathFunctions.hpp
+ .././Headers/Point.hpp
+ .././Headers/Polygon.hpp
+ .././Headers/StringManip.hpp
+ /home/lyubo/Uni/КПК/Clean-code-project/Headers/Rectangle.hpp
  /home/lyubo/Uni/КПК/Clean-code-project/Rectangle.cpp
 CMakeFiles/Clean_code_project.dir/SVGContainer.cpp.o
- .././Headers/Base.h
- .././Headers/Circle.h
- .././Headers/InputValidation.h
- .././Headers/Line.h
- .././Headers/MathFunctions.h
- .././Headers/Polygon.h
- .././Headers/Rectangle.h
- .././Headers/StringManip.h
- /home/lyubo/Uni/КПК/Clean-code-project/Headers/SVGContainer.h
+ .././Headers/Base.hpp
+ .././Headers/Circle.hpp
+ .././Headers/InputValidation.hpp
+ .././Headers/Line.hpp
+ .././Headers/MathFunctions.hpp
+ .././Headers/Point.hpp
+ .././Headers/Polygon.hpp
+ .././Headers/Rectangle.hpp
+ .././Headers/StringManip.hpp
+ /home/lyubo/Uni/КПК/Clean-code-project/Headers/SVGContainer.hpp
  /home/lyubo/Uni/КПК/Clean-code-project/SVGContainer.cpp
 CMakeFiles/Clean_code_project.dir/SVGFile.cpp.o
- .././Headers/Base.h
- .././Headers/Circle.h
- .././Headers/InputParser.h
- .././Headers/InputValidation.h
- .././Headers/Line.h
- .././Headers/MathFunctions.h
- .././Headers/Polygon.h
- .././Headers/Rectangle.h
- .././Headers/SVGContainer.h
- .././Headers/SVGFile.h
- .././Headers/StringManip.h
- /home/lyubo/Uni/КПК/Clean-code-project/Headers/SVGFile.h
+ .././Headers/Base.hpp
+ .././Headers/Circle.hpp
+ .././Headers/InputParser.hpp
+ .././Headers/InputValidation.hpp
+ .././Headers/Line.hpp
+ .././Headers/MathFunctions.hpp
+ .././Headers/Point.hpp
+ .././Headers/Polygon.hpp
+ .././Headers/Rectangle.hpp
+ .././Headers/SVGContainer.hpp
+ .././Headers/SVGFile.hpp
+ .././Headers/StringManip.hpp
+ /home/lyubo/Uni/КПК/Clean-code-project/Headers/SVGFile.hpp
  /home/lyubo/Uni/КПК/Clean-code-project/SVGFile.cpp
 CMakeFiles/Clean_code_project.dir/main.cpp.o
- .././Headers/Base.h
- .././Headers/Circle.h
- .././Headers/Line.h
- .././Headers/MathFunctions.h
- .././Headers/Polygon.h
- .././Headers/SVGContainer.h
- /home/lyubo/Uni/КПК/Clean-code-project/Headers/Base.h
- /home/lyubo/Uni/КПК/Clean-code-project/Headers/CommandLineInterface.h
- /home/lyubo/Uni/КПК/Clean-code-project/Headers/InputParser.h
- /home/lyubo/Uni/КПК/Clean-code-project/Headers/InputValidation.h
- /home/lyubo/Uni/КПК/Clean-code-project/Headers/Rectangle.h
- /home/lyubo/Uni/КПК/Clean-code-project/Headers/SVGFile.h
- /home/lyubo/Uni/КПК/Clean-code-project/Headers/StringManip.h
+ .././Headers/Base.hpp
+ .././Headers/Circle.hpp
+ .././Headers/Line.hpp
+ .././Headers/MathFunctions.hpp
+ .././Headers/Polygon.hpp
+ .././Headers/SVGContainer.hpp
+ /home/lyubo/Uni/КПК/Clean-code-project/Headers/Base.hpp
+ /home/lyubo/Uni/КПК/Clean-code-project/Headers/CommandLineInterface.hpp
+ /home/lyubo/Uni/КПК/Clean-code-project/Headers/InputParser.hpp
+ /home/lyubo/Uni/КПК/Clean-code-project/Headers/InputValidation.hpp
+ /home/lyubo/Uni/КПК/Clean-code-project/Headers/Point.hpp
+ /home/lyubo/Uni/КПК/Clean-code-project/Headers/Rectangle.hpp
+ /home/lyubo/Uni/КПК/Clean-code-project/Headers/SVGFile.hpp
+ /home/lyubo/Uni/КПК/Clean-code-project/Headers/StringManip.hpp
  /home/lyubo/Uni/КПК/Clean-code-project/catch.hpp
  /home/lyubo/Uni/КПК/Clean-code-project/main.cpp

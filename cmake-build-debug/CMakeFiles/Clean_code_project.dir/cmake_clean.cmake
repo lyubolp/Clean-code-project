@@ -8,6 +8,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Clean_code_project.dir/SVGContainer.cpp.o"
   "CMakeFiles/Clean_code_project.dir/SVGFile.cpp.o"
   "CMakeFiles/Clean_code_project.dir/CommandLineInterface.cpp.o"
+  "CMakeFiles/Clean_code_project.dir/Headers/Point.cpp.o"
   "Clean_code_project.pdb"
   "Clean_code_project"
 )

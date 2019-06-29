@@ -6,14 +6,14 @@ class Line : public BaseShape
 public:
 
     Line();
-    Line(const point*, const std::string);
+    Line(const Point*, const std::string);
 
     void print() const override;
 
 private:
-    const point getAdditionalPoints() const override;
+    const Point getAdditionalPoints() const override;
 
-    void setSize(const point&) override;
+    void setSize(const Point&) override;
 
 
 };

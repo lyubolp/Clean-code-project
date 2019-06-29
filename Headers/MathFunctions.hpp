@@ -6,9 +6,9 @@ inline bool checkIfDoubleIsInInterval(const double toCheck, const std::pair<doub
 {
     return (interval.first <= toCheck) && (toCheck <= interval.second);
 }
-inline double getDistanceBetweenTwoPoints(const point &a, const point &b)
+inline double getDistanceBetweenTwoPoints(const Point &a, const Point &b)
 {
-    return sqrt(pow((b.x - a.x),2) + pow((b.y - a.y),2));
+    return sqrt(pow((b.getX() - a.getX()),2) + pow((b.getY() - a.getY()),2));
 }
 
 inline bool isNumberBiggerThanZero(const int numberToCheck)

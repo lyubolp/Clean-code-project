@@ -15,7 +15,7 @@ BaseShape::BaseShape()
 	shapeType = DEFAULT;
 }
 
-BaseShape::BaseShape(const std::pair<const point*,const int>& newPoints, const std::string& shapeColor, const shape& typeOfShape)
+BaseShape::BaseShape(const std::pair<const Point*,const int>& newPoints, const std::string& shapeColor, const shape& typeOfShape)
 {
     //We use the setter to set all fields with the data from the constructor
     points = nullptr;
@@ -32,7 +32,7 @@ BaseShape& BaseShape::operator=(const BaseShape& rhs)
 	if (this != &rhs)
 	{
         delete[] points;
-        setAllFields(std::pair<const point *, const int>(rhs.getPoints(), rhs.getPointsCount()), rhs.getColor(),
+        setAllFields(std::pair<const Point *, const int>(rhs.getPoints(), rhs.getPointsCount()), rhs.getColor(),
                      rhs.getType());
 	}
 	return *this;
@@ -53,7 +53,7 @@ const std::string BaseShape::getColor() const
     return color;
 }
 
-const point * BaseShape::getPoints() const
+const Point * BaseShape::getPoints() const
 {
 	return points;
 }
@@ -80,7 +80,7 @@ void BaseShape::translate(const int& horizontal, const int& vertical)
 	}
 }
 
-void BaseShape::setAllFields(const std::pair<const point *, const int> &newPoints, const std::string &shapeColor, const shape &typeOfShape)
+void BaseShape::setAllFields(const std::pair<const Point *, const int> &newPoints, const std::string &shapeColor, const shape &typeOfShape)
 {
     try
     {
@@ -122,12 +122,12 @@ void BaseShape::setColor(const std::string& shapeColor)
     }
 }
 
-void BaseShape::setPoints(const point& pointToBeReplacedWith, const int& indexOfPointsToSet)
+void BaseShape::setPoints(const Point& pointToBeReplacedWith, const int& indexOfPointsToSet)
 {
-    //Sets a point based on point number (1-n), where n is the number of points;
+    //Sets a Point based on Point number (1-n), where n is the number of points;
     if (isNumberBiggerThanZero(indexOfPointsToSet))
     {
-        point* newPoints = insertObjectIntoArray({ pointToBeReplacedWith, indexOfPointsToSet }, { points, pointsCount });
+        Point* newPoints = insertObjectIntoArray({ pointToBeReplacedWith, indexOfPointsToSet }, { points, pointsCount });
         deleteDynamicArray(points);
 
         try
@@ -150,7 +150,7 @@ void BaseShape::setPoints(const double& xCoordinate, const double& yCoordinate, 
 {
     if (isNumberBiggerThanZero(indexOfThePointToChange) && indexOfThePointToChange < pointsCount)
     {
-        point* newPoints = insertObjectIntoArray({ point(xCoordinate, yCoordinate), indexOfThePointToChange }, { points, pointsCount });
+        Point* newPoints = insertObjectIntoArray({ Point(xCoordinate, yCoordinate), indexOfThePointToChange }, { points, pointsCount });
 
         deleteDynamicArray(points);
 
@@ -166,11 +166,11 @@ void BaseShape::setPoints(const double& xCoordinate, const double& yCoordinate, 
     }
     else
     {
-        throw std::invalid_argument("Invalid point index");
+        throw std::invalid_argument("Invalid Point index");
     }
 }
 
-void BaseShape::setPoints(const point* pointsToSetAs, const int& amountOfPoints) //All points
+void BaseShape::setPoints(const Point* pointsToSetAs, const int& amountOfPoints) //All points
 {
     if (isNumberBiggerThanZero(amountOfPoints) && !isNullptr(pointsToSetAs))
     {
@@ -206,7 +206,7 @@ void BaseShape::setPointCount(const int& amountOfPoints)
 
 }
 
-std::ostream& operator<<(std::ostream& outputStream, point pointToPrint)
+std::ostream& operator<<(std::ostream& outputStream, Point pointToPrint)
 {
 	outputStream << pointToPrint.x << " " << pointToPrint.y;
 	return outputStream;

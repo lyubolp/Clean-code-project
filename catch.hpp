@@ -117,7 +117,7 @@ namespace Catch {
 
 // In general each macro has a _NO_<feature name> form
 // (e.g. CATCH_CONFIG_NO_POSIX_SIGNALS) which disables the feature.
-// Many features, at point of detection, define an _INTERNAL_ macro, so they
+// Many features, at Point of detection, define an _INTERNAL_ macro, so they
 // can be combined, en-mass, with the _NO_ forms later.
 
 #ifdef __cplusplus
@@ -5169,14 +5169,14 @@ namespace Catch {
     namespace Benchmark {
         template <typename Duration>
         struct Estimate {
-            Duration point;
+            Duration Point;
             Duration lower_bound;
             Duration upper_bound;
             double confidence_interval;
 
             template <typename Duration2>
             operator Estimate<Duration2>() const {
-                return { point, lower_bound, upper_bound, confidence_interval };
+                return { Point, lower_bound, upper_bound, confidence_interval };
             }
         };
     } // namespace Benchmark
@@ -6746,9 +6746,9 @@ namespace Catch {
             Estimate<double> bootstrap(double confidence_level, Iterator first, Iterator last, sample const& resample, Estimator&& estimator) {
                 auto n_samples = last - first;
 
-                double point = estimator(first, last);
+                double Point = estimator(first, last);
                 // Degenerate case with a single sample
-                if (n_samples == 1) return { point, point, point, confidence_level };
+                if (n_samples == 1) return { Point, Point, Point, confidence_level };
 
                 sample jack = jackknife(estimator, first, last);
                 double jack_mean = mean(jack.begin(), jack.end());
@@ -6762,9 +6762,9 @@ namespace Catch {
 
                 double accel = sum_cubes / (6 * std::pow(sum_squares, 1.5));
                 int n = static_cast<int>(resample.size());
-                double prob_n = std::count_if(resample.begin(), resample.end(), [point](double x) { return x < point; }) / (double)n;
+                double prob_n = std::count_if(resample.begin(), resample.end(), [Point](double x) { return x < Point; }) / (double)n;
                 // degenerate case with uniform samples
-                if (prob_n == 0) return { point, point, point, confidence_level };
+                if (prob_n == 0) return { Point, Point, Point, confidence_level };
 
                 double bias = normal_quantile(prob_n);
                 double z1 = normal_quantile((1. - confidence_level) / 2.);
@@ -6779,7 +6779,7 @@ namespace Catch {
                 auto lo = std::max(cumn(a1), 0);
                 auto hi = std::min(cumn(a2), n - 1);
 
-                return { point, resample[lo], resample[hi], confidence_level };
+                return { Point, resample[lo], resample[hi], confidence_level };
             }
 
             double outlier_variance(Estimate<double> mean, Estimate<double> stddev, int n);
@@ -6951,7 +6951,7 @@ namespace Catch {
 
                     auto wrap_estimate = [](Estimate<double> e) {
                         return Estimate<Duration> {
-                            Duration(e.point),
+                            Duration(e.Point),
                                 Duration(e.lower_bound),
                                 Duration(e.upper_bound),
                                 e.confidence_interval,
@@ -7399,8 +7399,8 @@ namespace Catch {
             }
 
             double outlier_variance(Estimate<double> mean, Estimate<double> stddev, int n) {
-                double sb = stddev.point;
-                double mn = mean.point / n;
+                double sb = stddev.Point;
+                double mn = mean.Point / n;
                 double mg_min = mn / 2.;
                 double sg = std::min(mg_min / 4., sb / std::sqrt(n));
                 double sg2 = sg * sg;
@@ -8631,7 +8631,7 @@ namespace detail {
     protected:
         void enforceOk() const override {
 
-            // Errors shouldn't reach this point, but if they do
+            // Errors shouldn't reach this Point, but if they do
             // the actual error message will be in m_errorMessage
             assert( m_type != ResultBase::LogicError );
             assert( m_type != ResultBase::RuntimeError );
@@ -9527,7 +9527,7 @@ namespace Catch {
     }
     bool SourceLineInfo::operator < ( SourceLineInfo const& other ) const noexcept {
         // We can assume that the same file will usually have the same pointer.
-        // Thus, if the pointers are the same, there is no point in calling the strcmp
+        // Thus, if the pointers are the same, there is no Point in calling the strcmp
         return line < other.line || ( line == other.line && file != other.file && (std::strcmp(file, other.file) < 0));
     }
 
@@ -10378,7 +10378,7 @@ namespace Catch {
     static SignalDefs signalDefs[] = {
         { SIGINT,  "SIGINT - Terminal interrupt signal" },
         { SIGILL,  "SIGILL - Illegal instruction signal" },
-        { SIGFPE,  "SIGFPE - Floating point error signal" },
+        { SIGFPE,  "SIGFPE - Floating Point error signal" },
         { SIGSEGV, "SIGSEGV - Segmentation violation signal" },
         { SIGTERM, "SIGTERM - Termination request signal" },
         { SIGABRT, "SIGABRT - Abort (abnormal termination) signal" }
@@ -12295,7 +12295,7 @@ namespace Catch {
             // This just means the test was aborted due to failure
         } CATCH_CATCH_ALL {
             // Under CATCH_CONFIG_FAST_COMPILE, unexpected exceptions under REQUIRE assertions
-            // are reported without translation at the point of origin.
+            // are reported without translation at the Point of origin.
             if( m_shouldReportUnexpected ) {
                 AssertionReaction dummyReaction;
                 handleUnexpectedInflightException( m_lastAssertionInfo, translateActiveException(), dummyReaction );
@@ -13398,7 +13398,7 @@ namespace Catch {
                         enforceNotReservedTag( tag, _lineInfo );
 
                     // Merged hide tags like `[.approvals]` should be added as
-                    // `[.][approvals]`. The `[.]` is added at later point, so
+                    // `[.][approvals]`. The `[.]` is added at later Point, so
                     // we only strip the prefix
                     if (startsWith(tag, '.') && tag.size() > 1) {
                         tag.erase(0, 1);
@@ -14755,7 +14755,7 @@ namespace Catch {
     // Alternatively we could use stringstream, but its performance is... not good.
     std::string getFormattedDuration( double duration ) {
         // Max exponent + 1 is required to represent the whole part
-        // + 1 for decimal point
+        // + 1 for decimal Point
         // + 3 for the 3 decimal places
         // + 1 for null terminator
         const std::size_t maxDoubleSize = DBL_MAX_10_EXP + 1 + 1 + 3 + 1;
@@ -15507,10 +15507,10 @@ void ConsoleReporter::benchmarkStarting(BenchmarkInfo const& info) {
 }
 void ConsoleReporter::benchmarkEnded(BenchmarkStats<> const& stats) {
 	(*m_tablePrinter) << ColumnBreak()
-		<< Duration(stats.mean.point.count()) << ColumnBreak()
+		<< Duration(stats.mean.Point.count()) << ColumnBreak()
 		<< Duration(stats.mean.lower_bound.count()) << ColumnBreak()
 		<< Duration(stats.mean.upper_bound.count()) << ColumnBreak() << ColumnBreak()
-		<< Duration(stats.standardDeviation.point.count()) << ColumnBreak()
+		<< Duration(stats.standardDeviation.Point.count()) << ColumnBreak()
 		<< Duration(stats.standardDeviation.lower_bound.count()) << ColumnBreak()
 		<< Duration(stats.standardDeviation.upper_bound.count()) << ColumnBreak() << ColumnBreak() << ColumnBreak() << ColumnBreak() << ColumnBreak();
 }
@@ -16368,13 +16368,13 @@ namespace Catch {
 
     void XmlReporter::benchmarkEnded(BenchmarkStats<> const& benchmarkStats) {
         m_xml.startElement("mean")
-            .writeAttribute("value", static_cast<uint64_t>(benchmarkStats.mean.point.count()))
+            .writeAttribute("value", static_cast<uint64_t>(benchmarkStats.mean.Point.count()))
             .writeAttribute("lowerBound", static_cast<uint64_t>(benchmarkStats.mean.lower_bound.count()))
             .writeAttribute("upperBound", static_cast<uint64_t>(benchmarkStats.mean.upper_bound.count()))
             .writeAttribute("ci", benchmarkStats.mean.confidence_interval);
         m_xml.endElement();
         m_xml.startElement("standardDeviation")
-            .writeAttribute("value", benchmarkStats.standardDeviation.point.count())
+            .writeAttribute("value", benchmarkStats.standardDeviation.Point.count())
             .writeAttribute("lowerBound", benchmarkStats.standardDeviation.lower_bound.count())
             .writeAttribute("upperBound", benchmarkStats.standardDeviation.upper_bound.count())
             .writeAttribute("ci", benchmarkStats.standardDeviation.confidence_interval);
@@ -16422,10 +16422,10 @@ namespace Catch {
 #ifndef __OBJC__
 
 #if defined(CATCH_CONFIG_WCHAR) && defined(WIN32) && defined(_UNICODE) && !defined(DO_NOT_USE_WMAIN)
-// Standard C/C++ Win32 Unicode wmain entry point
+// Standard C/C++ Win32 Unicode wmain entry Point
 extern "C" int wmain (int argc, wchar_t * argv[], wchar_t * []) {
 #else
-// Standard C/C++ main entry point
+// Standard C/C++ main entry Point
 int main (int argc, char * argv[]) {
 #endif
 
@@ -16434,7 +16434,7 @@ int main (int argc, char * argv[]) {
 
 #else // __OBJC__
 
-// Objective-C entry point
+// Objective-C entry Point
 int main (int argc, char * const argv[]) {
 #if !CATCH_ARC_ENABLED
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];

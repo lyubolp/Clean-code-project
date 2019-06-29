@@ -2,19 +2,19 @@
 #include "Headers/Base.hpp"
 #include "MathFunctions.hpp"
 
-inline void deleteDynamicArray(point* objectToDelete)
+inline void deleteDynamicArray(Point* objectToDelete)
 {
 	delete[] objectToDelete;
 }
 
-inline point* copyDynamicArray(const point* source, const int sizeOfBothArrays)
+inline Point* copyDynamicArray(const Point* source, const int sizeOfBothArrays)
 {
     if(sizeOfBothArrays < 1)
     {
         throw std::invalid_argument("Invalid size");
     }
 
-    auto* destination = new point[sizeOfBothArrays];
+    auto* destination = new Point[sizeOfBothArrays];
 
     for (int i = 0; i < sizeOfBothArrays; i++)
     {
@@ -23,7 +23,7 @@ inline point* copyDynamicArray(const point* source, const int sizeOfBothArrays)
 
     return destination;
 }
-inline point* replaceDynamicArray(const point* source, const int sizeOfBothArrays)
+inline Point* replaceDynamicArray(const Point* source, const int sizeOfBothArrays)
 {
     if(sizeOfBothArrays < 1)
     {
@@ -32,7 +32,7 @@ inline point* replaceDynamicArray(const point* source, const int sizeOfBothArray
 	return copyDynamicArray(source, sizeOfBothArrays);
 }
 
-inline point* insertObjectIntoArray(std::pair<point, const int> objectToInsertAtPosition, std::pair<point*, const int> arrayToBeInsertedInWithItsSize)
+inline Point* insertObjectIntoArray(std::pair<Point, const int> objectToInsertAtPosition, std::pair<Point*, const int> arrayToBeInsertedInWithItsSize)
 {
     if(arrayToBeInsertedInWithItsSize.second < 1 || objectToInsertAtPosition.second < 0)
     {
@@ -44,10 +44,10 @@ inline point* insertObjectIntoArray(std::pair<point, const int> objectToInsertAt
 
     if(isXisLessThanZero || isYisLessThanZero)
     {
-        throw std::invalid_argument("The coordinates of the point should non-negative");
+        throw std::invalid_argument("The coordinates of the Point should non-negative");
     }
 
-    auto* resultArray = new point[arrayToBeInsertedInWithItsSize.second + 1];
+    auto* resultArray = new Point[arrayToBeInsertedInWithItsSize.second + 1];
 
 	for (int i = 0; i < objectToInsertAtPosition.second - 1; i++)
 	{
@@ -63,7 +63,7 @@ inline point* insertObjectIntoArray(std::pair<point, const int> objectToInsertAt
 	return resultArray;
 }
 
-inline bool isNullptr(const point* pointToCheck)
+inline bool isNullptr(const Point* pointToCheck)
 {
 	return pointToCheck == nullptr;
 }

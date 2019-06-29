@@ -26,4 +26,4 @@ add_executable(Clean_code_project
         Headers/SVGFile.hpp
         CommandLineInterface.cpp
         Headers/CommandLineInterface.hpp
-        Headers/MathFunctions.hpp Headers/InputParser.hpp)
+        Headers/MathFunctions.hpp Headers/InputParser.hpp Headers/Point.cpp Headers/Point.hpp)

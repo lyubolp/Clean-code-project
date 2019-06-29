@@ -2,6 +2,12 @@
 #include <iostream>
 #include <fstream>
 
+SVGFile& SVGFile::getInstance()
+{
+    static SVGFile instance;
+
+    return instance;
+}
 void SVGFile::addFirstTagsToFile()
 {
 	fileWrite << firstLine << "\n";
@@ -14,7 +20,6 @@ void SVGFile::addLineToFile(std::string lineToAdd)
 	fileWrite << lineToAdd << "\n";
 }
 
-SVGFile::SVGFile() = default;
 
 const int SVGFile::openFile(const std::string & userInput)
 {

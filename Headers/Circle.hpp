@@ -13,13 +13,13 @@ class Circle: public BaseShape
 {
 public:
     Circle();
-    Circle(const point*, const std::string&, const double&);
+    Circle(const Point*, const std::string&, const double&);
 
-    void setSize(const point&) override;
+    void setSize(const Point&) override;
 
     void print() const override;
 
-    const point getAdditionalPoints() const override;
+    const Point getAdditionalPoints() const override;
 
 private:
 	double radius;

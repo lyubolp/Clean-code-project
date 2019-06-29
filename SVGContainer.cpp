@@ -2,39 +2,17 @@
 #include <iostream>
 #include <cmath>
 
+SVGContainer& SVGContainer::getInstance()
+{
+    static SVGContainer instance;
+
+    return instance;
+}
+
+
 SVGContainer::SVGContainer() :itemCount(0)
 {
-	//items = new Base[0];
-}
 
-SVGContainer::SVGContainer(const std::vector<BaseShape*> containerOfShapes) : itemCount(1)
-{
-	shapes = containerOfShapes;
-}
-
-SVGContainer::SVGContainer(const SVGContainer& objectToCopyFrom)
-{
-	shapes = objectToCopyFrom.shapes;
-	itemCount = objectToCopyFrom.itemCount;
-}
-
-SVGContainer& SVGContainer::operator=(const SVGContainer& objectToCopyFrom)
-{
-	if (this != &objectToCopyFrom)
-	{
-		shapes = objectToCopyFrom.shapes;
-		itemCount = objectToCopyFrom.itemCount;
-	}
-	return *this;
-}
-
-SVGContainer::~SVGContainer()
-{
-    int s = shapes.size();
-    for (int i = 0; i < s; i++)
-    {
-        delete shapes[i];
-    }
 }
 
 const shape SVGContainer::checkTypeOfShape(BaseShape * toCheck)
