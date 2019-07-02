@@ -1,0 +1,73 @@
+\hypertarget{classBaseShape}{}\doxysection{Base\+Shape Class Reference}
+\label{classBaseShape}\index{BaseShape@{BaseShape}}
+Inheritance diagram for Base\+Shape\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classBaseShape}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBaseShape_aa8a2d2dc64b0b585c81d9f2a0bb70af2}\label{classBaseShape_aa8a2d2dc64b0b585c81d9f2a0bb70af2}} 
+{\bfseries Base\+Shape} (const std\+::pair$<$ const \mbox{\hyperlink{classPoint}{Point}} $\ast$, const int $>$ \&, const std\+::string \&, const shape \&)
+\item 
+\mbox{\Hypertarget{classBaseShape_a61591f290930b6ec88f24fd1eb87e372}\label{classBaseShape_a61591f290930b6ec88f24fd1eb87e372}} 
+{\bfseries Base\+Shape} (const \mbox{\hyperlink{classBaseShape}{Base\+Shape}} \&)
+\item 
+\mbox{\Hypertarget{classBaseShape_a09588e3280fea0f00222d970b4a2719c}\label{classBaseShape_a09588e3280fea0f00222d970b4a2719c}} 
+\mbox{\hyperlink{classBaseShape}{Base\+Shape}} \& {\bfseries operator=} (const \mbox{\hyperlink{classBaseShape}{Base\+Shape}} \&)
+\item 
+\mbox{\Hypertarget{classBaseShape_ae9598d2bd6a8c2ea63a7d43d711d645c}\label{classBaseShape_ae9598d2bd6a8c2ea63a7d43d711d645c}} 
+const shape {\bfseries get\+Type} () const
+\item 
+\mbox{\Hypertarget{classBaseShape_a8474ed029fa0ca0d6265b3cdbdff3f44}\label{classBaseShape_a8474ed029fa0ca0d6265b3cdbdff3f44}} 
+const std\+::string {\bfseries get\+Color} () const
+\item 
+\mbox{\Hypertarget{classBaseShape_afb505958cd4a22244011f19623210f84}\label{classBaseShape_afb505958cd4a22244011f19623210f84}} 
+const \mbox{\hyperlink{classPoint}{Point}} $\ast$ {\bfseries get\+Points} () const
+\item 
+\mbox{\Hypertarget{classBaseShape_abe283179f397682115bcf2f440213232}\label{classBaseShape_abe283179f397682115bcf2f440213232}} 
+const int {\bfseries get\+Points\+Count} () const
+\item 
+\mbox{\Hypertarget{classBaseShape_a08a25be38405eb191e9b9e0324742def}\label{classBaseShape_a08a25be38405eb191e9b9e0324742def}} 
+virtual const \mbox{\hyperlink{classPoint}{Point}} {\bfseries get\+Additional\+Points} () const =0
+\item 
+\mbox{\Hypertarget{classBaseShape_a48c4048d60f66e2c633d962d4e706380}\label{classBaseShape_a48c4048d60f66e2c633d962d4e706380}} 
+void {\bfseries translate} (const int \&, const int \&)
+\item 
+\mbox{\Hypertarget{classBaseShape_ab4ce4127da1ee6e5d9e8eae054c962c0}\label{classBaseShape_ab4ce4127da1ee6e5d9e8eae054c962c0}} 
+virtual void {\bfseries print} () const =0
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBaseShape_a537d2d5e951e64222af897ac6b1aedd4}\label{classBaseShape_a537d2d5e951e64222af897ac6b1aedd4}} 
+void {\bfseries set\+All\+Fields} (const std\+::pair$<$ const \mbox{\hyperlink{classPoint}{Point}} $\ast$, const int $>$ \&, const std\+::string \&, const shape \&)
+\item 
+\mbox{\Hypertarget{classBaseShape_ad371d4ded5fc1d0575f652d6c75d317c}\label{classBaseShape_ad371d4ded5fc1d0575f652d6c75d317c}} 
+void {\bfseries set\+Type\+Of\+Shape} (const shape \&)
+\item 
+\mbox{\Hypertarget{classBaseShape_a2226da0f20aad9975c7d14cb8f6eef76}\label{classBaseShape_a2226da0f20aad9975c7d14cb8f6eef76}} 
+void {\bfseries set\+Color} (const std\+::string \&)
+\item 
+\mbox{\Hypertarget{classBaseShape_a8236f50674dd309e68d5321c48eeb414}\label{classBaseShape_a8236f50674dd309e68d5321c48eeb414}} 
+void {\bfseries set\+Points} (const \mbox{\hyperlink{classPoint}{Point}} \&, const int \&)
+\item 
+\mbox{\Hypertarget{classBaseShape_a4f2838f44a90bed188f75a493265cbdd}\label{classBaseShape_a4f2838f44a90bed188f75a493265cbdd}} 
+void {\bfseries set\+Points} (const double \&, const double \&, const int \&)
+\item 
+\mbox{\Hypertarget{classBaseShape_a890e9f34a74ad48c40ff948a0d9d4bc7}\label{classBaseShape_a890e9f34a74ad48c40ff948a0d9d4bc7}} 
+void {\bfseries set\+Points} (const \mbox{\hyperlink{classPoint}{Point}} $\ast$, const int \&)
+\item 
+\mbox{\Hypertarget{classBaseShape_ac0d44eef3481f54588f0d86fe8eb5ea8}\label{classBaseShape_ac0d44eef3481f54588f0d86fe8eb5ea8}} 
+void {\bfseries set\+Point\+Count} (const int \&)
+\item 
+\mbox{\Hypertarget{classBaseShape_afd0b7d73141b3dabc29b43438a495895}\label{classBaseShape_afd0b7d73141b3dabc29b43438a495895}} 
+virtual void {\bfseries set\+Size} (const \mbox{\hyperlink{classPoint}{Point}} \&)=0
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Base.\+hpp\end{DoxyCompactItemize}
